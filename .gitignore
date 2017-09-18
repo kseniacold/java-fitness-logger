@@ -82,7 +82,3 @@ fabric.properties
 .idea/
 
 # End of https://www.gitignore.io/api/intellij+all
-src/main/java/
-src/main/resources/
-src/test/java/
-src/test/resources/
