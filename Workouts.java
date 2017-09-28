@@ -7,6 +7,6 @@
 
 package com.cs56fitnessapp.models;
 
-public class Workouts {
+public abstract class Workout implements iBurningCalories{
 
 }
