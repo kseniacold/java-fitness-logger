@@ -6,5 +6,5 @@ package com.cs56fitnessapp.models;
  * Last Updated: 9/17/17
  */
 
-public interface iBurningCalories {
+public interface BurningCalories {
 }
