@@ -1,15 +1,24 @@
-/*
-* @author Daniel Cervantes
-* Date created: 9/24/17
-* Last updated: 9/27/17
+package com.cs56fitnessapp.models;
+
+/**
+ * @author Daniel Cervantes
+ * Date created: 9/24/17
+ * Last updated: 9/24/17
  */
 
 
-package com.cs56fitnessapp.models;
-
 import java.util.ArrayList;
 
-public abstract class Workout implements BurningCalories {
+public abstract class Workout implements ActivityFacts {
+    @Override
+    public int getCaloriesOut() {
+        return 0;
+    }
+
+    @Override
+    public int getActiveTime() {
+        return 0;
+    }
 
     ArrayList<String> exerciseList = new ArrayList<String>(){{
 
@@ -29,4 +38,5 @@ public abstract class Workout implements BurningCalories {
         add("Leg Lifts\n");
 
     }};
+
 }
