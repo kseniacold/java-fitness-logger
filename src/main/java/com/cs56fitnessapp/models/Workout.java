@@ -6,7 +6,6 @@ package com.cs56fitnessapp.models;
  * Last updated: 9/24/17
  */
 
-
 import java.util.ArrayList;
 
 public abstract class Workout implements ActivityFacts {
