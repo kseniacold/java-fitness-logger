@@ -3,7 +3,7 @@ package com.cs56fitnessapp.models;
 /**
  * @author Daniel Cervantes
  * Date created: 9/24/17
- * Last updated: 9/24/17
+ * Last updated: 9/27/17
  */
 
 import java.util.ArrayList;
