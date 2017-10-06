@@ -2,6 +2,7 @@ package com.cs56fitnessapp.models;
 
 public class FoodEntry {
     private double servingSize;
+    private String foodName;
     private int calories;
     private TotalFat totalFat;
     private double cholesterol;
@@ -12,83 +13,117 @@ public class FoodEntry {
     private double vitaminC;
     private double calcium;
     private double iron;
-    public FoodEntry(double servingSize, int calories, TotalFat totalFat, double cholesterol, double sodium, TotalCarb totalCarbs, double protein, double vitaminA, double vitaminC, double calcium, double iron){
+
+    /**
+     * Constructs FoodEntry object with sevingSize and calories
+     *
+     * @param servingSize
+     * @param calories
+     */
+    public FoodEntry(String foodName, double servingSize, int calories) {
         this.servingSize = servingSize;
+        this.foodName = foodName;
         this.calories = calories;
-        this.totalFat = totalFat;
-        this.cholesterol = cholesterol;
-        this.sodium = sodium;
-        this.totalCarbs = totalCarbs;
-        this.protein = protein;
-        this.vitaminA = vitaminA;
-        this.vitaminC = vitaminC;
-        this.calcium = calcium;
-        this.iron = iron;
     }
-    public double getServingSize(){
+
+    // Getters and Setters begin
+    public double getServingSize() {
         return servingSize;
     }
-    public void setServingSize(double a){
-        servingSize = a;
+
+    public void setServingSize(double servingSize) {
+        this.servingSize = servingSize;
     }
-    public int getCalories(){
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    public int getCalories() {
         return calories;
     }
-    public void setCalories(int b){
-        calories  = b;
+
+    public void setCalories(int calories) {
+        this.calories = calories;
     }
-    public TotalFat getTotalFat(){
+
+    public TotalFat getTotalFat() {
         return totalFat;
     }
-    public void setTotalFat(TotalFat c){
-        totalFat = c;
+
+    public void setTotalFat(TotalFat totalFat) {
+        this.totalFat = totalFat;
     }
-    public double getCholesterol(){
+
+    public double getCholesterol() {
         return cholesterol;
     }
-    public void setCholesterol(double d){
-        cholesterol = d;
+
+    public void setCholesterol(double cholesterol) {
+        this.cholesterol = cholesterol;
     }
-    public double getSodium(){
+
+    public double getSodium() {
         return sodium;
     }
-    public void setSodium(double e){
-        sodium = e;
+
+    public void setSodium(double sodium) {
+        this.sodium = sodium;
     }
-    public TotalCarb getTotalCarbs(){
+
+    public TotalCarb getTotalCarbs() {
         return totalCarbs;
     }
-    public void setTotalCarbs(TotalCarb f){
-        totalCarbs = f;
+
+    public void setTotalCarbs(TotalCarb totalCarbs) {
+        this.totalCarbs = totalCarbs;
     }
-    public double getProtein(){
+
+    public double getProtein() {
         return protein;
     }
-    public void  setProtein(double g){
-        protein = g;
+
+    public void setProtein(double protein) {
+        this.protein = protein;
     }
-    public double getVitaminA(){
+
+    public double getVitaminA() {
         return vitaminA;
     }
-    public void setVitaminA(double h){
-        vitaminA = h;
+
+    public void setVitaminA(double vitaminA) {
+        this.vitaminA = vitaminA;
     }
-    public double getVitaminC(){
+
+    public double getVitaminC() {
         return vitaminC;
     }
-    public void setVitaminC(double i){
-        vitaminC = i;
+
+    public void setVitaminC(double vitaminC) {
+        this.vitaminC = vitaminC;
     }
-    public double getCalcium(){
+
+    public double getCalcium() {
         return calcium;
     }
-    public void setCalcium(double j){
-        calcium = j;
+
+    public void setCalcium(double calcium) {
+        this.calcium = calcium;
     }
-    public double getIron(){
+
+    public double getIron() {
         return iron;
     }
-    public void setIron(double k){
-        iron = k;
+
+    public void setIron(double iron) {
+        this.iron = iron;
     }
+    // Getters and Setters end
 }
+
+
+
