@@ -25,4 +25,22 @@ public abstract class Endurance extends Workout {
         this.distance = distance;
         this.duration = duration;
     }
+
+    // Setters and getters start
+    public double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
+
+    public double getDuration() {
+        return duration;
+    }
+
+    public void setDuration(double duration) {
+        this.duration = duration;
+    }
+    // Setters and getters end
 }
