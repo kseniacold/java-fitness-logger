@@ -1,4 +1,6 @@
-package com.cs56fitnessapp.models;
+package com.cs56fitnessapp.models.workout;
+
+import com.cs56fitnessapp.models.workout.Workout;
 
 /**
  * @author Ksenia Koldaeva

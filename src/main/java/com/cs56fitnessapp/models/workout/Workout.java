@@ -1,10 +1,12 @@
-package com.cs56fitnessapp.models;
+package com.cs56fitnessapp.models.workout;
 
 /**
  * @author Daniel Cervantes
  * Date created: 9/24/17
  * Last updated: 9/27/17
  */
+
+import com.cs56fitnessapp.models.ActivityFacts;
 
 import java.util.ArrayList;
 
