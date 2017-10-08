@@ -3,7 +3,7 @@ package com.cs56fitnessapp.models;
 /**
  * @author Ksenia Koldaeva
  * Created: 10/6/17
- * Last Updated: 10/6/17
+ * Last Updated: 10/7/17
  */
 
 public enum Gender {
