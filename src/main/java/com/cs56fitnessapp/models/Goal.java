@@ -13,6 +13,10 @@ public enum Goal {
     // String representation
     private String description;
 
+    /**
+     * Constructs new Goal with provided description
+     * @param description
+     */
     Goal(String description) {
         this.description = description;
     }

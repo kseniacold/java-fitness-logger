@@ -13,6 +13,10 @@ public enum Gender {
     // String representation
     private String stringValue;
 
+    /**
+     * Constructs new Gender with provided description
+     * @param stringValue
+     */
     Gender(String stringValue) {
         this.stringValue = stringValue;
     }

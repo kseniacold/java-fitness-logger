@@ -13,6 +13,10 @@ public enum ActivityLevel {
     // String representation
     private String description;
 
+    /**
+     * Constructs new ActivityLevel with provided description
+     * @param description
+     */
     ActivityLevel(String description) {
         this.description = description;
     }
