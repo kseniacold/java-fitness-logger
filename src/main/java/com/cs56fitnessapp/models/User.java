@@ -15,7 +15,7 @@ public class User {
     public static final int CALORIES_PER_POUND = 3500;
     public  static final int DAYS_IN_A_WEEK = 7;
 
-    private static User user;
+    private static User user = null;
 
     private String name;
 
@@ -66,7 +66,14 @@ public class User {
 
     // Start getters and setters
 
-    public static User getUser() {
+    /**
+     * Implements singleton design pattern
+     * @return User object to be used in the application
+     */
+    public static synchronized User getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double weight, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
+        if (User.user == null) {
+            User.user = new User(name, username, dateOfBirth, gender, weight, height, goal, progressPace, activityLevel);
+        }
         return user;
     }
 
@@ -155,7 +162,6 @@ public class User {
     }
 
     // End getters and setters
-
 
     /**
      * @return user's age
