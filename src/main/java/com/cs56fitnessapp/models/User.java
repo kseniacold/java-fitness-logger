@@ -182,7 +182,7 @@ public class User {
         return BMR;
     }
 
-    // TODO refactor - remove fromulas into a separate class
+    // TODO refactor - remove formulas into a separate class
     /**
      *
      * @return calorie offset(deficit or proficit depending on the goal)
