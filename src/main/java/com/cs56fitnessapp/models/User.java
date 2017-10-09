@@ -186,7 +186,7 @@ public class User {
     /**
      *
      * @return calorie offset(deficit or proficit depending on the goal)
-     * based on how many pounds user wants to gain or loose
+     * based on how many pounds user wants to gain or lose
      */
     public int getCalorieOffset() {
         return Math.round((this.progressPace * CALORIES_PER_POUND) / DAYS_IN_A_WEEK);
