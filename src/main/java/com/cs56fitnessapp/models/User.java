@@ -25,9 +25,10 @@ public class User {
 
     private Gender gender;
 
+    // weight in kg
     private double weight;
 
-    // will be stored in metric values
+    // height in cm
     private double height;
 
     private Goal goal;
@@ -166,9 +167,9 @@ public class User {
     /**
      * @return user's age
      */
-    public long getAge () {
+    public int getAge () {
         LocalDate now = LocalDate.now(ZoneId.systemDefault());
-        long years = ChronoUnit.YEARS.between(this.dateOfBirth, now);
+        int years = (int)ChronoUnit.YEARS.between(this.dateOfBirth, now);
 
         return years;
     }
@@ -177,25 +178,16 @@ public class User {
      * @return amount of calories burned at rest
      */
     public double getBasalMetabolicRate() {
-        double BMR;
-        // calculations for female users
-        if (this.gender.equals(Gender.FEMALE)) {
-            BMR = 66.47 + (13.75 * this.weight) + (5.0 * this.height) - (6.45 * this.getAge());
-        } else {
-            // TODO: check the formula
-            BMR = 66.509 + (9.56 * this.weight) + (1.84 + this.height) - (4.67 * this.getAge());
-        }
-        return BMR;
+        return FitnessFormulas.basalMetabolicRate(this.gender, this.activityLevel, this.weight, this.height, this.getAge());
     }
 
-    // TODO refactor - remove formulas into a separate class
     /**
      *
      * @return calorie offset(deficit or proficit depending on the goal)
      * based on how many pounds user wants to gain or lose
      */
     public int getCalorieOffset() {
-        return Math.round((this.progressPace * CALORIES_PER_POUND) / DAYS_IN_A_WEEK);
+        return FitnessFormulas.calorieOffset(this.progressPace);
     }
 
     /**
