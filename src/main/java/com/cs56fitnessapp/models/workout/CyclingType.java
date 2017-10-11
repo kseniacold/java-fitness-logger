@@ -6,19 +6,19 @@ package com.cs56fitnessapp.models.workout;
  * Last Updated: 10/11/17
  */
 
-public enum SwimmingStroke {
+public enum CyclingType {
     // Traditional strokes + mixed
-    FREESTYLE("Freestyle"), BREASTSTROKE("Breaststroke"), BACKSTROKE("Backstroke"), BUTTERFLY("Butterfly"), MIXED("Mixed");
+    MOUNTAIN("Mountain"), RACING("Racing"), LEISURE("Leisure");
 
     // String representation
     private String stringValue;
 
-    SwimmingStroke(String stringValue) {
+    CyclingType(String stringValue) {
         this.stringValue = stringValue;
     }
 
     /**
-     * @return String representation of SwimmingStroke
+     * @return String representation of CyclingType
      */
     public String getStringValue() {
         return stringValue;
