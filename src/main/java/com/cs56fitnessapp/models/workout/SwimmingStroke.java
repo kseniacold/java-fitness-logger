@@ -7,7 +7,7 @@ package com.cs56fitnessapp.models.workout;
  */
 
 public enum SwimmingStroke {
-    // Traditional strokes
+    // Traditional strokes + mixed
     FREESTYLE("Freestyle"), BREASTSTROKE("Breaststroke"), BACKSTROKE("Backstroke"), BUTTERFLY("Butterfly"), MIXED("Mixed");
 
     // String representation

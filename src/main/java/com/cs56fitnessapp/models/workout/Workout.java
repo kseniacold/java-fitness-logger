@@ -20,11 +20,14 @@ public abstract class Workout implements ActivityFacts {
     private int coolDownTime;
 
     public Workout(User user, LocalDate date) {
-        this.user = user;
         this.date = date;
     }
 
     // Start getters and setters
+
+    public User getUser() {
+        return user;
+    }
 
     public LocalDate getDate() {
         return date;

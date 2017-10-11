@@ -43,15 +43,15 @@ public class User {
     /**
      * User implements singleton design pattern
      * Private constructor creates a new user with provided parameters
-     * @param name
-     * @param username
-     * @param dateOfBirth
-     * @param gender
-     * @param bodyMassKg
+     * @param name user's name
+     * @param username username
+     * @param dateOfBirth user's date of birth
+     * @param gender gender
+     * @param bodyMassKg body mass in kilograms
      * @param height
-     * @param goal
-     * @param progressPace
-     * @param activityLevel
+     * @param goal goal - to lose, maintain or gain weight
+     * @param progressPace how many puonds per week to lose
+     * @param activityLevel user's activity level
      */
     private User(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
         this.name = name;

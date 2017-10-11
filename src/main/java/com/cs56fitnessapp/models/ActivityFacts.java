@@ -12,6 +12,6 @@ public interface ActivityFacts {
     int getCaloriesOut();
 
     // Active time over an interval
-    int getActiveTime();
+    int getActiveTimeMins();
 
 }
