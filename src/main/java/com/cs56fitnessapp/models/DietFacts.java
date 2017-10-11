@@ -11,6 +11,7 @@ public interface DietFacts {
     // Calories consumed over an interval
     int getCaloriesIn();
 
+
     // Total fat consumed over an interval
     TotalFat getTotalFatIn();
 
