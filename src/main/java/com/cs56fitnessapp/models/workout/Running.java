@@ -8,7 +8,7 @@ import java.time.LocalDate;
 /**
  * @author Ksenia Koldaeva
  * Created: 10/11/17
- * Last Updated:
+ * Last Updated: 10/11/17
  */
 public class Running extends Endurance {
 

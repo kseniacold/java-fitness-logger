@@ -4,7 +4,7 @@ package com.cs56fitnessapp.models.workout;
  * @author Daniel Cervantes
  * @author Ksenia Koldaeva
  * Date created: 9/24/17
- * Last updated: 10/10/17
+ * Last updated: 10/11/17
  */
 
 import com.cs56fitnessapp.models.ActivityFacts;

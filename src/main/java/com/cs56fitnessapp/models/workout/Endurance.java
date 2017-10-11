@@ -7,7 +7,7 @@ import java.time.LocalDate;
 /**
  * @author Ksenia Koldaeva
  * Created: 10/10/17
- * Last Updated: 10/10/17
+ * Last Updated: 10/11/17
  */
 
 public abstract class Endurance extends Workout {
