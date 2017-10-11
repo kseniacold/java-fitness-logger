@@ -193,9 +193,7 @@ public class User {
      */
     public int getAge () {
         LocalDate now = LocalDate.now(ZoneId.systemDefault());
-        int years = (int)ChronoUnit.YEARS.between(this.dateOfBirth, now);
-
-        return years;
+        return (int)ChronoUnit.YEARS.between(this.dateOfBirth, now);
     }
 
     /**

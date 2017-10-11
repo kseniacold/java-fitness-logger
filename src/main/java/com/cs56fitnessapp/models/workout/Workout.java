@@ -19,6 +19,11 @@ public abstract class Workout implements ActivityFacts {
     private int warmUpTime;
     private int coolDownTime;
 
+    /**
+     * Construnctss Workout object with provided parameters
+     * @param user user performing workout
+     * @param date date of the workout
+     */
     public Workout(User user, LocalDate date) {
         this.date = date;
     }
