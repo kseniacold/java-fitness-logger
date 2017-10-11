@@ -1,6 +1,5 @@
 package com.cs56fitnessapp.models.workout;
 
-import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
 import java.time.LocalDate;
 

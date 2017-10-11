@@ -1,5 +1,7 @@
 package com.cs56fitnessapp.models;
 
+import com.cs56fitnessapp.models.workout.FitnessFormulas;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
