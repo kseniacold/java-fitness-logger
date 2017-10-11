@@ -20,7 +20,7 @@ public abstract class Workout implements ActivityFacts {
     private int coolDownTime;
 
     /**
-     * Construnctss Workout object with provided parameters
+     * Constructs Workout object with provided parameters
      * @param user user performing workout
      * @param date date of the workout
      */
