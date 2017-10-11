@@ -17,17 +17,18 @@ public class Swimming extends Endurance {
 
     /**
      * Constructs Swimming object with provided parameters
+     * Training is assumed to be false (can be set later) for all except Butterfly - in this case training is true
      * @param user user performing swimming
      * @param date date of swimming workout
      * @param distanceKm distance of swimming workout
      * @param timePerformingHours duration of swimming workout
      * @param swimmingStroke one of 4 swimming strokes or mixed
-     * @param training each of the strokes including MIXED can be recreational or training
      */
-    public Swimming(User user, LocalDate date, double distanceKm, double timePerformingHours, SwimmingStroke swimmingStroke, boolean training) {
+    public Swimming(User user, LocalDate date, double distanceKm, double timePerformingHours, SwimmingStroke swimmingStroke) {
         super(user, date, distanceKm, timePerformingHours);
         this.swimmingStroke = swimmingStroke;
-        this.training = training;
+
+        this.training = swimmingStroke.equals(SwimmingStroke.BUTTERFLY);
     }
 
     // Start getters and setters
@@ -50,22 +51,54 @@ public class Swimming extends Endurance {
 
     // End getters and setters
 
+    /**
+     *
+     * @return calories out based on the stroke type and if training or recreational
+     */
     @Override
     public int getCaloriesOut() {
-        int caloriesOut;
+        int caloriesOut = 0;
 
         switch (swimmingStroke) {
             case FREESTYLE:
                 if (training) {
                     caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
                 } else {
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_RECREATIONAL, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                }
+                break;
+            case BREASTSTROKE:
+                if (training) {
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_BREASTSTROKE_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                } else {
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_BREASTSTROKE_RECREATIONAL, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                }
+                break;
+            case BACKSTROKE:
+                if (training) {
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                } else {
                     caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
+            case BUTTERFLY:
+                caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_BUTTERFLY_GENERAL, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                break;
+            case MIXED:
+                if (training) {
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_MIXED_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                } else {
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_MIXED_RECREATIONAL, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                }
+                break;
         }
-        return 0;
+        return caloriesOut;
     }
 
+    /**
+     *
+     * @return active swimming time
+     */
     @Override
     public int getActiveTimeMins() {
         return (int)Math.round(FitnessFormulas.MINS_IN_AN_HOUR * this.getTimePerformingHours());

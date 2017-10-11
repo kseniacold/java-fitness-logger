@@ -43,6 +43,9 @@ public class FitnessFormulas {
     // value MET_SWIMMING_CRAWL_TRAINING is the average of MET_SWIMMING_CRAWL_FAST and MET_SWIMMING_CRAWL_MEDIUM
     public static final double MET_SWIMMING_CRAWL_TRAINING = 8.3;
 
+    // based on swimming laps, freestyle, front crawl, slow, light or moderate effort
+    public static final double MET_SWIMMING_CRAWL_RECREATIONAL = 5.8;
+
     public static final double MET_SWIMMING_BREASTSTROKE_TRAINING = 10.3;
     public static final double MET_SWIMMING_BREASTSTROKE_RECREATIONAL = 6.3;
 

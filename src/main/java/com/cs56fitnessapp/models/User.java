@@ -65,10 +65,9 @@ public class User {
         this.activityLevel = activityLevel;
     }
 
-    // Start getters and setters
-
     /**
      * Implements singleton design pattern
+     * This method accepts arguments and designed to use by the client if User.isSet() returns false
      * @return User object to be used in the application
      */
     public static synchronized User getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
@@ -77,6 +76,31 @@ public class User {
         }
         return user;
     }
+
+    /**
+     * Implements singleton design pattern
+     * This method does not accept args and designed to use by the client if User.isSet() returns true
+     * Otherwise use getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel)
+     * @return User object to be used in the application
+     * @throws NullPointerException if User object has not been instantiated and there is nothing to return
+     */
+    public static synchronized User getUser() throws NullPointerException {
+        if (User.user == null) {
+            throw new NullPointerException("User object is not set.");
+        } else {
+            return user;
+        }
+    }
+
+    /**
+     * Designed to performed a check before using getUser() method
+     * @return true is User is set and ready to use for other classes
+     */
+    public static boolean isSet() {
+        return User.user != null;
+    }
+
+    // Start getters and setters
 
     public static void setUser(User user) {
         User.user = user;
