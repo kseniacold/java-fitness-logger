@@ -123,16 +123,26 @@ public class FitnessFormulas {
      * Using MET (Metabolic Equivalent of Task) constant and the formula
      * Kcal ~= METS * bodyMassKg * timePerformingHours
      * to calculate caloric value of activity
-     * @param MET_value
-     * @param bodyMassKg
-     * @param timePerformingHours
+     * @param MET_value Metabolic Equivalent of Task
+     * @param bodyMassKg user's weight
+     * @param timePerformingHours time of the workout in hrs
      * @return caloric value of activity using MET constant
      */
     public static int caloriesOutByMET(double MET_value, double bodyMassKg, double timePerformingHours) {
         return (int)Math.round(MET_value * bodyMassKg * timePerformingHours);
     }
 
-    //Kcal/Min ~= respiratoryExchangeRatio * massKg * VO2 / 1000
+
+    /**
+     * Using the following equation to calculate Kcal/Min
+     * Kcal/Min ~= respiratoryExchangeRatio * massKg * VO2 / 1000
+     * Using the Léger equation to calculate VO2
+     * V̇O2 = 2.209 + 3.1633 * kph
+     * @param bodyMassKg user's weight
+     * @param distanceKm distance of the workout in km
+     * @param timePerformingHours time of the workout in hrs
+     * @return calories out from running workout
+     */
     public static int caloriesOutRunnigLegerFormula(double bodyMassKg, double distanceKm, double timePerformingHours) {
         // in kilometers per hour
         double speed = distanceKm / timePerformingHours;

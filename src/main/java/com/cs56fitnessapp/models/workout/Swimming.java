@@ -94,13 +94,4 @@ public class Swimming extends Endurance {
         }
         return caloriesOut;
     }
-
-    /**
-     *
-     * @return active swimming time
-     */
-    @Override
-    public int getActiveTimeMins() {
-        return (int)Math.round(FitnessFormulas.MINS_IN_AN_HOUR * this.getTimePerformingHours());
-    }
 }

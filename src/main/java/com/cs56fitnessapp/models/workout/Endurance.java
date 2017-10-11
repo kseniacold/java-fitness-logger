@@ -1,5 +1,6 @@
 package com.cs56fitnessapp.models.workout;
 
+import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
 import java.time.LocalDate;
 
@@ -40,4 +41,13 @@ public abstract class Endurance extends Workout {
 
     // End getters and setters
 
+    /**
+     * getActiveTimeMins() overrides ActivityFacts Interface method
+     * Will be the same for Swimming, Running, Cycling
+     * @return active endurance workout time
+     */
+    @Override
+    public int getActiveTimeMins() {
+        return (int)Math.round(FitnessFormulas.MINS_IN_AN_HOUR * this.getTimePerformingHours());
+    }
 }
