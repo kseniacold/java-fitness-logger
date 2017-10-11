@@ -11,23 +11,23 @@ import java.time.LocalDate;
 
 public abstract class Endurance extends Workout {
 
-    private double distance;
+    private double distanceKm;
     private double timePerformingHours;
 
-    public Endurance(User user, LocalDate date, double distance, double timePerformingHours) {
+    public Endurance(User user, LocalDate date, double distanceKm, double timePerformingHours) {
         super(user, date);
-        this.distance = distance;
+        this.distanceKm = distanceKm;
         this.timePerformingHours = timePerformingHours;
     }
 
     // Start getters and setters
 
-    public double getDistance() {
-        return distance;
+    public double getDistanceKm() {
+        return distanceKm;
     }
 
-    public void setDistance(double distance) {
-        this.distance = distance;
+    public void setDistanceKm(double distanceKm) {
+        this.distanceKm = distanceKm;
     }
 
     public double getTimePerformingHours() {

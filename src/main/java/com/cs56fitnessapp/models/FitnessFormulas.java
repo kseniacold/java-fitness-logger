@@ -3,7 +3,7 @@ package com.cs56fitnessapp.models;
 /**
  * @author Ksenia Koldaeva
  * Created: 10/9/17
- * Last Updated: 10/9/17
+ * Last Updated: 10/11/17
  */
 
 
@@ -11,6 +11,13 @@ public class FitnessFormulas {
 
     public static final int CALORIES_PER_POUND = 3500;
     public  static final int DAYS_IN_A_WEEK = 7;
+    public  static final int MINS_IN_AN_HOUR = 60;
+
+    /**
+     * respiratoryExchangeRatio is 5.0 for blood sugars, but drops to 4.86 for freeing energy from fat,
+     * will be using 4.86 assuming that running is more than few minutes
+     */
+    public static final double RESPIRATORY_EXCHANGE_RATIO_RUNNING_CALS_FROM_FAT = 4.86;
 
     /** MET (Metabolic Equivalent of Task) values for endurance sports */
 
@@ -118,9 +125,21 @@ public class FitnessFormulas {
      * @param timePerformingHours
      * @return caloric value of activity using MET constant
      */
-    public static int caloriesOutByMET(double MET_value, double bodyMassKg, int timePerformingHours ) {
-        int caloriesOut;
+    public static int caloriesOutByMET(double MET_value, double bodyMassKg, double timePerformingHours) {
         return (int)Math.round(MET_value * bodyMassKg * timePerformingHours);
+    }
+
+    //Kcal/Min ~= respiratoryExchangeRatio * massKg * VO2 / 1000
+    public static int caloriesOutRunnigLegerFormula(double bodyMassKg, double distanceKm, double timePerformingHours) {
+        // in kilometers per hour
+        double speed = distanceKm / timePerformingHours;
+
+        // Using The Léger equation V̇O2 = 2.209 + 3.1633 * kph
+        double VO2 = 2.209 + 3.1633 * speed;
+
+        double kcalPerMin = RESPIRATORY_EXCHANGE_RATIO_RUNNING_CALS_FROM_FAT + bodyMassKg * VO2 / 1000;
+
+        return (int)Math.round(kcalPerMin * (timePerformingHours * MINS_IN_AN_HOUR));
     }
 
 }
