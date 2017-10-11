@@ -6,7 +6,7 @@ package com.cs56fitnessapp.models;
  * Last Updated: 10/1/17
  */
 
-public interface git DietFacts {
+public interface DietFacts {
 
     // Calories consumed over an interval
     int getCaloriesIn();
