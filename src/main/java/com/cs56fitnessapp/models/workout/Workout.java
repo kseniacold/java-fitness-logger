@@ -1,4 +1,4 @@
-package com.cs56fitnessapp.models;
+package com.cs56fitnessapp.models.workout;
 
 /**
  * @author Daniel Cervantes
@@ -6,6 +6,9 @@ package com.cs56fitnessapp.models;
  * Date created: 9/24/17
  * Last updated: 10/10/17
  */
+
+import com.cs56fitnessapp.models.ActivityFacts;
+import com.cs56fitnessapp.models.User;
 
 import java.time.LocalDate;
 
