@@ -26,7 +26,7 @@ public class User {
     private Gender gender;
 
     // weight in kg
-    private double weight;
+    private double bodyMassKg;
 
     // height in cm
     private double height;
@@ -47,18 +47,18 @@ public class User {
      * @param username
      * @param dateOfBirth
      * @param gender
-     * @param weight
+     * @param bodyMassKg
      * @param height
      * @param goal
      * @param progressPace
      * @param activityLevel
      */
-    private User(String name, String username, LocalDate dateOfBirth, Gender gender, double weight, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
+    private User(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
         this.name = name;
         this.username = username;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.weight = weight;
+        this.bodyMassKg = bodyMassKg;
         this.height = height;
         this.goal = goal;
         this.progressPace = progressPace;
@@ -71,9 +71,9 @@ public class User {
      * Implements singleton design pattern
      * @return User object to be used in the application
      */
-    public static synchronized User getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double weight, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
+    public static synchronized User getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
         if (User.user == null) {
-            User.user = new User(name, username, dateOfBirth, gender, weight, height, goal, progressPace, activityLevel);
+            User.user = new User(name, username, dateOfBirth, gender, bodyMassKg, height, goal, progressPace, activityLevel);
         }
         return user;
     }
@@ -114,12 +114,12 @@ public class User {
         this.gender = gender;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getbodyMassKg() {
+        return bodyMassKg;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setbodyMassKg(double bodyMassKg) {
+        this.bodyMassKg = bodyMassKg;
     }
 
     public double getHeight() {
@@ -178,7 +178,7 @@ public class User {
      * @return amount of calories burned at rest
      */
     public double getBasalMetabolicRate() {
-        return FitnessFormulas.basalMetabolicRate(this.gender, this.activityLevel, this.weight, this.height, this.getAge());
+        return FitnessFormulas.basalMetabolicRate(this.gender, this.activityLevel, this.bodyMassKg, this.height, this.getAge());
     }
 
     /**

@@ -12,6 +12,44 @@ public class FitnessFormulas {
     public static final int CALORIES_PER_POUND = 3500;
     public  static final int DAYS_IN_A_WEEK = 7;
 
+    /** MET (Metabolic Equivalent of Task) values for endurance sports */
+
+    /** RUNNING */
+    // average estimate for training based on MET for running at (9 min/mile)
+    public static final double MET_RUNNING_TRAINING = 10.5;
+    public static final double MET_RUNNING_GENERAL = 7.0;
+
+    /** CYCLING */
+    // based on bicycling, mountain, uphill, vigorous effort
+    public static final double MET_CYCLING_MOUNTAIN = 14.0;
+
+    // based on bicycling, 10-11.9 mph, leisure, slow, light effort
+    public static final double MET_CYCLING_LEISURE = 6.8;
+
+    // based on bicycling, 16-19 mph, racing/not drafting or > 19 mph drafting, very fast, racing general
+    public static final double MET_CYCLING_RACING = 12.0;
+
+    /** SWIMMING */
+    public static final double MET_SWIMMING_CRAWL_FAST = 10.0;
+    public static final double MET_SWIMMING_CRAWL_MEDIUM = 8.3;
+
+    // value MET_SWIMMING_CRAWL_TRAINING is the average of MET_SWIMMING_CRAWL_FAST and MET_SWIMMING_CRAWL_MEDIUM
+    public static final double MET_SWIMMING_CRAWL_TRAINING = 8.3;
+
+    public static final double MET_SWIMMING_BREASTSTROKE_TRAINING = 10.3;
+    public static final double MET_SWIMMING_BREASTSTROKE_RECREATIONAL = 6.3;
+
+    public static final double MET_SWIMMING_BACKSTROKE_TRAINING = 9.5;
+    public static final double MET_SWIMMING_BACKSTROKE_RECREATIONAL = 6.3;
+
+    public static final double MET_SWIMMING_BUTTERFLY_GENERAL = 13.8;
+
+    // MET_SWIMMING_MIXED_TRAINING is an average of strokes training values
+    public static final double MET_SWIMMING_MIXED_TRAINING = 10.5;
+    public static final double MET_SWIMMING_MIXED_RECREATIONAL = 6.0;
+
+
+
     public FitnessFormulas() {
     }
 
@@ -69,6 +107,20 @@ public class FitnessFormulas {
      */
     public static int calorieOffset(int progressPace) {
         return Math.round((progressPace * CALORIES_PER_POUND) / DAYS_IN_A_WEEK);
+    }
+
+    /**
+     * Using MET (Metabolic Equivalent of Task) constant and the formula
+     * Kcal ~= METS * bodyMassKg * timePerformingHours
+     * to calculate caloric value of activity
+     * @param MET_value
+     * @param bodyMassKg
+     * @param timePerformingHours
+     * @return caloric value of activity using MET constant
+     */
+    public static int caloriesOutByMET(double MET_value, double bodyMassKg, int timePerformingHours ) {
+        int caloriesOut;
+        return (int)Math.round(MET_value * bodyMassKg * timePerformingHours);
     }
 
 }
