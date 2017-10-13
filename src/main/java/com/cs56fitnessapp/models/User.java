@@ -1,5 +1,7 @@
 package com.cs56fitnessapp.models;
 
+import com.cs56fitnessapp.models.workout.FitnessFormulas;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -26,7 +28,7 @@ public class User {
     private Gender gender;
 
     // weight in kg
-    private double weight;
+    private double bodyMassKg;
 
     // height in cm
     private double height;
@@ -43,40 +45,64 @@ public class User {
     /**
      * User implements singleton design pattern
      * Private constructor creates a new user with provided parameters
-     * @param name
-     * @param username
-     * @param dateOfBirth
-     * @param gender
-     * @param weight
+     * @param name user's name
+     * @param username username
+     * @param dateOfBirth user's date of birth
+     * @param gender gender
+     * @param bodyMassKg body mass in kilograms
      * @param height
-     * @param goal
-     * @param progressPace
-     * @param activityLevel
+     * @param goal goal - to lose, maintain or gain weight
+     * @param progressPace how many puonds per week to lose
+     * @param activityLevel user's activity level
      */
-    private User(String name, String username, LocalDate dateOfBirth, Gender gender, double weight, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
+    private User(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
         this.name = name;
         this.username = username;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.weight = weight;
+        this.bodyMassKg = bodyMassKg;
         this.height = height;
         this.goal = goal;
         this.progressPace = progressPace;
         this.activityLevel = activityLevel;
     }
 
-    // Start getters and setters
-
     /**
      * Implements singleton design pattern
+     * This method accepts arguments and designed to use by the client if User.isSet() returns false
      * @return User object to be used in the application
      */
-    public static synchronized User getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double weight, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
+    public static synchronized User getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
         if (User.user == null) {
-            User.user = new User(name, username, dateOfBirth, gender, weight, height, goal, progressPace, activityLevel);
+            User.user = new User(name, username, dateOfBirth, gender, bodyMassKg, height, goal, progressPace, activityLevel);
         }
         return user;
     }
+
+    /**
+     * Implements singleton design pattern
+     * This method does not accept args and designed to use by the client if User.isSet() returns true
+     * Otherwise use getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel)
+     * @return User object to be used in the application
+     * @throws NullPointerException if User object has not been instantiated and there is nothing to return
+     */
+    public static synchronized User getUser() throws NullPointerException {
+        if (User.user == null) {
+            throw new NullPointerException("User object is not set.");
+        } else {
+            return user;
+        }
+    }
+
+    /**
+     * Designed to performed a check before using getUser() method
+     * @return true is User is set and ready to use for other classes
+     */
+    public static boolean isSet() {
+        return User.user != null;
+    }
+
+    // Start getters and setters
 
     public static void setUser(User user) {
         User.user = user;
@@ -114,12 +140,12 @@ public class User {
         this.gender = gender;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getbodyMassKg() {
+        return bodyMassKg;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setbodyMassKg(double bodyMassKg) {
+        this.bodyMassKg = bodyMassKg;
     }
 
     public double getHeight() {
@@ -169,16 +195,14 @@ public class User {
      */
     public int getAge () {
         LocalDate now = LocalDate.now(ZoneId.systemDefault());
-        int years = (int)ChronoUnit.YEARS.between(this.dateOfBirth, now);
-
-        return years;
+        return (int)ChronoUnit.YEARS.between(this.dateOfBirth, now);
     }
 
     /**
      * @return amount of calories burned at rest
      */
     public double getBasalMetabolicRate() {
-        return FitnessFormulas.basalMetabolicRate(this.gender, this.activityLevel, this.weight, this.height, this.getAge());
+        return FitnessFormulas.basalMetabolicRate(this.gender, this.activityLevel, this.bodyMassKg, this.height, this.getAge());
     }
 
     /**

@@ -7,7 +7,7 @@ public class FoodEntry {
     private TotalFat totalFat;
     private double cholesterol;
     private double sodium;
-    private TotalCarb totalCarbs;
+    private TotalCarb totalCarb;
     private double protein;
     private double vitaminA;
     private double vitaminC;
@@ -75,12 +75,12 @@ public class FoodEntry {
         this.sodium = sodium;
     }
 
-    public TotalCarb getTotalCarbs() {
-        return totalCarbs;
+    public TotalCarb getTotalCarb() {
+        return totalCarb;
     }
 
-    public void setTotalCarbs(TotalCarb totalCarbs) {
-        this.totalCarbs = totalCarbs;
+    public void setTotalCarb(TotalCarb totalCarb) {
+        this.totalCarb = totalCarb;
     }
 
     public double getProtein() {
