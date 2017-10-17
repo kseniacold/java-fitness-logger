@@ -4,10 +4,14 @@ public class FoodEntry {
     private double servingSize;
     private String foodName;
     private int calories;
-    private TotalFat totalFat;
     private double cholesterol;
     private double sodium;
-    private TotalCarb totalCarb;
+    private double totalFat;
+    private double saturatedFat;
+    private double transFat;
+    private double totalCarb;
+    private double sugars;
+    private double dietaryFiber;
     private double protein;
     private double vitaminA;
     private double vitaminC;
@@ -51,14 +55,6 @@ public class FoodEntry {
         this.calories = calories;
     }
 
-    public TotalFat getTotalFat() {
-        return totalFat;
-    }
-
-    public void setTotalFat(TotalFat totalFat) {
-        this.totalFat = totalFat;
-    }
-
     public double getCholesterol() {
         return cholesterol;
     }
@@ -75,13 +71,9 @@ public class FoodEntry {
         this.sodium = sodium;
     }
 
-    public TotalCarb getTotalCarb() {
-        return totalCarb;
-    }
+    // TODO >>>>>>> Insert getters and setters for fats
 
-    public void setTotalCarb(TotalCarb totalCarb) {
-        this.totalCarb = totalCarb;
-    }
+    // TODO >>>>>>> Insert getters and setters for carb
 
     public double getProtein() {
         return protein;
