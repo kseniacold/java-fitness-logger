@@ -71,9 +71,53 @@ public class FoodEntry {
         this.sodium = sodium;
     }
 
-    // TODO >>>>>>> Insert getters and setters for fats
+    public double getTotalFat() {
+        return totalFat;
+    }
 
-    // TODO >>>>>>> Insert getters and setters for carb
+    public void setTotalFat(double totalFat) {
+        this.totalFat = totalFat;
+    }
+
+    public double getSaturatedFat() {
+        return saturatedFat;
+    }
+
+    public void setSaturatedFat(double saturatedFat) {
+        this.saturatedFat = saturatedFat;
+    }
+
+    public double getTransFat() {
+        return transFat;
+    }
+
+    public void setTransFat(double transFat) {
+        this.transFat = transFat;
+    }
+
+    public double getTotalCarb() {
+        return totalCarb;
+    }
+
+    public void setTotalCarb(double totalCarb) {
+        this.totalCarb = totalCarb;
+    }
+
+    public double getSugars() {
+        return sugars;
+    }
+
+    public void setSugars(double sugars) {
+        this.sugars = sugars;
+    }
+
+    public double getDietaryFiber() {
+        return dietaryFiber;
+    }
+
+    public void setDietaryFiber(double dietaryFiber) {
+        this.dietaryFiber = dietaryFiber;
+    }
 
     public double getProtein() {
         return protein;
