@@ -13,13 +13,13 @@ public class Meal implements DietFacts {
     }
 
     @Override
-    public TotalFat getTotalFatIn() {
-        return null;
+    public double getTotalFatIn() {
+        return 0;
     }
 
     @Override
-    public TotalCarb getTotalCarbIn() {
-        return null;
+    public double getTotalCarbIn() {
+        return 0;
     }
 
     @Override

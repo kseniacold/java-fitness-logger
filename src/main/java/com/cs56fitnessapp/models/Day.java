@@ -27,12 +27,12 @@ public class Day implements ActivityFacts, DietFacts {
     }
 
     @Override
-    public TotalFat getTotalFatIn() {
+    public double getTotalFatIn() {
         return null;
     }
 
     @Override
-    public TotalCarb getTotalCarbIn() {
+    public double getTotalCarbIn() {
         return null;
     }
 
