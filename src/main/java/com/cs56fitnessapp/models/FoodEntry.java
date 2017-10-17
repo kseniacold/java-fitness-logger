@@ -4,10 +4,14 @@ public class FoodEntry {
     private double servingSize;
     private String foodName;
     private int calories;
-    private TotalFat totalFat;
     private double cholesterol;
     private double sodium;
-    private TotalCarb totalCarb;
+    private double totalFat;
+    private double saturatedFat;
+    private double transFat;
+    private double totalCarb;
+    private double sugars;
+    private double dietaryFiber;
     private double protein;
     private double vitaminA;
     private double vitaminC;
@@ -51,14 +55,6 @@ public class FoodEntry {
         this.calories = calories;
     }
 
-    public TotalFat getTotalFat() {
-        return totalFat;
-    }
-
-    public void setTotalFat(TotalFat totalFat) {
-        this.totalFat = totalFat;
-    }
-
     public double getCholesterol() {
         return cholesterol;
     }
@@ -75,12 +71,52 @@ public class FoodEntry {
         this.sodium = sodium;
     }
 
-    public TotalCarb getTotalCarb() {
+    public double getTotalFat() {
+        return totalFat;
+    }
+
+    public void setTotalFat(double totalFat) {
+        this.totalFat = totalFat;
+    }
+
+    public double getSaturatedFat() {
+        return saturatedFat;
+    }
+
+    public void setSaturatedFat(double saturatedFat) {
+        this.saturatedFat = saturatedFat;
+    }
+
+    public double getTransFat() {
+        return transFat;
+    }
+
+    public void setTransFat(double transFat) {
+        this.transFat = transFat;
+    }
+
+    public double getTotalCarb() {
         return totalCarb;
     }
 
-    public void setTotalCarb(TotalCarb totalCarb) {
+    public void setTotalCarb(double totalCarb) {
         this.totalCarb = totalCarb;
+    }
+
+    public double getSugars() {
+        return sugars;
+    }
+
+    public void setSugars(double sugars) {
+        this.sugars = sugars;
+    }
+
+    public double getDietaryFiber() {
+        return dietaryFiber;
+    }
+
+    public void setDietaryFiber(double dietaryFiber) {
+        this.dietaryFiber = dietaryFiber;
     }
 
     public double getProtein() {

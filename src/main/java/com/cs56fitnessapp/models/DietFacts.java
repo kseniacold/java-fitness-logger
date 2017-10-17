@@ -12,10 +12,10 @@ public interface DietFacts {
     int getCaloriesIn();
 
     // Total fat consumed over an interval
-    TotalFat getTotalFatIn();
+    double getTotalFatIn();
 
     // Total carbohydrate consumed over an interval
-    TotalCarb getTotalCarbIn();
+    double getTotalCarbIn();
 
     // Total carbohydrate consumed over an interval
     double getProteinIn();
