@@ -16,8 +16,8 @@ public abstract class Workout implements ActivityFacts {
 
     private User user;
     private LocalDate date;
-    private int warmUpTime;
-    private int coolDownTime;
+    private int warmUpTimeHrs;
+    private int coolDownTimeHrs;
     private double timePerformingHours;
 
     /**
@@ -43,20 +43,20 @@ public abstract class Workout implements ActivityFacts {
         this.date = date;
     }
 
-    public int getWarmUpTime() {
-        return warmUpTime;
+    public int getWarmUpTimeHrs() {
+        return warmUpTimeHrs;
     }
 
-    public void setWarmUpTime(int warmUpTime) {
-        this.warmUpTime = warmUpTime;
+    public void setWarmUpTimeHrs(int warmUpTimeHrs) {
+        this.warmUpTimeHrs = warmUpTimeHrs;
     }
 
-    public int getCoolDownTime() {
-        return coolDownTime;
+    public int getCoolDownTimeHrs() {
+        return coolDownTimeHrs;
     }
 
-    public void setCoolDownTime(int coolDownTime) {
-        this.coolDownTime = coolDownTime;
+    public void setCoolDownTimeHrs(int coolDownTimeHrs) {
+        this.coolDownTimeHrs = coolDownTimeHrs;
     }
 
     public double getTimePerformingHours() {
