@@ -18,6 +18,7 @@ public abstract class Workout implements ActivityFacts {
     private LocalDate date;
     private int warmUpTime;
     private int coolDownTime;
+    private double timePerformingHours;
 
     /**
      * Constructs Workout object with provided parameters
@@ -56,6 +57,14 @@ public abstract class Workout implements ActivityFacts {
 
     public void setCoolDownTime(int coolDownTime) {
         this.coolDownTime = coolDownTime;
+    }
+
+    public double getTimePerformingHours() {
+        return timePerformingHours;
+    }
+
+    public void setTimePerformingHours(double timePerformingHours) {
+        this.timePerformingHours = timePerformingHours;
     }
 
     // End getters and setters
