@@ -52,7 +52,7 @@ public class User {
      * @param bodyMassKg body mass in kilograms
      * @param height
      * @param goal goal - to lose, maintain or gain weight
-     * @param progressPace how many puonds per week to lose
+     * @param progressPace how many pounds per week to lose or gain depending on the goal
      * @param activityLevel user's activity level
      */
     private User(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
