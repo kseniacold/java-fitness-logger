@@ -19,6 +19,10 @@ public class Meal implements DietFacts{
     private ArrayList <FoodEntry> foodList;
     private String MealTitle;
     private int MealCalories;
+    private int MealFat;
+    private int MealCarb;
+    private int MealProtein;
+
 
     public Meal (LocalDate date, String MealTitle, ArrayList < FoodEntry > foodList) {
         this.date = date;
@@ -46,7 +50,7 @@ public class Meal implements DietFacts{
         public double getTotalFatIn() {
             for(int i = 0; i<this.foodList.size(); i++){
                 FoodEntry food = this.foodList.get(i);
-                if(food.getTotalFat() == MealCalories){
+                if(food.getTotalFat() == MealFat){
                     return i;
                 }
             }
@@ -58,7 +62,7 @@ public class Meal implements DietFacts{
 
             for(int i = 0; i<this.foodList.size(); i++){
                 FoodEntry food = this.foodList.get(i);
-                if(food.getTotalCarb() == MealCalories){
+                if(food.getTotalCarb() == MealCarb){
                     return i;
                 }
             }
@@ -71,7 +75,7 @@ public class Meal implements DietFacts{
 
             for(int i = 0; i<this.foodList.size(); i++){
                 FoodEntry food = this.foodList.get(i);
-                if(food.getTotalFat() == MealCalories){
+                if(food.getTotalFat() == MealProtein){
                     return i;
                 }
             }
