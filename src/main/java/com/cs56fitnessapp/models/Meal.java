@@ -26,6 +26,8 @@ public class Meal implements DietFacts{
         this.foodList = new ArrayList<>();
      }
 
+    /**Edited 10.20.17, Jim
+     * **/
 
     @Override
     public int getCaloriesIn() {
