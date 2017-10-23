@@ -1,8 +1,8 @@
 package com.cs56fitnessapp.models;
 
-public class FoodEntry {
-    private double servingSize;
-    private String foodName;
+public class Food {
+    private String servingSize;
+    private String name;
     private int calories;
     private double cholesterol;
     private double sodium;
@@ -19,32 +19,32 @@ public class FoodEntry {
     private double iron;
 
     /**
-     * Constructs FoodEntry object with sevingSize and calories
+     * Constructs Food object with sevingSize and calories
      *
      * @param servingSize
      * @param calories
      */
-    public FoodEntry(String foodName, double servingSize, int calories) {
+    public Food(String name, String servingSize, int calories) {
         this.servingSize = servingSize;
-        this.foodName = foodName;
+        this.name = name;
         this.calories = calories;
     }
 
     // Getters and Setters begin
-    public double getServingSize() {
+    public String getServingSize() {
         return servingSize;
     }
 
-    public void setServingSize(double servingSize) {
+    public void setServingSize(String servingSize) {
         this.servingSize = servingSize;
     }
 
-    public String getFoodName() {
-        return foodName;
+    public String getName() {
+        return name;
     }
 
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getCalories() {
