@@ -1,5 +1,6 @@
 package com.cs56fitnessapp.models.workout;
 
+import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
 
 import java.time.LocalDate;
@@ -36,13 +37,13 @@ public class Cycling extends Endurance {
 
         switch (cyclingType) {
             case MOUNTAIN:
-                caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_CYCLING_MOUNTAIN, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_CYCLING_MOUNTAIN, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 break;
             case RACING:
-                caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_CYCLING_RACING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_CYCLING_RACING, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 break;
             case LEISURE:
-                caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_CYCLING_LEISURE, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_CYCLING_LEISURE, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
         }
 
         return caloriesOut;

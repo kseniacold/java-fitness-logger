@@ -1,4 +1,4 @@
-package com.cs56fitnessapp.models.workout;
+package com.cs56fitnessapp.models;
 
 import com.cs56fitnessapp.models.ActivityLevel;
 import com.cs56fitnessapp.models.Gender;
@@ -13,6 +13,7 @@ import com.cs56fitnessapp.models.Gender;
 public class FitnessFormulas {
 
     public static final int CALORIES_PER_POUND = 3500;
+    public static  final int CALORIES_PER_KG = 7700;
     public  static final int DAYS_IN_A_WEEK = 7;
     public  static final int MINS_IN_AN_HOUR = 60;
 
@@ -114,12 +115,11 @@ public class FitnessFormulas {
     }
 
     /**
-     *
      * @return calorie offset(deficit or proficit depending on the goal)
-     * based on how many pounds user wants to gain or lose
+     * based on how many kilograms user wants to gain or lose
      */
-    public static int calorieOffset(int progressPace) {
-        return Math.round((progressPace * CALORIES_PER_POUND) / DAYS_IN_A_WEEK);
+    public static int calorieOffset(double weeklyGoalKg) {
+        return (int)Math.round((weeklyGoalKg * CALORIES_PER_KG) / DAYS_IN_A_WEEK);
     }
 
     /**

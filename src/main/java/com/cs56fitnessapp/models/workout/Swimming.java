@@ -1,5 +1,6 @@
 package com.cs56fitnessapp.models.workout;
 
+import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
 
 import java.time.LocalDate;
@@ -61,33 +62,33 @@ public class Swimming extends Endurance {
         switch (swimmingStroke) {
             case FREESTYLE:
                 if (training) {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_TRAINING, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 } else {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_RECREATIONAL, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_RECREATIONAL, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
             case BREASTSTROKE:
                 if (training) {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_BREASTSTROKE_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_BREASTSTROKE_TRAINING, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 } else {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_BREASTSTROKE_RECREATIONAL, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_BREASTSTROKE_RECREATIONAL, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
             case BACKSTROKE:
                 if (training) {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_TRAINING, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 } else {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_CRAWL_TRAINING, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
             case BUTTERFLY:
-                caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_BUTTERFLY_GENERAL, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_BUTTERFLY_GENERAL, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 break;
             case MIXED:
                 if (training) {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_MIXED_TRAINING, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_MIXED_TRAINING, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 } else {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_MIXED_RECREATIONAL, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_SWIMMING_MIXED_RECREATIONAL, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
         }
