@@ -14,23 +14,18 @@ public class Meal implements DietFacts{
 
       //date
     private LocalDate date;
-    private String title;
+    private MealTitle title;
     //foodList
     private ArrayList <FoodEntry> foodList;
-    private String MealTitle;
-    private int MealCalories;
-    private int MealFat;
-    private int MealCarb;
-    private int MealProtein;
 
-
-    public Meal (LocalDate date, String MealTitle, ArrayList < FoodEntry > foodList) {
+    public Meal(LocalDate date, String title, ArrayList <FoodEntry> foodList, MealTitle title1) {
         this.date = date;
-        this.title = MealTitle;
+        this.title = title1;
         this.foodList = new ArrayList<>();
      }
 
-    /**Edited 10.20.17, Jim
+    /**E
+     * dited 10.20.17, Jim
      * **/
 
     @Override
@@ -38,8 +33,8 @@ public class Meal implements DietFacts{
 
             for(int i = 0; i<this.foodList.size(); i++){
                 FoodEntry food = this.foodList.get(i);
-                if(food.getCalories() == MealCalories){
-                    return i;
+                if(true){
+                    return getCaloriesIn();
                 }
             }
             return 0;
@@ -50,8 +45,8 @@ public class Meal implements DietFacts{
         public double getTotalFatIn() {
             for(int i = 0; i<this.foodList.size(); i++){
                 FoodEntry food = this.foodList.get(i);
-                if(food.getTotalFat() == MealFat){
-                    return i;
+                if(true){
+                    return food.getCalories();
                 }
             }
             return 0;
@@ -62,8 +57,8 @@ public class Meal implements DietFacts{
 
             for(int i = 0; i<this.foodList.size(); i++){
                 FoodEntry food = this.foodList.get(i);
-                if(food.getTotalCarb() == MealCarb){
-                    return i;
+                if(true){
+                    return food.getTotalFat();
                 }
             }
             return 0;
@@ -75,14 +70,17 @@ public class Meal implements DietFacts{
 
             for(int i = 0; i<this.foodList.size(); i++){
                 FoodEntry food = this.foodList.get(i);
-                if(food.getTotalFat() == MealProtein){
-                    return i;
+                if(true){
+                    return food.getProtein();
                 }
             }
             return 0;
 
         }
 
+    public MealTitle getTitle() {
+        return title;
+    }
 }
 
 
