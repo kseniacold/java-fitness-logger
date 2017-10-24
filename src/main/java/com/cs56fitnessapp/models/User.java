@@ -1,7 +1,5 @@
 package com.cs56fitnessapp.models;
 
-import com.cs56fitnessapp.models.workout.FitnessFormulas;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
@@ -14,14 +12,14 @@ import java.time.temporal.ChronoUnit;
  */
 
 public class User {
-    public static final int CALORIES_PER_POUND = 3500;
-    public  static final int DAYS_IN_A_WEEK = 7;
-
-    private static User user = null;
 
     private String name;
 
     private String username;
+    // email is optional in this implementation, username can be provided instead
+    private String email;
+
+    private String password;
 
     private LocalDate dateOfBirth;
 
@@ -30,83 +28,44 @@ public class User {
     // weight in kg
     private double bodyMassKg;
 
-    // height in cm
-    private double height;
+    // heightCm in cm
+    private double heightCm;
 
     private Goal goal;
 
     private double goalWeight;
 
-    // progress pace in pounds / week
-    private int progressPace;
+    // progress pace in kilograms / week
+    private int weeklyGoalKg;
 
     private ActivityLevel activityLevel;
 
     /**
-     * User implements singleton design pattern
-     * Private constructor creates a new user with provided parameters
+     * Constructs new user with provided parameters
      * @param name user's name
      * @param username username
      * @param dateOfBirth user's date of birth
      * @param gender gender
      * @param bodyMassKg body mass in kilograms
-     * @param height
+     * @param heightCm height in centimeters
      * @param goal goal - to lose, maintain or gain weight
-     * @param progressPace how many puonds per week to lose
+     * @param weeklyGoalKg how many kilograms per week to lose or gain
      * @param activityLevel user's activity level
      */
-    private User(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
+    public User(String name, String username, String password, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double heightCm, Goal goal, int weeklyGoalKg, ActivityLevel activityLevel) {
         this.name = name;
         this.username = username;
+        this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.bodyMassKg = bodyMassKg;
-        this.height = height;
+        this.heightCm = heightCm;
         this.goal = goal;
-        this.progressPace = progressPace;
+        this.weeklyGoalKg = weeklyGoalKg;
         this.activityLevel = activityLevel;
     }
 
-    /**
-     * Implements singleton design pattern
-     * This method accepts arguments and designed to use by the client if User.isSet() returns false
-     * @return User object to be used in the application
-     */
-    public static synchronized User getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
-        if (User.user == null) {
-            User.user = new User(name, username, dateOfBirth, gender, bodyMassKg, height, goal, progressPace, activityLevel);
-        }
-        return user;
-    }
-
-    /**
-     * Implements singleton design pattern
-     * This method does not accept args and designed to use by the client if User.isSet() returns true
-     * Otherwise use getUser(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel)
-     * @return User object to be used in the application
-     * @throws NullPointerException if User object has not been instantiated and there is nothing to return
-     */
-    public static synchronized User getUser() throws NullPointerException {
-        if (User.user == null) {
-            throw new NullPointerException("User object is not set.");
-        } else {
-            return user;
-        }
-    }
-
-    /**
-     * Designed to performed a check before using getUser() method
-     * @return true is User is set and ready to use for other classes
-     */
-    public static boolean isSet() {
-        return User.user != null;
-    }
-
     // Start getters and setters
-
-    public static void setUser(User user) {
-        User.user = user;
-    }
 
     public String getName() {
         return name;
@@ -122,6 +81,22 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public LocalDate getDateOfBirth() {
@@ -140,20 +115,20 @@ public class User {
         this.gender = gender;
     }
 
-    public double getbodyMassKg() {
+    public double getBodyMassKg() {
         return bodyMassKg;
     }
 
-    public void setbodyMassKg(double bodyMassKg) {
+    public void setBodyMassKg(double bodyMassKg) {
         this.bodyMassKg = bodyMassKg;
     }
 
-    public double getHeight() {
-        return height;
+    public double getHeightCm() {
+        return heightCm;
     }
 
-    public void setHeight(double height) {
-        this.height = height;
+    public void setHeightCm(double heightCm) {
+        this.heightCm = heightCm;
     }
 
     public Goal getGoal() {
@@ -172,12 +147,12 @@ public class User {
         this.goalWeight = goalWeight;
     }
 
-    public int getProgressPace() {
-        return progressPace;
+    public int getWeeklyGoalKg() {
+        return weeklyGoalKg;
     }
 
-    public void setProgressPace(int progressPace) {
-        this.progressPace = progressPace;
+    public void setWeeklyGoalKg(int weeklyGoalKg) {
+        this.weeklyGoalKg = weeklyGoalKg;
     }
 
     public ActivityLevel getActivityLevel() {
@@ -202,7 +177,7 @@ public class User {
      * @return amount of calories burned at rest
      */
     public double getBasalMetabolicRate() {
-        return FitnessFormulas.basalMetabolicRate(this.gender, this.activityLevel, this.bodyMassKg, this.height, this.getAge());
+        return FitnessFormulas.basalMetabolicRate(this.gender, this.activityLevel, this.bodyMassKg, this.heightCm, this.getAge());
     }
 
     /**
@@ -211,7 +186,7 @@ public class User {
      * based on how many pounds user wants to gain or lose
      */
     public int getCalorieOffset() {
-        return FitnessFormulas.calorieOffset(this.progressPace);
+        return FitnessFormulas.calorieOffset(this.weeklyGoalKg);
     }
 
     /**
