@@ -8,7 +8,7 @@ import java.time.temporal.ChronoUnit;
  * @author Zeed Alsuwayyigh
  * @author Ksenia Koldaeva
  * Created 9/26/17
- * Last updated 10/09/17
+ * Last updated 10/24/17
  */
 
 public class User {

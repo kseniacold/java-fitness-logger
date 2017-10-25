@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * @author Ksenia Koldaeva
  * Created 10/20/17
- * Last updated 10/20/17
+ * Last updated 10/24/17
  */
 
 class UserTest {

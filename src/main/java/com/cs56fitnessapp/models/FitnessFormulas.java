@@ -6,7 +6,7 @@ import com.cs56fitnessapp.models.Gender;
 /**
  * @author Ksenia Koldaeva
  * Created: 10/9/17
- * Last Updated: 10/11/17
+ * Last Updated: 10/24/17
  */
 
 
