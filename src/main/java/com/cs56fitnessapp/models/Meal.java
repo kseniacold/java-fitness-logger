@@ -1,6 +1,5 @@
 package com.cs56fitnessapp.models;
 import java.util.ArrayList;
-// import java.util.Date;
 import java.time.LocalDate;
 
 
@@ -11,76 +10,142 @@ import java.time.LocalDate;
  */
 
 public class Meal implements DietFacts{
-
-      //date
     private LocalDate date;
     private MealTitle title;
-    //foodList
-    private ArrayList <FoodEntry> foodList;
+    private ArrayList <FoodEntry> foodEntriesList;
 
-    public Meal(LocalDate date, String title, ArrayList <FoodEntry> foodList, MealTitle title1) {
-        this.date = date;
-        this.title = title1;
-        this.foodList = new ArrayList<>();
-     }
+    //    Old Constructor,commented out
+    //    public Meal(LocalDate date, String title, ArrayList <FoodEntry> foodEntriesList, MealTitle title1) {
+    //        this.date = date;
+    //        this.title = title1;
+    //        this.foodEntriesList = new ArrayList<>();
+    //     }
 
-    /**E
-     * dited 10.20.17, Jim
+    /**
+     * Edited 10.20.17, Jim
      * **/
 
     @Override
     public int getCaloriesIn() {
-
-            for(int i = 0; i<this.foodList.size(); i++){
-                FoodEntry food = this.foodList.get(i);
-                if(true){
-                    return getCaloriesIn();
-                }
+        for(int i = 0; i<this.foodEntriesList.size(); i++){
+            FoodEntry food = this.foodEntriesList.get(i);
+            if(true){
+                return getCaloriesIn();
             }
-            return 0;
-
         }
+        return 0;
+    }
 
-        @Override
-        public double getTotalFatIn() {
-            for(int i = 0; i<this.foodList.size(); i++){
-                FoodEntry food = this.foodList.get(i);
-                if(true){
-                    return food.getCalories();
-                }
+    @Override
+    public double getTotalFatIn() {
+        for(int i = 0; i<this.foodEntriesList.size(); i++){
+            FoodEntry food = this.foodEntriesList.get(i);
+            if(true){
+                return food.getCalories();
             }
-            return 0;
         }
+        return 0;
+    }
 
-        @Override
-        public double getTotalCarbIn() {
+    @Override
+    public double getTotalCarbIn() {
 
-            for(int i = 0; i<this.foodList.size(); i++){
-                FoodEntry food = this.foodList.get(i);
-                if(true){
-                    return food.getTotalFat();
-                }
+        for(int i = 0; i<this.foodEntriesList.size(); i++){
+            FoodEntry food = this.foodEntriesList.get(i);
+            if(true){
+                return food.getTotalFat();
             }
-            return 0;
-
         }
+        return 0;
 
-        @Override
-        public double getProteinIn() {
+    }
 
-            for(int i = 0; i<this.foodList.size(); i++){
-                FoodEntry food = this.foodList.get(i);
-                if(true){
-                    return food.getProtein();
-                }
+    @Override
+    public double getProteinIn() {
+
+        for(int i = 0; i<this.foodEntriesList.size(); i++){
+            FoodEntry food = this.foodEntriesList.get(i);
+            if(true){
+                return food.getProtein();
             }
-            return 0;
-
         }
+        return 0;
 
-    public MealTitle getTitle() {
+    }
+
+
+    /**
+     * Edited 10.25.17, Jim
+     * **/
+
+
+    /**
+     *   UML
+         * + Meal(date: LocalDate, title: MealTitle)
+     * **/
+
+    public Meal (LocalDate date,MealTitle title) {
+        this.date = date;
+        this.title = title;
+    }
+
+    /**
+     *   UML
+         * + addFoodEntry(foodEntry: FoodEntry): boolean
+     * **/
+
+    public boolean addFoodEntry(FoodEntry foodEntry){
+        return true;
+    }
+
+    //    Not to be implemented yet
+    //    public boolean removeFoodEntryByDate(LocalDate date){
+    //        return true;
+    //    }
+    //
+
+    /**
+     *   UML
+         * + setDate(date: LocalDate)
+     * **/
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    /**
+     *   UML
+         * + getDate(): LocalDate
+     * **/
+    public LocalDate getDate(){
+        return date;
+    }
+
+    /**
+     *   UML
+         * + setTitle(title: MealTitle)
+     * **/
+    public void setTitle(MealTitle title) {
+        this.title = title;
+    }
+
+    /**
+     *  UML
+         * + getTitle: MealTitle
+     * **/
+    public MealTitle getTitle(){
         return title;
     }
+
+
+    /**
+     *  UML
+         * + getFoodEntriesList(): ArrayList<FoodEntry>
+     * **/
+    public ArrayList <FoodEntry> getFoodEntriesList() {
+        return foodEntriesList;
+    }
+
+
 }
 
 
