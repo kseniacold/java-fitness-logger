@@ -19,7 +19,7 @@ class UserTest {
     @BeforeEach
     void setUp() {
         // Initializing new user
-        user = User.getUser("Patrick", "fitnessguy", LocalDate.of(1985, 10, 10), Gender.MALE, 85, 185, Goal.GAIN, 1, ActivityLevel.SOMEWHAT_ACTIVE);
+        user = new User("Patrick", "fitnessguy", "SecretPass", LocalDate.of(1985, 10, 10), Gender.MALE, 85, 185, Goal.GAIN, 0.5, ActivityLevel.SOMEWHAT_ACTIVE);
     }
 
     @Test
