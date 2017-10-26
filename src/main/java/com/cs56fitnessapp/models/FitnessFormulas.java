@@ -6,7 +6,7 @@ import com.cs56fitnessapp.models.Gender;
 /**
  * @author Ksenia Koldaeva
  * Created: 10/9/17
- * Last Updated: 10/11/17
+ * Last Updated: 10/24/17
  */
 
 
@@ -90,7 +90,7 @@ public class FitnessFormulas {
 
         // calculations for female users
         if (gender.equals(Gender.FEMALE)) {
-            BMR = 665.09 + (9.56 * weight) + (1.84 + height) - (4.67 * age);
+            BMR = 655.09 + (9.56 * weight) + (1.84 * height) - (4.67 * age);
         } else {
             BMR = 66.47 + (13.75 * weight) + (5.0 * height) - (6.45 * age);
         }

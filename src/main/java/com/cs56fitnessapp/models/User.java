@@ -8,7 +8,7 @@ import java.time.temporal.ChronoUnit;
  * @author Zeed Alsuwayyigh
  * @author Ksenia Koldaeva
  * Created 9/26/17
- * Last updated 10/09/17
+ * Last updated 10/24/17
  */
 
 public class User {
@@ -36,7 +36,7 @@ public class User {
     private double goalWeight;
 
     // progress pace in kilograms / week
-    private int weeklyGoalKg;
+    private double weeklyGoalKg;
 
     private ActivityLevel activityLevel;
 
@@ -52,7 +52,7 @@ public class User {
      * @param weeklyGoalKg how many kilograms per week to lose or gain
      * @param activityLevel user's activity level
      */
-    public User(String name, String username, String password, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double heightCm, Goal goal, int weeklyGoalKg, ActivityLevel activityLevel) {
+    public User(String name, String username, String password, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double heightCm, Goal goal, double weeklyGoalKg, ActivityLevel activityLevel) {
         this.name = name;
         this.username = username;
         this.password = password;
@@ -147,11 +147,11 @@ public class User {
         this.goalWeight = goalWeight;
     }
 
-    public int getWeeklyGoalKg() {
+    public double getWeeklyGoalKg() {
         return weeklyGoalKg;
     }
 
-    public void setWeeklyGoalKg(int weeklyGoalKg) {
+    public void setWeeklyGoalKg(double weeklyGoalKg) {
         this.weeklyGoalKg = weeklyGoalKg;
     }
 
