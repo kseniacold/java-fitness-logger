@@ -22,129 +22,92 @@ public class Meal implements DietFacts{
     //     }
 
     /**
-     * Edited 10.20.17, Jim
+     * Edited 10.27.17, Jim
      * **/
+
 
     @Override
     public int getCaloriesIn() {
+
+        int totalCalories = 0;
         for(int i = 0; i<this.foodEntriesList.size(); i++){
-            FoodEntry food = this.foodEntriesList.get(i);
-            if(true){
-                return getCaloriesIn();
+            totalCalories += this.foodEntriesList.get(i).getCalories();
             }
-        }
-        return 0;
+        return totalCalories;
     }
 
     @Override
     public double getTotalFatIn() {
+        int totalFat = 0;
         for(int i = 0; i<this.foodEntriesList.size(); i++){
-            FoodEntry food = this.foodEntriesList.get(i);
-            if(true){
-                return food.getCalories();
+            totalFat += this.foodEntriesList.get(i).getTotalFat();
             }
-        }
-        return 0;
+        return totalFat;
     }
 
     @Override
     public double getTotalCarbIn() {
-
+        int totalCarb = 0;
         for(int i = 0; i<this.foodEntriesList.size(); i++){
-            FoodEntry food = this.foodEntriesList.get(i);
-            if(true){
-                return food.getTotalFat();
+            totalCarb += this.foodEntriesList.get(i).getTotalCarb();
             }
-        }
-        return 0;
-
+        return totalCarb;
     }
 
     @Override
     public double getProteinIn() {
-
+        int totalProtein = 0;
         for(int i = 0; i<this.foodEntriesList.size(); i++){
-            FoodEntry food = this.foodEntriesList.get(i);
-            if(true){
-                return food.getProtein();
-            }
+            totalProtein += this.foodEntriesList.get(i).getProtein();
+
         }
-        return 0;
-
+        return totalProtein;
     }
 
 
     /**
-     * Edited 10.25.17, Jim
+     * Edited 10.27.17, Jim
      * **/
 
 
-    /**
-     *   UML
-         * + Meal(date: LocalDate, title: MealTitle)
-     * **/
+//    private FoodEntry findFoodEntry(String title){
+//        for(FoodEntry checkFoodEntry: this.foodEntriesList)
+//        {
+//            if(checkFoodEntry.getFoodName().equals(title))
+//            {
+//                return checkFoodEntry;
+//            }
+//
+//        }
+//        return null;
+//    }
 
-    public Meal (LocalDate date,MealTitle title) {
-        this.date = date;
-        this.title = title;
-    }
-
-    /**
-     *   UML
-         * + addFoodEntry(foodEntry: FoodEntry): boolean
-     * **/
-
+    public Meal (LocalDate date,MealTitle title) { this.date = date; this.title = title; }
     public boolean addFoodEntry(FoodEntry foodEntry){
-        return true;
+        if( foodEntry== null){
+            this.foodEntriesList.add(foodEntry);
+            return true;
+        }
+           return false;
     }
 
     //    Not to be implemented yet
-    //    public boolean removeFoodEntryByDate(LocalDate date){
-    //        return true;
-    //    }
-    //
+    //    public boolean removeFoodEntryByDate(LocalDate date){return true;}
 
-    /**
-     *   UML
-         * + setDate(date: LocalDate)
-     * **/
     public void setDate(LocalDate date) {
         this.date = date;
     }
-
-    /**
-     *   UML
-         * + getDate(): LocalDate
-     * **/
     public LocalDate getDate(){
         return date;
     }
-
-    /**
-     *   UML
-         * + setTitle(title: MealTitle)
-     * **/
     public void setTitle(MealTitle title) {
         this.title = title;
     }
-
-    /**
-     *  UML
-         * + getTitle: MealTitle
-     * **/
-    public MealTitle getTitle(){
-        return title;
+    public MealTitle getTitle(){ return title;
     }
-
-
-    /**
-     *  UML
-         * + getFoodEntriesList(): ArrayList<FoodEntry>
-     * **/
     public ArrayList <FoodEntry> getFoodEntriesList() {
         return foodEntriesList;
     }
-
 
 }
 
