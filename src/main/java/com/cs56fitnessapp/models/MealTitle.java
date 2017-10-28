@@ -10,9 +10,7 @@ public enum MealTitle {
 
     // String representation
     private String stringValue;
-   MealTitle(String stringValue) {
-        this.stringValue = stringValue;
-    }
+    MealTitle(String stringValue) { this.stringValue = stringValue; }
     public String getStringValue() {
         return stringValue;
     }
