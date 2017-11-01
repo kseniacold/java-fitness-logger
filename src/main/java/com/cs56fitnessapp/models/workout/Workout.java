@@ -19,15 +19,21 @@ public abstract class Workout implements ActivityFacts {
     private int warmUpTimeHrs;
     private int coolDownTimeHrs;
     private double timePerformingHours;
+    private double met_Value;
+
 
     /**
      * Constructs Workout object with provided parameters
      * @param user user performing workout
      * @param date date of the workout
      */
+
     public Workout(User user, LocalDate date) {
         this.date = date;
     }
+
+    // Default constructor
+    public Workout(){}
 
     // Start getters and setters
 
@@ -66,6 +72,10 @@ public abstract class Workout implements ActivityFacts {
     public void setTimePerformingHours(double timePerformingHours) {
         this.timePerformingHours = timePerformingHours;
     }
+
+    public double getMET_value(){ return met_Value; }
+
+    public void setMET_value(double met_Value) { this.met_Value = met_Value; }
 
     // End getters and setters
 }

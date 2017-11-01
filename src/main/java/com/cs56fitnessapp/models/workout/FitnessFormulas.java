@@ -61,6 +61,10 @@ public class FitnessFormulas {
     public static final double MET_SWIMMING_MIXED_TRAINING = 10.5;
     public static final double MET_SWIMMING_MIXED_RECREATIONAL = 6.0;
 
+    /** STRENGTH TRAINING */
+    // based on the individual's level for heavy and light
+    public static final double MET_STRENGTH_TRAINING_HEAVY = 8.0;
+    public static final double MET_STRENGTH_TRAINING_LIGHT = 3.5;
 
 
     public FitnessFormulas() {
@@ -124,15 +128,15 @@ public class FitnessFormulas {
 
     /**
      * Using MET (Metabolic Equivalent of Task) constant and the formula
-     * Kcal ~= METS * bodyMassKg * timePerformingHours
+     * Kcal ~= met_Value * bodyMassKg * timePerformingHours
      * to calculate caloric value of activity
-     * @param MET_value Metabolic Equivalent of Task
+     * @param met_Value Metabolic Equivalent of Task
      * @param bodyMassKg user's weight
      * @param timePerformingHours time of the workout in hrs
      * @return caloric value of activity using MET constant
      */
-    public static int caloriesOutByMET(double MET_value, double bodyMassKg, double timePerformingHours) {
-        return (int)Math.round(MET_value * bodyMassKg * timePerformingHours);
+    public static int caloriesOutByMET(double met_Value, double bodyMassKg, double timePerformingHours) {
+        return (int)Math.round(met_Value * bodyMassKg * timePerformingHours);
     }
 
 

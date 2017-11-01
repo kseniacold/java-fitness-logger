@@ -42,6 +42,7 @@ public class User {
 
     private ActivityLevel activityLevel;
 
+
     /**
      * User implements singleton design pattern
      * Private constructor creates a new user with provided parameters
@@ -52,7 +53,7 @@ public class User {
      * @param bodyMassKg body mass in kilograms
      * @param height
      * @param goal goal - to lose, maintain or gain weight
-     * @param progressPace how many puonds per week to lose
+     * @param progressPace how many pounds per week to lose
      * @param activityLevel user's activity level
      */
     private User(String name, String username, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double height, Goal goal, int progressPace, ActivityLevel activityLevel) {
@@ -188,6 +189,8 @@ public class User {
         this.activityLevel = activityLevel;
     }
 
+
+
     // End getters and setters
 
     /**
@@ -234,5 +237,6 @@ public class User {
 
         return dailyCalorieGoal;
     }
+
 
 }
