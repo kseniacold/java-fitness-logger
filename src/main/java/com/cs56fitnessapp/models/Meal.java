@@ -38,7 +38,7 @@ public class Meal implements DietFacts{
 
     @Override
     public double getTotalFatIn() {
-        int totalFat = 0;
+        double totalFat = 0;
         for(int i = 0; i<this.foodEntriesList.size(); i++){
             totalFat += this.foodEntriesList.get(i).getTotalFat();
             }
@@ -47,7 +47,7 @@ public class Meal implements DietFacts{
 
     @Override
     public double getTotalCarbIn() {
-        int totalCarb = 0;
+        double totalCarb = 0;
         for(int i = 0; i<this.foodEntriesList.size(); i++){
             totalCarb += this.foodEntriesList.get(i).getTotalCarb();
             }
@@ -56,7 +56,7 @@ public class Meal implements DietFacts{
 
     @Override
     public double getProteinIn() {
-        int totalProtein = 0;
+        double totalProtein = 0;
         for(int i = 0; i<this.foodEntriesList.size(); i++){
             totalProtein += this.foodEntriesList.get(i).getProtein();
 
