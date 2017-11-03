@@ -83,12 +83,8 @@ public class Meal implements DietFacts{
 //    }
 
     public Meal (LocalDate date,MealTitle title) { this.date = date; this.title = title; }
-    public boolean addFoodEntry(FoodEntry foodEntry){
-        if( foodEntry== null){
-            this.foodEntriesList.add(foodEntry);
-            return true;
-        }
-           return false;
+    public boolean addFoodEntry(FoodEntry foodEntry) {
+        return this.foodEntriesList.add(foodEntry);
     }
 
     //    Not to be implemented yet
