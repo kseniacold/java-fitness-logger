@@ -13,13 +13,11 @@ public class Meal implements DietFacts{
     private LocalDate date;
     private MealTitle title;
     private ArrayList <FoodEntry> foodEntriesList;
-
-    //    Old Constructor,commented out
-    //    public Meal(LocalDate date, String title, ArrayList <FoodEntry> foodEntriesList, MealTitle title1) {
-    //        this.date = date;
-    //        this.title = title1;
-    //        this.foodEntriesList = new ArrayList<>();
-    //     }
+    
+    public Meal (LocalDate date, MealTitle title) {
+        this.date = date; 
+        this.title = title; 
+    }
 
     /**
      * Edited 10.27.17, Jim
@@ -82,7 +80,6 @@ public class Meal implements DietFacts{
 //        return null;
 //    }
 
-    public Meal (LocalDate date,MealTitle title) { this.date = date; this.title = title; }
     public boolean addFoodEntry(FoodEntry foodEntry) {
         return this.foodEntriesList.add(foodEntry);
     }
