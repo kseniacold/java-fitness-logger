@@ -1,9 +1,5 @@
 package com.cs56fitnessapp;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 
 /**
@@ -11,6 +7,7 @@ import java.sql.Statement;
  * Created: 11/8/17
  * Last Updated: 11/8/17
  */
+
 public class SqLiteConnection {
 
     // will handle connection to the DB
@@ -19,14 +16,14 @@ public class SqLiteConnection {
     // flag to keep track whether the table exists
     private static boolean hasData = false;
 
+    /**
+     * Initializes application tables when first time executed
+     * @throws SQLException if a problem with table creation occurs
+     */
     private void initialize() throws SQLException {
         if (!hasData) {
             hasData = true;
-
             Statement statement = connection.createStatement();
-
-            // create database
-            // ResultSet result = statement.executeQuery("SELECT name FROM sqlite master WHERE type='table' AND name='user'");
 
             // drop tables if exist
             statement.executeUpdate("DROP TABLE IF EXISTS gender");
@@ -55,7 +52,7 @@ public class SqLiteConnection {
 
             // user table
             statement.executeUpdate("CREATE TABLE user (" +
-                                         "id BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT UNIQUE," +
+                                         "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE," +
                                          "name VARCHAR(255)," +
                                          "username VARCHAR(255) UNIQUE NOT NULL," +
                                          "password VARCHAR(255) NOT NULL," +
@@ -65,18 +62,47 @@ public class SqLiteConnection {
                                          "height_cm SMALLINT UNSIGNED," +
                                          "goal VARCHAR(8) REFERENCES goal(goal)," +
                                          "goal_weight_kg SMALLINT UNSIGNED," +
-                                         "activity_level VARCHAR(20) REFERENCES activity_level(activity_level)");
+                                         "activity_level VARCHAR(20) REFERENCES activity_level(activity_level))");
+
         }
     }
 
+    /**
+     * Establish connection with database via JDBC driver
+     * Creates a database if it does not exist
+     * If there is no data in a database - initializes tables for the application
+     * @throws ClassNotFoundException if sqlite-JDBC driver is not found
+     * @throws SQLException when sqlite queries do not execute correctly
+     */
     public void getConnection() throws ClassNotFoundException, SQLException {
         // load the sqlite-JDBC driver using the current class loader
         Class.forName("org.sqlite.JDBC");
 
         // create a database connection
         connection = DriverManager.getConnection("jdbc:sqlite:fitness-app.db");
+
         if (!hasData) {
             initialize();
+        }
+
+        // TODO remove test statements below
+        Statement statement = connection.createStatement();
+        statement.executeUpdate("INSERT INTO user(name, username, password) VALUES('Ksenia', 'kseniauser', 'randompass')");
+        ResultSet rs = statement.executeQuery("SELECT * FROM user");
+        while(rs.next()) {
+            // read the result set
+            System.out.println("name = " + rs.getString("name"));
+            System.out.println("id = " + rs.getInt("id"));
+        }
+    }
+
+    /**
+     * Closes previously opened connection
+     * @throws SQLException when connection close fails
+     */
+    public void closeConnection() throws SQLException {
+        if(connection != null) {
+            connection.close();
         }
     }
 
