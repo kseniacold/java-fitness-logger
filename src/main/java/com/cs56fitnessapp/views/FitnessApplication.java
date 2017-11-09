@@ -9,6 +9,7 @@ public class FitnessApplication extends Application{
          try {
              SqLiteConnection sqLite = new SqLiteConnection();
              sqLite.getConnection();
+             sqLite.closeConnection();
          } catch (Exception e) {
              System.out.println(e.getMessage());
          }
