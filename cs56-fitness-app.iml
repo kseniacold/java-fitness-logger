@@ -33,5 +33,14 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="junit-4.12" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../../../Java_Lib/ExternalLibraries/sqlite-jdbc-3.19.3.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
