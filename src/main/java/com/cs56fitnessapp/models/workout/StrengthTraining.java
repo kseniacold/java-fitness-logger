@@ -4,42 +4,87 @@ import com.cs56fitnessapp.models.User;
 import java.time.LocalDate;
 
 /**
- *  @author Daniel Cervantes
- *  @author Ksenia Koldaeva
- *
+ * @author Daniel Cervantes
+ * @author Ksenia Koldaeva
  * Date created: 10/18/17
- * Last updated: 10/31/17
+ * Last updated: 11/11/17
  */
 
-public abstract class StrengthTraining extends Workout {
+public class StrengthTraining extends Workout {
+
+    private StrengthTrainingLevel strengthTrainingLevel;
+    private boolean training;
 
     /**
      * Constructs Strength Training object with provided parameters
      * @param user user performing Strength Training
      * @param date date of Strength Training
-     * @param warmUpTimeHrs time of warm up
-     * @param coolDownTimeHrs time of cool down
      * @param timePerformingHours amount of time of Strength Training in hours
-     * @param met_Value workout intensity
+     * @param strengthTrainingLevel one of three different kinds of strength training levels
      */
 
-    public StrengthTraining(User user, LocalDate date, int warmUpTimeHrs, int coolDownTimeHrs, double timePerformingHours, double met_Value) {
+    public StrengthTraining(User user, LocalDate date, double timePerformingHours, StrengthTrainingLevel strengthTrainingLevel) {
         super(user, date);
-        this.setWarmUpTimeHrs(warmUpTimeHrs);
-        this.setCoolDownTimeHrs(coolDownTimeHrs);
         this.setTimePerformingHours(timePerformingHours);
-        this.setMET_value(met_Value);
+        this.strengthTrainingLevel = strengthTrainingLevel;
+
+    }
+
+    // Setters and Getters
+    public StrengthTrainingLevel getStrengthTrainingLevel() {
+        return strengthTrainingLevel;
+    }
+
+    public void setStrengthTrainingLevel(StrengthTrainingLevel strengthTrainingLevel) {
+        this.strengthTrainingLevel = strengthTrainingLevel;
+    }
+
+    public boolean isTraining() {
+        return training;
+    }
+
+    public void setTraining(boolean training) {
+        this.training = training;
+    }
+
+
+    /**
+     * @return calories out from Strength Training based on
+     * the level of weights that were used during the workout
+     */
+
+    @Override
+    public int getCaloriesOut() {
+        int caloriesOut = 0;
+
+        switch (strengthTrainingLevel) {
+            case HEAVY:
+                if (training) {
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_HEAVY, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                }
+                break;
+            case MEDIUM:
+                if (training) {
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_MEDIUM, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                }
+                break;
+            case LIGHT:
+                if (training) {
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_LIGHT, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                }
+                break;
+        }
+        return caloriesOut;
     }
 
     /**
-     * Will be using caloriesOutByMET() to calculate calories out
-     * based on the MET level the user gives
-     * @return calories out from Strength Training
+     * Will be using getActiveTimeMins() to calculate the amount
+     * of minutes the user is active during the workout
+     * @return total active minutes from Strength Training
      */
-
-    public int getCaloriesOutByMet() {
-        return FitnessFormulas.caloriesOutByMET(this.getMET_value(), this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+    @Override
+    public int getActiveTimeMins(){
+        return (int)(this.getTimePerformingHours() - this.getCoolDownTimeHrs() - this.getWarmUpTimeHrs());
     }
-
 
 }

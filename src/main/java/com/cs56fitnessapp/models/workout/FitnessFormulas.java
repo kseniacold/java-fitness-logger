@@ -5,8 +5,9 @@ import com.cs56fitnessapp.models.Gender;
 
 /**
  * @author Ksenia Koldaeva
+ * @author Daniel Cervantes
  * Created: 10/9/17
- * Last Updated: 10/11/17
+ * Last Updated: 11/11/17
  */
 
 
@@ -64,7 +65,10 @@ public class FitnessFormulas {
     /** STRENGTH TRAINING */
     // based on the individual's level for heavy and light
     public static final double MET_STRENGTH_TRAINING_HEAVY = 8.0;
+    public static final double MET_STRENGTH_TRAINING_MEDIUM = 5.5;
     public static final double MET_STRENGTH_TRAINING_LIGHT = 3.5;
+
+
 
 
     public FitnessFormulas() {
@@ -128,15 +132,15 @@ public class FitnessFormulas {
 
     /**
      * Using MET (Metabolic Equivalent of Task) constant and the formula
-     * Kcal ~= met_Value * bodyMassKg * timePerformingHours
+     * Kcal ~= metValue * bodyMassKg * timePerformingHours
      * to calculate caloric value of activity
-     * @param met_Value Metabolic Equivalent of Task
+     * @param metValue Metabolic Equivalent of Task
      * @param bodyMassKg user's weight
      * @param timePerformingHours time of the workout in hrs
      * @return caloric value of activity using MET constant
      */
-    public static int caloriesOutByMET(double met_Value, double bodyMassKg, double timePerformingHours) {
-        return (int)Math.round(met_Value * bodyMassKg * timePerformingHours);
+    public static int caloriesOutByMET(double metValue, double bodyMassKg, double timePerformingHours) {
+        return (int)Math.round(metValue * bodyMassKg * timePerformingHours);
     }
 
 
