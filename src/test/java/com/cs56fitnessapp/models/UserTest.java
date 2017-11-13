@@ -1,7 +1,8 @@
 package com.cs56fitnessapp.models;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+
 
 import java.time.LocalDate;
 
