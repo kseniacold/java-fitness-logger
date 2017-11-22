@@ -1,0 +1,33 @@
+.welcome__wrapper {
+    -fx-font-family: "Heebo";
+    -fx-padding: 80px;
+    -fx-background-image: url("images/fresh-orange-juice-dark.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.welcome__container {
+
+}
+
+.welcome__logo {
+    -fx-fill: #FF2366;
+    -fx-font-family: "Righteous";
+    -fx-font-size: 3em;
+}
+
+.welcome__heading, .welcome__description, .welcome__footer {
+    -fx-font-family: "Heebo";
+    -fx-fill: #ffffff;
+    -fx-font-weight: 300;
+    -fx-font-size: 1.2em;
+}
+
+.welcome__heading {
+    -fx-font-size: 4em;
+}
+
+.welcome__button {
+    -fx-graphic: url("images/user_icon.svg");
+}
+

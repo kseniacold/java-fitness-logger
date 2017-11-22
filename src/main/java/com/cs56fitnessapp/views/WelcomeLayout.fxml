@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="WelcomeWrapper" styleClass="welcome__wrapper" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox fx:id="welcomeContainer" alignment="CENTER" styleClass="welcome__container">
+            <Text styleClass="welcome__logo">Fitnezoom</Text>
+            <Text styleClass="welcome__heading">Welcome, friend</Text>
+            <Text styleClass="welcome__description">Here is to the journey towards better you.</Text>
+            <Button styleClass="welcome__button, default__button">
+                Create an account
+            </Button>
+            <HBox alignment="CENTER" styleClass="welcome__footer">
+                <Text styleClass="footer__text">
+                    Already have an account?
+                </Text>
+                <Button styleClass="footer__link">
+                    Sign in
+                </Button>
+            </HBox>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </VBox>
+    </children>
+</AnchorPane>
