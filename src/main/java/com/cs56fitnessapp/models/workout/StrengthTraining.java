@@ -59,17 +59,17 @@ public class StrengthTraining extends Workout {
 
         switch (strengthTrainingLevel) {
             case HEAVY:
-                if (training) {
+                {
                     caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_HEAVY, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
             case MEDIUM:
-                if (training) {
+                {
                     caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_MEDIUM, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
             case LIGHT:
-                if (training) {
+                {
                     caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_LIGHT, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
@@ -84,7 +84,7 @@ public class StrengthTraining extends Workout {
      */
     @Override
     public int getActiveTimeMins(){
-        return (int)(this.getTimePerformingHours() - this.getCoolDownTimeHrs() - this.getWarmUpTimeHrs());
+        return (int)Math.round(FitnessFormulas.MINS_IN_AN_HOUR * this.getTimePerformingHours());
     }
 
 }
