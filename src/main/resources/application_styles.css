@@ -1,3 +1,6 @@
+/* Welcome Page
+-------------------------------------------------*/
+
 .welcome__wrapper {
     -fx-font-family: "Heebo";
     -fx-padding: 80px;
@@ -31,3 +34,52 @@
     -fx-graphic: url("images/user_icon.svg");
 }
 
+/* Register User Page
+-------------------------------------------------*/
+
+.pane__wrapper {
+   /* -fx-background-color: #0E0F1A; */
+    -fx-background-color: #362E58;
+}
+
+.nav {
+    /* -fx-background-color: #161823; */
+    -fx-background-color: #3F395F;
+
+}
+
+.nav__title {
+    /*-fx-text-fill: #FFFFFF;*/
+    -fx-text-fill: #FAFF6B;
+    -fx-font-size: 1.3em;
+    -fx-text-alignment: center;
+}
+
+.register__container {
+    -fx-padding: 50px 0 0 0;
+}
+
+.register__expands  {
+    -fx-alignment: top-center;
+}
+
+.register__expand {
+    -fx-pref-width: 375px;
+}
+
+.register__options {
+    -fx-alignment: top-center;
+}
+
+.options-horizontal {
+    -fx-alignment: center;
+}
+
+.register__label {
+    -fx-text-alignment: center;
+}
+
+.option__button {
+    -fx-text-alignment: center;
+    -fx-pref-width: 323px;
+}

@@ -18,7 +18,7 @@ public class FitnessApplication extends Application{
             System.out.println(e.getMessage());
         }
 
-        Parent root = FXMLLoader.load(getClass().getResource("welcomeLayout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("registerUser.fxml"));
         Scene welcomeScene = new Scene(root);
 
         welcomeScene.getStylesheets().add("https://fonts.googleapis.com/css?family=Heebo:300,400,500,700,800,900|Righteous");

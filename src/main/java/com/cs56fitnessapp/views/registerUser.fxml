@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<BorderPane id="registerWrapper" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox alignment="CENTER" styleClass="nav">
+            <Label prefHeight="64.0" styleClass="nav__title" text="My Info" />
+        </HBox>
+    </top>
+    <center>
+        <HBox alignment="TOP_CENTER" styleClass="register__container">
+            <children>
+                <VBox styleClass="register__expands">
+                    <TitledPane alignment="CENTER" contentDisplay="TOP" expanded="false" styleClass="register__expand" text="Goal">
+                        <content>
+                            <VBox styleClass="register__options">
+                                <children>
+                                    <Button styleClass="option__button" text="Lose weight" />
+                                    <Button styleClass="option__button" text="Maintain weight" />
+                                    <Button styleClass="option__button" text="Gain weight" />
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+
+                    <TitledPane alignment="CENTER" contentDisplay="TOP" expanded="false" styleClass="register__expand" text="Personal Info">
+                      <content>
+                          <VBox styleClass="register__options">
+                              <Label styleClass="register__label" text="My Gender" />
+                              <ChoiceBox value="Male">
+                                  <items>
+                                      <FXCollections fx:factory="observableArrayList">
+                                          <String fx:value="Male" />
+                                          <String fx:value="Female" />
+                                      </FXCollections>
+                                  </items>
+                              </ChoiceBox>
+                              <HBox styleClass="options-horizontal">
+                                  <Button styleClass="option__button-sm" text="Male" />
+                                  <Button styleClass="option__button-sm" text="Female" />
+                              </HBox>
+                              <DatePicker />
+                          </VBox>
+                      </content>
+                    </TitledPane>
+
+                     <TitledPane alignment="CENTER" contentDisplay="TOP" expanded="false" styleClass="register__expand" text="Weekly Goal">
+                     </TitledPane>
+                </VBox>
+                <VBox styleClass="register__expands">
+                    <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" styleClass="register__expand" text="Activity Level">
+                        <content>
+                            <VBox styleClass="register__options">
+                                <children>
+                                    <Button styleClass="option__button" text="Sedentary" />
+                                    <Button styleClass="option__button" text="Somewhat active" />
+                                    <Button styleClass="option__button" text="Active" />
+                                    <Button styleClass="option__button" text="Very active" />
+                                </children>
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" styleClass="register__expand" text="Body Measurements">
+                    </TitledPane>
+
+                    <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" styleClass="register__expand" text="Account Details">
+                    </TitledPane>
+                </VBox>
+            </children>
+        </HBox>
+    </center>
+    <bottom>
+    </bottom>
+</BorderPane>
