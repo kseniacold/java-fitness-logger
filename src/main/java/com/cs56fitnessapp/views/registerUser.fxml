@@ -11,7 +11,7 @@
 
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
-<BorderPane id="registerWrapper" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="com.cs56fitnessapp.views.RegisterUserController" id="registerWrapper" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <HBox alignment="CENTER" styleClass="nav">
             <Label prefHeight="64.0" styleClass="nav__title" text="My Info" />
@@ -38,7 +38,7 @@
                       <content>
                           <VBox styleClass="register__options">
                               <Label styleClass="register__label" text="My Gender" />
-                              <ChoiceBox value="Male">
+                              <ChoiceBox value="Male" fx:id="genderChoiceBox">
                                   <items>
                                       <FXCollections fx:factory="observableArrayList">
                                           <String fx:value="Male" />
@@ -47,9 +47,12 @@
                                   </items>
                               </ChoiceBox>
                               <HBox styleClass="options-horizontal">
-                                  <Button styleClass="option__button-sm" text="Male" />
-                                  <Button styleClass="option__button-sm" text="Female" />
+                                  <Button styleClass="option__button-sm" text="Submit" onAction="#printOutput" />
                               </HBox>
+                             <!--<HBox styleClass="options-horizontal">-->
+                                  <!--<Button styleClass="option__button-sm" text="Male" />-->
+                                  <!--<Button styleClass="option__button-sm" text="Female" />-->
+                              <!--</HBox>-->
                               <DatePicker />
                           </VBox>
                       </content>
