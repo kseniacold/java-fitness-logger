@@ -1,5 +1,6 @@
 package com.cs56fitnessapp.views;
 
+import com.cs56fitnessapp.models.Gender;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
@@ -14,7 +15,7 @@ import java.util.ResourceBundle;
  */
 public class RegisterUserController implements Initializable {
     @FXML
-    private ChoiceBox genderChoiceBox;
+    private ChoiceBox gender;
 
     /**
      * No argument constructor
@@ -24,11 +25,30 @@ public class RegisterUserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        gender.setValue(Gender.MALE);
     }
 
     @FXML
     private void printOutput() {
-        System.out.println(genderChoiceBox.getValue());
+        Gender genderOutput = null;
+
+        if (gender.getValue() instanceof Gender) {
+            genderOutput = (Gender)gender.getValue();
+        } else {
+            System.out.println("Incompatible types");
+        }
+
+
+        if (genderOutput != null) {
+            switch (genderOutput) {
+                case FEMALE:
+                    System.out.println("female");
+                    break;
+                case MALE:
+                    System.out.println("male");
+                    break;
+            }
+        }
+
     }
 }

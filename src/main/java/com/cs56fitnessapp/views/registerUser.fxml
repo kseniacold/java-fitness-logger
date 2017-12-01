@@ -11,6 +11,7 @@
 
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
+<?import com.cs56fitnessapp.models.Gender?>
 <BorderPane fx:controller="com.cs56fitnessapp.views.RegisterUserController" id="registerWrapper" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <HBox alignment="CENTER" styleClass="nav">
@@ -25,9 +26,14 @@
                         <content>
                             <VBox styleClass="register__options">
                                 <children>
-                                    <Button styleClass="option__button" text="Lose weight" />
-                                    <Button styleClass="option__button" text="Maintain weight" />
-                                    <Button styleClass="option__button" text="Gain weight" />
+                                    <ChoiceBox styleClass="options__checkbox" value="You'd like to...">
+                                        <items>
+                                            <FXCollections fx:factory="observableArrayList">
+                                                <String fx:value="Male" />
+                                                <String fx:value="Female" />
+                                            </FXCollections>
+                                        </items>
+                                    </ChoiceBox>
                                 </children>
                             </VBox>
                         </content>
@@ -37,12 +43,12 @@
                     <TitledPane alignment="CENTER" contentDisplay="TOP" expanded="false" styleClass="register__expand" text="Personal Info">
                       <content>
                           <VBox styleClass="register__options">
-                              <Label styleClass="register__label" text="My Gender" />
-                              <ChoiceBox value="Male" fx:id="genderChoiceBox">
+                              <Label styleClass="options__label" text="My Gender" />
+                              <ChoiceBox styleClass="options__checkbox" fx:id="gender">
                                   <items>
                                       <FXCollections fx:factory="observableArrayList">
-                                          <String fx:value="Male" />
-                                          <String fx:value="Female" />
+                                          <Gender fx:value="MALE" />
+                                          <Gender fx:value="FEMALE" />
                                       </FXCollections>
                                   </items>
                               </ChoiceBox>
