@@ -87,3 +87,4 @@ fabric.properties
 #MacOS Stuff
 .DS_Store
 **/.DS_Store
+/fitness-app.db
