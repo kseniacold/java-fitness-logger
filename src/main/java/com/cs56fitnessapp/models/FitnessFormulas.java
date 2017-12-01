@@ -158,4 +158,41 @@ public class FitnessFormulas {
         return (int)Math.round(kcalPerMin * (timePerformingHours * MINS_IN_AN_HOUR));
     }
 
+
+    public double bodyMassIndex(double bodyMassKg, double height)
+    {
+        double bMI = (bodyMassKg * 703) / (height * height);
+
+        return bMI;
+    }
+    public double bodyFatPercentage()
+    {
+
+        double A1,A2,A3,A4,A5,B,BodyFat,BodyFatPercentage;
+        System.out.println("Body Weight: ");
+        A1 = ((scan.nextDouble()*0.732)+8.987);
+
+        System.out.println("Wrist Measurement: ");
+        A2 = (scan.nextDouble()/3.140);
+
+        System.out.println("Waist Measurement: ");
+        A3 = (scan.nextDouble()*0.157);
+
+        System.out.println("Hip Measurement: ");
+        A4 = (scan.nextDouble()*0.249);
+
+        System.out.println("Forearm Measurement: ");
+        A5 = (scan.nextDouble()*0.434);
+
+        B=A1+A2-A3-A4+A5;
+        BodyFat = A1-B;
+        BodyFatPercentage=((BodyFat*100)/A1);
+
+        System.out.println("Gender:");
+        System.out.println("Body Fat: "+BodyFat);
+        System.out.println("Body Fat Percentage: "+BodyFatPercentage);
+
+        return BodyFatPercentage;
+    }
 }
+
