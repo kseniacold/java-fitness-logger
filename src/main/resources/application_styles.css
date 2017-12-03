@@ -38,19 +38,18 @@
 -------------------------------------------------*/
 
 .pane__wrapper {
-   /* -fx-background-color: #0E0F1A; */
-    -fx-background-color: #362E58;
+    -fx-background-color: #0E0F1A;
+    /*-fx-background-color: #362E58;*/
 }
 
 .nav {
-    /* -fx-background-color: #161823; */
-    -fx-background-color: #3F395F;
-
+    -fx-background-color: #161823;
+    /*-fx-background-color: #3F395F;*/
 }
 
 .nav__title {
-    /*-fx-text-fill: #FFFFFF;*/
-    -fx-text-fill: #FAFF6B;
+    -fx-text-fill: #FFFFFF;
+    /*-fx-text-fill: #FAFF6B;*/
     -fx-font-size: 1.3em;
     -fx-text-alignment: center;
 }

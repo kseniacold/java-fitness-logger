@@ -8,10 +8,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-
-<?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import com.cs56fitnessapp.models.Gender?>
+<?import com.cs56fitnessapp.models.Goal?>
+<?import com.cs56fitnessapp.models.ActivityLevel?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.text.Text?>
 <BorderPane fx:controller="com.cs56fitnessapp.views.RegisterUserController" id="registerWrapper" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <HBox alignment="CENTER" styleClass="nav">
@@ -22,15 +26,18 @@
         <HBox alignment="TOP_CENTER" styleClass="register__container">
             <children>
                 <VBox styleClass="register__expands">
+                    <!-- Goal Pane -->
                     <TitledPane alignment="CENTER" contentDisplay="TOP" expanded="false" styleClass="register__expand" text="Goal">
                         <content>
                             <VBox styleClass="register__options">
                                 <children>
-                                    <ChoiceBox styleClass="options__checkbox" value="You'd like to...">
+                                    <Label styleClass="options__label" text="What is your goal?" />
+                                    <ChoiceBox fx:id="goal" styleClass="options__checkbox">
                                         <items>
                                             <FXCollections fx:factory="observableArrayList">
-                                                <String fx:value="Male" />
-                                                <String fx:value="Female" />
+                                                <Goal fx:value="LOSE" />
+                                                <Goal fx:value="MAINTAIN" />
+                                                <Goal fx:value="GAIN" />
                                             </FXCollections>
                                         </items>
                                     </ChoiceBox>
@@ -39,57 +46,117 @@
                         </content>
                     </TitledPane>
 
-
+                    <!-- Personal Info Pane -->
                     <TitledPane alignment="CENTER" contentDisplay="TOP" expanded="false" styleClass="register__expand" text="Personal Info">
                       <content>
                           <VBox styleClass="register__options">
-                              <Label styleClass="options__label" text="My Gender" />
+                              <Label styleClass="options__label" text="Your gender" />
                               <ChoiceBox styleClass="options__checkbox" fx:id="gender">
                                   <items>
                                       <FXCollections fx:factory="observableArrayList">
-                                          <Gender fx:value="MALE" />
+                                          <Gender fx:value="MALE"/>
                                           <Gender fx:value="FEMALE" />
                                       </FXCollections>
                                   </items>
                               </ChoiceBox>
-                              <HBox styleClass="options-horizontal">
-                                  <Button styleClass="option__button-sm" text="Submit" onAction="#printOutput" />
-                              </HBox>
-                             <!--<HBox styleClass="options-horizontal">-->
-                                  <!--<Button styleClass="option__button-sm" text="Male" />-->
-                                  <!--<Button styleClass="option__button-sm" text="Female" />-->
-                              <!--</HBox>-->
+
+                              <Label styleClass="options__label" text="When were you born?" />
                               <DatePicker />
                           </VBox>
                       </content>
                     </TitledPane>
 
+                    <!-- Weekly Goal Pane -->
                      <TitledPane alignment="CENTER" contentDisplay="TOP" expanded="false" styleClass="register__expand" text="Weekly Goal">
+                         <VBox styleClass="register__options">
+                             <Text styleClass="register__warning" fx:id="selectGoalFirst">Select your goal first</Text>
+                             <Text styleClass="register__warning" fx:id="maintainWeight">Your weekly goal is to maintain current weight.</Text>
+
+                             <!-- Lose Weight Weekly Goal Input -->
+                             <VBox fx:id="loseWeightContainer">
+                                 <Label styleClass="options__label" text="How many pounds per week you plan to lose?" />
+                                 <Text styleClass="options__description">0.5 pounds / week is recommended</Text>
+                                 <HBox styleClass="options-horizontal">
+                                     <TextField fx:id="loseWeight"></TextField>
+                                     <Label styleClass="option__units" text="lbs" />
+                                 </HBox>
+                             </VBox>
+
+                             <!-- Gain Weight Weekly Goal Input -->
+                             <VBox fx:id="gainWeightContainer">
+                                 <Label styleClass="options__label" text="How many pounds per week you plan to gain?" />
+                                 <Text styleClass="options__description">0.5 pounds / week is recommended</Text>
+                                 <HBox styleClass="options-horizontal">
+                                     <TextField fx:id="gainWeight"></TextField>
+                                     <Label styleClass="option__units" text="lbs" />
+                                 </HBox>
+                             </VBox>
+                         </VBox>
                      </TitledPane>
                 </VBox>
                 <VBox styleClass="register__expands">
+                    <!-- Activity Level Pane -->
                     <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" styleClass="register__expand" text="Activity Level">
                         <content>
                             <VBox styleClass="register__options">
                                 <children>
-                                    <Button styleClass="option__button" text="Sedentary" />
-                                    <Button styleClass="option__button" text="Somewhat active" />
-                                    <Button styleClass="option__button" text="Active" />
-                                    <Button styleClass="option__button" text="Very active" />
+                                    <Label styleClass="options__label" text="How Active are you?" />
+                                    <ChoiceBox fx:id="activityLevel" styleClass="options__checkbox">
+                                        <items>
+                                            <FXCollections fx:factory="observableArrayList">
+                                                <ActivityLevel fx:value="SEDENTARY" />
+                                                <ActivityLevel fx:value="SOMEWHAT_ACTIVE" />
+                                                <ActivityLevel fx:value="ACTIVE" />
+                                                <ActivityLevel fx:value="VERY_ACTIVE" />
+                                            </FXCollections>
+                                        </items>
+                                    </ChoiceBox>
                                 </children>
                             </VBox>
                         </content>
                     </TitledPane>
 
+                    <!-- Body Measurements Pane -->
                     <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" styleClass="register__expand" text="Body Measurements">
+                        <VBox styleClass="register__options">
+                            <Label styleClass="options__label" text="How tall are you?" />
+                            <HBox styleClass="options-horizontal">
+                                <TextField fx:id="heightFt"></TextField>
+                                <Label styleClass="option__units" text="ft" />
+                                <TextField fx:id="heightIns"></TextField>
+                                <Label styleClass="option__units" text="in" />
+                            </HBox>
+
+                            <Label styleClass="options__label" text="How much do you weigh?" />
+                            <HBox styleClass="options-horizontal">
+                                <TextField fx:id="weight"></TextField>
+                                <Label styleClass="option__units" text="lbs" />
+                            </HBox>
+
+
+                            <Label styleClass="options__label" text="What is your goal weight?" />
+                            <HBox styleClass="options-horizontal">
+                                <TextField fx:id="goalWeight"></TextField>
+                                <Label styleClass="option__units" text="lbs" />
+                            </HBox>
+                        </VBox>
                     </TitledPane>
 
+                    <!-- Account Details Pane -->
                     <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" styleClass="register__expand" text="Account Details">
+                        <VBox styleClass="register__options">
+                            <TextField fx:id="username"></TextField>
+                            <TextField fx:id="email"></TextField>
+                            <PasswordField fx:id="password"></PasswordField>
+                        </VBox>
                     </TitledPane>
                 </VBox>
             </children>
         </HBox>
     </center>
     <bottom>
+        <HBox styleClass="register__footer">
+            <Button styleClass="register__submit" text="Submit" onAction="#printOutput" />
+        </HBox>
     </bottom>
 </BorderPane>
