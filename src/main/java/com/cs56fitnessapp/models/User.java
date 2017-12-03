@@ -40,6 +40,7 @@ public class User {
 
     private ActivityLevel activityLevel;
 
+
     /**
      * Constructs new user with provided parameters
      * @param name user's name
@@ -164,6 +165,8 @@ public class User {
         this.activityLevel = activityLevel;
     }
 
+
+
     // End getters and setters
 
     /**
@@ -210,5 +213,6 @@ public class User {
 
         return dailyCalorieGoal;
     }
+
 
 }

@@ -4,7 +4,7 @@ package com.cs56fitnessapp.models.workout;
  * @author Daniel Cervantes
  * @author Ksenia Koldaeva
  * Date created: 9/24/17
- * Last updated: 10/18/17
+ * Last updated: 11/31/17
  */
 
 import com.cs56fitnessapp.models.ActivityFacts;
@@ -16,18 +16,24 @@ public abstract class Workout implements ActivityFacts {
 
     private User user;
     private LocalDate date;
-    private int warmUpTimeHrs;
-    private int coolDownTimeHrs;
-    private double timePerformingHours;
+    private double warmUpTimeHrs = 0;
+    private double coolDownTimeHrs = 0;
+    private double timePerformingHours = 0;
 
     /**
      * Constructs Workout object with provided parameters
      * @param user user performing workout
      * @param date date of the workout
      */
+
     public Workout(User user, LocalDate date) {
+
+        this.user = user;
         this.date = date;
     }
+
+    // Default constructor
+    public Workout(){}
 
     // Start getters and setters
 
@@ -43,7 +49,7 @@ public abstract class Workout implements ActivityFacts {
         this.date = date;
     }
 
-    public int getWarmUpTimeHrs() {
+    public double getWarmUpTimeHrs() {
         return warmUpTimeHrs;
     }
 
@@ -51,7 +57,7 @@ public abstract class Workout implements ActivityFacts {
         this.warmUpTimeHrs = warmUpTimeHrs;
     }
 
-    public int getCoolDownTimeHrs() {
+    public double getCoolDownTimeHrs() {
         return coolDownTimeHrs;
     }
 
@@ -66,6 +72,7 @@ public abstract class Workout implements ActivityFacts {
     public void setTimePerformingHours(double timePerformingHours) {
         this.timePerformingHours = timePerformingHours;
     }
+
 
     // End getters and setters
 }
