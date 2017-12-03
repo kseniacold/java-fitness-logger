@@ -13,7 +13,6 @@ import java.time.LocalDate;
 public class StrengthTraining extends Workout {
 
     private StrengthTrainingLevel strengthTrainingLevel;
-    private boolean training;
 
     /**
      * Constructs Strength Training object with provided parameters
@@ -38,15 +37,6 @@ public class StrengthTraining extends Workout {
     public void setStrengthTrainingLevel(StrengthTrainingLevel strengthTrainingLevel) {
         this.strengthTrainingLevel = strengthTrainingLevel;
     }
-
-    public boolean isTraining() {
-        return training;
-    }
-
-    public void setTraining(boolean training) {
-        this.training = training;
-    }
-
 
     /**
      * @return calories out from Strength Training based on
