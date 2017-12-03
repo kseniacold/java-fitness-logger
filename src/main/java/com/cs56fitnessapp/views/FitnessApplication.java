@@ -1,5 +1,5 @@
 package com.cs56fitnessapp.views;
-import com.cs56fitnessapp.SqLiteConnection;
+import com.cs56fitnessapp.services.SqLiteConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,13 +10,26 @@ public class FitnessApplication extends Application{
     @Override
     public void start(Stage stage) throws Exception {
 
+
         try {
             SqLiteConnection sqLite = new SqLiteConnection();
             sqLite.getConnection();
+            sqLite.initialize();
+            sqLite.testDb();
             sqLite.closeConnection();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        /*
+        // Uncomment to quickly reset db
+        try {
+            SqLiteConnection sqLite = new SqLiteConnection();
+            sqLite.resetDb();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        */
 
         Parent root = FXMLLoader.load(getClass().getResource("registerUser.fxml"));
         Scene welcomeScene = new Scene(root);

@@ -1,4 +1,4 @@
-package com.cs56fitnessapp.views.utils;
+package com.cs56fitnessapp.utils;
 
 import com.cs56fitnessapp.models.ActivityLevel;
 import javafx.util.StringConverter;

@@ -8,17 +8,19 @@ package com.cs56fitnessapp.models;
 
 public enum Goal {
     // LOSE, MAINTAIN, GAIN
-    LOSE("Lose weight"), MAINTAIN("Maintain weight"), GAIN("Gain weight");
+    LOSE("Lose weight", "lose"), MAINTAIN("Maintain weight", "maintain"), GAIN("Gain weight", "gain");
 
     // String representation
     private String description;
+    private String dbValue;
 
     /**
      * Constructs new Goal with provided description
      * @param description
      */
-    Goal(String description) {
+    Goal(String description, String dbValue) {
         this.description = description;
+        this.dbValue = dbValue;
     }
 
     /**
@@ -26,5 +28,12 @@ public enum Goal {
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * @return String representation for DB
+     */
+    public String getDbValue() {
+        return dbValue;
     }
 }

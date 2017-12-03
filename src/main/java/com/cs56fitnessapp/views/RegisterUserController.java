@@ -3,10 +3,9 @@ package com.cs56fitnessapp.views;
 import com.cs56fitnessapp.models.ActivityLevel;
 import com.cs56fitnessapp.models.Gender;
 import com.cs56fitnessapp.models.Goal;
-import com.cs56fitnessapp.views.utils.ActivityLevelConverter;
-import com.cs56fitnessapp.views.utils.FormatterUtils;
-import com.cs56fitnessapp.views.utils.GenderConverter;
-import com.cs56fitnessapp.views.utils.GoalConverter;
+import com.cs56fitnessapp.models.User;
+import com.cs56fitnessapp.services.UserService;
+import com.cs56fitnessapp.utils.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -16,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 /**
@@ -68,6 +68,8 @@ public class RegisterUserController implements Initializable {
     @FXML
     private TextField gainWeight;
     // Weekly goal interactive elements end
+    @FXML
+    private TextField name;
 
     @FXML
     private TextField email;
@@ -89,7 +91,6 @@ public class RegisterUserController implements Initializable {
 
         /** Set converter from String to enum and back */
         goal.setConverter(new GoalConverter());
-        goal.setValue(Goal.LOSE);
 
         /** Set converter from String to enum and back */
         activityLevel.setConverter(new ActivityLevelConverter());
@@ -107,20 +108,46 @@ public class RegisterUserController implements Initializable {
         gainWeight.setTextFormatter(FormatterUtils.getDoubleFormatter());
 
         goalWeight.setTextFormatter(FormatterUtils.getDoubleFormatter());
-        email.setTextFormatter(FormatterUtils.getEmailFormatter());
+        //TODO Validate email address
 
+        name.setPromptText("Name");
         username.setPromptText("Username");
         email.setPromptText("Email");
         password.setPromptText("Password");
 
         handleWeeklyGoal();
-
     }
 
     @FXML
-    private void printOutput() {
-    }
+    private void registerUser() {
+        String nameValue = name.getText();
+        String usernameValue = username.getText();
+        String emailValue = email.getText();
+        String passwordValue = password.getText();
+        LocalDate dateValue = date.getValue();
+        Gender genderValue = gender.getValue();
+        double bodyMassKg = UnitsConverter.poundsToKg(Double.parseDouble(weight.getText()));
+        double heightCm = UnitsConverter.feetInchesToCm(Integer.parseInt(heightFt.getText()), Integer.parseInt(heightIns.getText()));
+        Goal goalValue = goal.getValue();
+        double weeklyGoalKg;
 
+
+        if (loseWeight.getText().trim().isEmpty() && !gainWeight.getText().isEmpty()) {
+            weeklyGoalKg = Double.parseDouble(gainWeight.getText());
+        } else if (!loseWeight.getText().trim().isEmpty() && gainWeight.getText().isEmpty()) {
+            weeklyGoalKg = Double.parseDouble(loseWeight.getText());
+        } else {
+            weeklyGoalKg = 0.0;
+        }
+
+        ActivityLevel activityLevelValue = activityLevel.getValue();
+        User user = new User(nameValue, usernameValue, emailValue, passwordValue, dateValue, genderValue, bodyMassKg, heightCm, goalValue, weeklyGoalKg, activityLevelValue);
+        UserService userService = new UserService(user);
+        userService.addUserToDb();
+
+        System.out.println(user.getWeeklyGoalKg());
+    }
+    
     /**
      * Helper method
      * Handle Weekly Goal Interactive Pane
@@ -139,6 +166,9 @@ public class RegisterUserController implements Initializable {
                     case LOSE:
                         maintainWeight.setVisible(false);
                         gainWeightContainer.setVisible(false);
+                        gainWeight.setText("");
+
+                        loseWeight.setText("0.5");
                         loseWeightContainer.setVisible(true);
                         break;
                     case MAINTAIN:
@@ -149,13 +179,14 @@ public class RegisterUserController implements Initializable {
                     case GAIN:
                         maintainWeight.setVisible(false);
                         loseWeightContainer.setVisible(false);
+                        loseWeight.setText("");
+
+                        gainWeight.setText("0.5");
                         gainWeightContainer.setVisible(true);
                         break;
                 }
             }
         });
-
-
     }
 
 }

@@ -37,6 +37,9 @@
 /* Register User Page
 -------------------------------------------------*/
 
+/* Navigation
+-----------------------*/
+
 .pane__wrapper {
     -fx-background-color: #0E0F1A;
     /*-fx-background-color: #362E58;*/
@@ -54,6 +57,8 @@
     -fx-text-alignment: center;
 }
 
+/* Body
+-----------------------*/
 .register__container {
     -fx-padding: 50px 0 0 0;
 }
@@ -74,11 +79,33 @@
     -fx-alignment: center;
 }
 
-.register__label {
+.options-vertical {
+    -fx-alignment: center;
+    /*-fx-border-width: 1px;*/
+    /*-fx-border-color: red;*/
+}
+
+.options__label {
+    -fx-text-alignment: center;
+}
+
+.options__description {
     -fx-text-alignment: center;
 }
 
 .option__button {
     -fx-text-alignment: center;
+    -fx-pref-width: 323px;
+}
+
+
+/* Footer
+-----------------------*/
+
+.register__footer {
+    -fx-alignment: center;
+}
+
+.register__submit {
     -fx-pref-width: 323px;
 }

@@ -1,4 +1,4 @@
-package com.cs56fitnessapp;
+package com.cs56fitnessapp.services;
 import java.sql.*;
 
 
@@ -20,48 +20,43 @@ public class SqLiteConnection {
      * Initializes application tables when first time executed
      * @throws SQLException if a problem with table creation occurs
      */
-    private void initialize() throws SQLException {
-        if (!hasData) {
-            hasData = true;
+    public void initialize() throws SQLException {
+        if (!SqLiteConnection.hasData) {
+            SqLiteConnection.hasData = true;
             Statement statement = connection.createStatement();
-
-            // drop tables if exist
-            statement.executeUpdate("DROP TABLE IF EXISTS gender");
-            statement.executeUpdate("DROP TABLE IF EXISTS activity_level");
-            statement.executeUpdate("DROP TABLE IF EXISTS goal");
-            statement.executeUpdate("DROP TABLE IF EXISTS user");
 
             // create tables
             // gender table to hold enum variants
-            statement.executeUpdate("CREATE TABLE gender (gender VARCHAR(6) PRIMARY KEY NOT NULL UNIQUE)");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS gender (gender VARCHAR(6) PRIMARY KEY NOT NULL UNIQUE)");
             statement.executeUpdate("INSERT INTO gender(gender) VALUES ('male')");
             statement.executeUpdate("INSERT INTO gender(gender) VALUES ('female')");
 
             // activity_level table to hold enum variants
-            statement.executeUpdate("CREATE TABLE activity_level (activity_level VARCHAR(20) PRIMARY KEY NOT NULL UNIQUE)");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS activity_level (activity_level VARCHAR(20) PRIMARY KEY NOT NULL UNIQUE)");
             statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('sedentary')");
             statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('somewhat_active')");
             statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('active')");
             statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('very_active')");
 
             // goal table to hold enum variants
-            statement.executeUpdate("CREATE TABLE goal (goal VARCHAR(8) PRIMARY KEY NOT NULL UNIQUE)");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS goal (goal VARCHAR(8) PRIMARY KEY NOT NULL UNIQUE)");
             statement.executeUpdate("INSERT INTO goal(goal) VALUES ('lose')");
             statement.executeUpdate("INSERT INTO goal(goal) VALUES ('maintain')");
             statement.executeUpdate("INSERT INTO goal(goal) VALUES ('gain')");
 
             // user table
-            statement.executeUpdate("CREATE TABLE user (" +
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS user (" +
                                          "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE," +
                                          "name VARCHAR(255)," +
                                          "username VARCHAR(255) UNIQUE NOT NULL," +
+                                         "email VARCHAR(255) UNIQUE NOT NULL," +
                                          "password VARCHAR(255) NOT NULL," +
                                          "gender VARCHAR(6) REFERENCES gender(gender)," +
                                          "date_of_birth DATE," +
-                                         "body_mass_kg SMALLINT UNSIGNED," +
-                                         "height_cm SMALLINT UNSIGNED," +
+                                         "body_mass_kg DECIMAL UNSIGNED," +
+                                         "height_cm DECIMAL UNSIGNED," +
                                          "goal VARCHAR(8) REFERENCES goal(goal)," +
-                                         "goal_weight_kg SMALLINT UNSIGNED," +
+                                         "weekly_goal_kg DECIMAL UNSIGNED," +
                                          "activity_level VARCHAR(20) REFERENCES activity_level(activity_level))");
 
         }
@@ -77,22 +72,60 @@ public class SqLiteConnection {
     public void getConnection() throws ClassNotFoundException, SQLException {
         // load the sqlite-JDBC driver using the current class loader
         Class.forName("org.sqlite.JDBC");
+        // create a database connection
+        connection = DriverManager.getConnection("jdbc:sqlite:fitness-app.db");
+    }
+
+    /**
+     * Establish connection with database via JDBC driver
+     * Returns connection object to the caller
+     * @throws ClassNotFoundException if sqlite-JDBC driver is not found
+     * @throws SQLException when sqlite queries do not execute correctly
+     */
+    public Connection getConnectionObj() throws ClassNotFoundException, SQLException {
+        // load the sqlite-JDBC driver using the current class loader
+        Class.forName("org.sqlite.JDBC");
 
         // create a database connection
         connection = DriverManager.getConnection("jdbc:sqlite:fitness-app.db");
+        return connection;
+    }
 
-        if (!hasData) {
-            initialize();
+    public void resetDb() throws ClassNotFoundException, SQLException {
+        if(connection == null) {
+            this.getConnection();
+        }
+        SqLiteConnection.hasData = false;
+        Statement statement = connection.createStatement();
+
+        // drop tables if exist
+        statement.executeUpdate("DROP TABLE IF EXISTS gender");
+        statement.executeUpdate("DROP TABLE IF EXISTS activity_level");
+        statement.executeUpdate("DROP TABLE IF EXISTS goal");
+        statement.executeUpdate("DROP TABLE IF EXISTS user");
+
+        if(connection != null) {
+            connection.close();
+        }
+    }
+
+    public void testDb() throws SQLException, ClassNotFoundException {
+        if(connection == null) {
+            this.getConnection();
         }
 
-        // TODO remove test statements below
         Statement statement = connection.createStatement();
-        statement.executeUpdate("INSERT INTO user(name, username, password) VALUES('Ksenia', 'kseniauser', 'randompass')");
+        statement.executeUpdate("INSERT INTO user(name, username, email, password) VALUES('Ksenia', 'kseniauser', 'kk@host.com', 'randompass')");
         ResultSet rs = statement.executeQuery("SELECT * FROM user");
         while(rs.next()) {
             // read the result set
             System.out.println("name = " + rs.getString("name"));
             System.out.println("id = " + rs.getInt("id"));
+            System.out.println("email = " + rs.getString("email"));
+        }
+
+        if(connection != null) {
+            connection.close();
         }
     }
 

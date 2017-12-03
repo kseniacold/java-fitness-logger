@@ -1,4 +1,4 @@
-package com.cs56fitnessapp.views.utils;
+package com.cs56fitnessapp.utils;
 
 import javafx.scene.control.TextFormatter;
 
@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 public class FormatterUtils {
     private static Pattern doublePattern = Pattern.compile("\\d*|\\d+\\.\\d*");
     private static Pattern intPattern = Pattern.compile("^\\d*$");
-    private static Pattern emailPattern = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+    private static Pattern emailPattern = Pattern.compile("^\\w+[\\w-\\.]*\\@\\w+((-\\w+)|(\\w*))\\.[a-z]{2,3}$");
 
     public static TextFormatter getDoubleFormatter() {
         return new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
@@ -33,7 +33,7 @@ public class FormatterUtils {
 
     public static TextFormatter getEmailFormatter() {
         return new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return intPattern.matcher(change.getControlNewText()).matches() ? change : null;
+            return emailPattern.matcher(change.getControlNewText()).matches() ? change : null;
         });
     }
 }

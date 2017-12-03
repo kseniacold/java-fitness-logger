@@ -61,7 +61,7 @@
                               </ChoiceBox>
 
                               <Label styleClass="options__label" text="When were you born?" />
-                              <DatePicker />
+                              <DatePicker fx:id="date"/>
                           </VBox>
                       </content>
                     </TitledPane>
@@ -73,7 +73,7 @@
                              <Text styleClass="register__warning" fx:id="maintainWeight">Your weekly goal is to maintain current weight.</Text>
 
                              <!-- Lose Weight Weekly Goal Input -->
-                             <VBox fx:id="loseWeightContainer">
+                             <VBox  styleClass="options-vertical" fx:id="loseWeightContainer">
                                  <Label styleClass="options__label" text="How many pounds per week you plan to lose?" />
                                  <Text styleClass="options__description">0.5 pounds / week is recommended</Text>
                                  <HBox styleClass="options-horizontal">
@@ -83,7 +83,7 @@
                              </VBox>
 
                              <!-- Gain Weight Weekly Goal Input -->
-                             <VBox fx:id="gainWeightContainer">
+                             <VBox styleClass="options-vertical" fx:id="gainWeightContainer">
                                  <Label styleClass="options__label" text="How many pounds per week you plan to gain?" />
                                  <Text styleClass="options__description">0.5 pounds / week is recommended</Text>
                                  <HBox styleClass="options-horizontal">
@@ -145,6 +145,7 @@
                     <!-- Account Details Pane -->
                     <TitledPane alignment="CENTER" contentDisplay="CENTER" expanded="false" styleClass="register__expand" text="Account Details">
                         <VBox styleClass="register__options">
+                            <TextField fx:id="name"></TextField>
                             <TextField fx:id="username"></TextField>
                             <TextField fx:id="email"></TextField>
                             <PasswordField fx:id="password"></PasswordField>
@@ -155,8 +156,8 @@
         </HBox>
     </center>
     <bottom>
-        <HBox styleClass="register__footer">
-            <Button styleClass="register__submit" text="Submit" onAction="#printOutput" />
+        <HBox alignment="CENTER" prefHeight="64.0" styleClass="register__footer">
+            <Button styleClass="register__submit" text="Submit" onAction="#registerUser" />
         </HBox>
     </bottom>
 </BorderPane>
