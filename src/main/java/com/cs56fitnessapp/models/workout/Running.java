@@ -1,5 +1,6 @@
 package com.cs56fitnessapp.models.workout;
 
+import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
 
 import java.time.LocalDate;
@@ -28,7 +29,7 @@ public class Running extends Endurance {
      */
     @Override
     public int getCaloriesOut() {
-        return FitnessFormulas.caloriesOutRunnigLegerFormula(this.getUser().getbodyMassKg(), this.getDistanceKm(), this.getTimePerformingHours());
+        return FitnessFormulas.caloriesOutRunnigLegerFormula(this.getUser().getBodyMassKg(), this.getDistanceKm(), this.getTimePerformingHours());
     }
 
 }

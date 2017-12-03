@@ -11,7 +11,6 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 *.zip
@@ -34,13 +33,16 @@ hs_err_pid*
 .idea/dictionaries
 
 # Sensitive or high-churn files:
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.xml
 .idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
+
+# SQLite files
+fitness-app.db
 
 # Gradle:
 .idea/**/gradle.xml
@@ -85,3 +87,4 @@ fabric.properties
 #MacOS Stuff
 .DS_Store
 **/.DS_Store
+/fitness-app.db

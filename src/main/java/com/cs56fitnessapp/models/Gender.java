@@ -8,17 +8,19 @@ package com.cs56fitnessapp.models;
 
 public enum Gender {
     // FEMALE / MALE options
-    FEMALE("Female"), MALE("Male");
+    FEMALE("Female", "female"), MALE("Male", "male");
 
     // String representation
     private String stringValue;
+    private String dbValue;
 
     /**
      * Constructs new Gender with provided description
      * @param stringValue
      */
-    Gender(String stringValue) {
+    Gender(String stringValue, String dbValue) {
         this.stringValue = stringValue;
+        this.dbValue = dbValue;
     }
 
     /**
@@ -26,5 +28,12 @@ public enum Gender {
      */
     public String getStringValue() {
         return stringValue;
+    }
+
+    /**
+     * @return String representation for DB
+     */
+    public String getDbValue() {
+        return dbValue;
     }
 }
