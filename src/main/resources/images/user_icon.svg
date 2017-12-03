@@ -1,0 +1,12 @@
+<svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Welcome-Screen" transform="translate(-878.000000, -644.000000)" fill="#FEFEFE">
+            <g id="Button" transform="translate(796.000000, 623.000000)">
+                <path d="M92.7343158,31.2139049 L95.2252632,31.7507136 C96.8227368,32.0031773 98,33.3809575 98,35 L82,35 C82,33.3809575 83.1764211,32.0031773 84.7738947,31.7507136 L87.2648421,31.2139049 C89.0770526,30.9286984 90.9221053,30.9286984 92.7343158,31.2139049 Z M93,25.5093467 C93,27.4933912 91.4330171,30 89.5,30 C87.5669829,30 86,27.4933912 86,25.4906533 L86,24.3393127 C86,22.4954683 87.4560389,21 89.2530079,21 L89.7469921,21 C91.5439611,21 93,22.4954683 93,24.3393127 L93,25.5093467 Z" id="Icon"></path>
+            </g>
+        </g>
+    </g>
+</svg>

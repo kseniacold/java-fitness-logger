@@ -21,8 +21,8 @@ class UserTest {
     @BeforeEach
     void setUp() {
         // Initializing new user
-        user = new User("Patrick", "fitnessguy", "SecretPass", LocalDate.of(1985, 10, 10), Gender.MALE, 85.24, 185.55, Goal.GAIN, 0.5, ActivityLevel.SOMEWHAT_ACTIVE);
-        userFemale = new User("Laura", "laurafit", "secretLaura", LocalDate.of(1988, 8, 8), Gender.FEMALE, 59, 177, Goal.LOSE, 0.5, ActivityLevel.SEDENTARY);
+        user = new User("Patrick", "fitnessguy", "test@test.com","SecretPass", LocalDate.of(1985, 10, 10), Gender.MALE, 85.24, 185.55, Goal.GAIN, 0.5, ActivityLevel.SOMEWHAT_ACTIVE);
+        userFemale = new User("Laura", "laurafit", "laura@laura.com","secretLaura", LocalDate.of(1988, 8, 8), Gender.FEMALE, 59, 177, Goal.LOSE, 0.5, ActivityLevel.SEDENTARY);
     }
 
     @Test

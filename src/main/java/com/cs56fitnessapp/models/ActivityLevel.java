@@ -8,17 +8,19 @@ package com.cs56fitnessapp.models;
 
 public enum ActivityLevel {
     // SEDENTARY, SOMEWHAT_ACTIVE, ACTIVE, VERY_ACTIVE
-    SEDENTARY("Sedentary"), SOMEWHAT_ACTIVE("Somewhat active"), ACTIVE("Active"), VERY_ACTIVE("Very active");
+    SEDENTARY("Sedentary", "sedentary"), SOMEWHAT_ACTIVE("Somewhat active", "somewhat_active"), ACTIVE("Active", "active"), VERY_ACTIVE("Very active", "very_active");
 
     // String representation
     private String description;
+    private String dbValue;
 
     /**
      * Constructs new ActivityLevel with provided description
      * @param description
      */
-    ActivityLevel(String description) {
+    ActivityLevel(String description, String dbValue) {
         this.description = description;
+        this.dbValue = dbValue;
     }
 
     /**
@@ -26,5 +28,12 @@ public enum ActivityLevel {
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * @return String representation for DB
+     */
+    public String getDbValue() {
+        return dbValue;
     }
 }
