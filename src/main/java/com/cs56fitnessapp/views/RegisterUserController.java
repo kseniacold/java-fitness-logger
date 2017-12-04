@@ -142,8 +142,8 @@ public class RegisterUserController implements Initializable {
 
         ActivityLevel activityLevelValue = activityLevel.getValue();
         User user = new User(nameValue, usernameValue, emailValue, passwordValue, dateValue, genderValue, bodyMassKg, heightCm, goalValue, weeklyGoalKg, activityLevelValue);
-        UserService userService = new UserService(user);
-        userService.addUserToDb();
+        UserService userService = new UserService();
+        userService.addUserToDb(user);
 
         System.out.println(user.getWeeklyGoalKg());
     }
