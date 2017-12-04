@@ -57,9 +57,7 @@ public class UserService {
                 System.out.println("email = " + rs.getString("email"));
             }
 
-            if (connection != null) {
-                connection.close();
-            }
+            connection.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -92,19 +90,16 @@ public class UserService {
             username = rs.getString("username");
             email = rs.getString("email");
             password = rs.getString("password");
-            gender = Gender.fromDbValue(rs.getString("gender"));
-            dateOfBirth = LocalDate.parse(rs.getString("date_of_birth"));
+            gender = rs.getString("gender") == null ? null : Gender.fromDbValue(rs.getString("gender"));
+            dateOfBirth = rs.getString("date_of_birth") == null ? null : LocalDate.parse(rs.getString("date_of_birth"));
             bodyMassKg = rs.getDouble("body_mass_kg");
             heightCm = rs.getDouble("height_cm");
-            goal = Goal.fromDbValue(rs.getString("goal"));
+            goal = rs.getString("goal") == null ? null : Goal.fromDbValue(rs.getString("goal"));
             weeklyGoalKg = rs.getDouble("weekly_goal_kg");
-            activityLevel = ActivityLevel.fromDbValue("activity_level");
+            activityLevel = rs.getString("activity_level") == null ? null : ActivityLevel.fromDbValue(rs.getString("activity_level"));
         }
 
-        if (connection != null) {
-            connection.close();
-        }
-
+        connection.close();
         return new User(name, username, email, password, dateOfBirth, gender, bodyMassKg, heightCm, goal, weeklyGoalKg, activityLevel);
     }
 
@@ -132,10 +127,7 @@ public class UserService {
             }
         }
 
-        if (connection != null) {
-            connection.close();
-        }
-
+        connection.close();
         return false;
     }
 }

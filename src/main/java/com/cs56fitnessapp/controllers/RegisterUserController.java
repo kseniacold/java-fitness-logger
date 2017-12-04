@@ -1,4 +1,4 @@
-package com.cs56fitnessapp.views;
+package com.cs56fitnessapp.controllers;
 
 import com.cs56fitnessapp.models.ActivityLevel;
 import com.cs56fitnessapp.models.Gender;
@@ -9,11 +9,16 @@ import com.cs56fitnessapp.utils.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -25,6 +30,10 @@ import java.util.ResourceBundle;
  */
 
 public class RegisterUserController implements Initializable {
+    // window that this scene belongs to
+    private Stage window;
+    private Parent root;
+
     @FXML
     private ChoiceBox<Goal> goal;
 
@@ -88,6 +97,8 @@ public class RegisterUserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        /** Initialize window obj */
+        window = (Stage) goal.getScene().getWindow();
 
         /** Set converter from String to enum and back */
         goal.setConverter(new GoalConverter());
@@ -119,7 +130,7 @@ public class RegisterUserController implements Initializable {
     }
 
     @FXML
-    private void registerUser() {
+    private void registerUser() throws IOException {
         String nameValue = name.getText();
         String usernameValue = username.getText();
         String emailValue = email.getText();
@@ -146,6 +157,14 @@ public class RegisterUserController implements Initializable {
         userService.addUserToDb(user);
 
         System.out.println(user.getWeeklyGoalKg());
+
+        /** Redirect to the day scene */
+        root = FXMLLoader.load(getClass().getResource("day.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("../../../resources/application_styles.css").toExternalForm());
+
+        // show Day scene
+        window.setScene(scene);
     }
     
     /**

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:controller="com.cs56fitnessapp.controllers.DayController" id="registerWrapper" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox alignment="CENTER" styleClass="nav">
+            <Label fx:id="title" prefHeight="64.0" styleClass="nav__title" text="" />
+        </HBox>
+    </top>
+    <center>
+        <HBox alignment="TOP_CENTER" styleClass="register__container">
+            <children>
+
+            </children>
+        </HBox>
+    </center>
+    <bottom>
+    </bottom>
+</BorderPane>

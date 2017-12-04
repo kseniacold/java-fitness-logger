@@ -1,4 +1,6 @@
 package com.cs56fitnessapp.services;
+import com.sun.glass.ui.Cursor;
+
 import java.sql.*;
 
 
@@ -20,29 +22,35 @@ public class SqLiteConnection {
      * Initializes application tables when first time executed
      * @throws SQLException if a problem with table creation occurs
      */
-    public void initialize() throws SQLException {
+    public void initialize() throws SQLException, ClassNotFoundException {
         if (!SqLiteConnection.hasData) {
             SqLiteConnection.hasData = true;
             Statement statement = connection.createStatement();
 
             // create tables
             // gender table to hold enum variants
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS gender (gender VARCHAR(6) PRIMARY KEY NOT NULL UNIQUE)");
-            statement.executeUpdate("INSERT INTO gender(gender) VALUES ('male')");
-            statement.executeUpdate("INSERT INTO gender(gender) VALUES ('female')");
+            if (!tableExists("gender")) { // check is needed because of INSERT query
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS gender (gender VARCHAR(6) PRIMARY KEY NOT NULL UNIQUE)");
+                statement.executeUpdate("INSERT INTO gender(gender) VALUES ('male')");
+                statement.executeUpdate("INSERT INTO gender(gender) VALUES ('female')");
+            }
 
             // activity_level table to hold enum variants
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS activity_level (activity_level VARCHAR(20) PRIMARY KEY NOT NULL UNIQUE)");
-            statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('sedentary')");
-            statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('somewhat_active')");
-            statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('active')");
-            statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('very_active')");
+            if (!tableExists("activity_level")) { // check is needed because of INSERT query
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS activity_level (activity_level VARCHAR(20) PRIMARY KEY NOT NULL UNIQUE)");
+                statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('sedentary')");
+                statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('somewhat_active')");
+                statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('active')");
+                statement.executeUpdate("INSERT INTO activity_level(activity_level) VALUES ('very_active')");
+            }
 
             // goal table to hold enum variants
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS goal (goal VARCHAR(8) PRIMARY KEY NOT NULL UNIQUE)");
-            statement.executeUpdate("INSERT INTO goal(goal) VALUES ('lose')");
-            statement.executeUpdate("INSERT INTO goal(goal) VALUES ('maintain')");
-            statement.executeUpdate("INSERT INTO goal(goal) VALUES ('gain')");
+            if (!tableExists("goal")) {
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS goal (goal VARCHAR(8) PRIMARY KEY NOT NULL UNIQUE)");
+                statement.executeUpdate("INSERT INTO goal(goal) VALUES ('lose')");
+                statement.executeUpdate("INSERT INTO goal(goal) VALUES ('maintain')");
+                statement.executeUpdate("INSERT INTO goal(goal) VALUES ('gain')");
+            }
 
             // user table
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS user (" +
@@ -58,7 +66,6 @@ public class SqLiteConnection {
                                          "goal VARCHAR(8) REFERENCES goal(goal)," +
                                          "weekly_goal_kg DECIMAL UNSIGNED," +
                                          "activity_level VARCHAR(20) REFERENCES activity_level(activity_level))");
-
         }
     }
 
@@ -137,6 +144,22 @@ public class SqLiteConnection {
         if(connection != null) {
             connection.close();
         }
+    }
+
+    public boolean tableExists(String tableName) throws SQLException, ClassNotFoundException {
+        boolean exists = false;
+        if(connection == null) {
+            this.getConnection();
+        }
+
+        DatabaseMetaData dbm = connection.getMetaData();
+        // check if "employee" table is there
+        ResultSet tables = dbm.getTables(null, null, tableName, null);
+        if (tables.next()) {
+            exists = true;
+        }
+
+        return exists;
     }
 
 }
