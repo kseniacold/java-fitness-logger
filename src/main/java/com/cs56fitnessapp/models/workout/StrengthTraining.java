@@ -1,5 +1,6 @@
 package com.cs56fitnessapp.models.workout;
 
+import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
 import java.time.LocalDate;
 
@@ -50,17 +51,17 @@ public class StrengthTraining extends Workout {
         switch (strengthTrainingLevel) {
             case HEAVY:
                 {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_HEAVY, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_HEAVY, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
             case MEDIUM:
                 {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_MEDIUM, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_MEDIUM, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
             case LIGHT:
                 {
-                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_LIGHT, this.getUser().getbodyMassKg(), this.getTimePerformingHours());
+                    caloriesOut = FitnessFormulas.caloriesOutByMET(FitnessFormulas.MET_STRENGTH_TRAINING_LIGHT, this.getUser().getBodyMassKg(), this.getTimePerformingHours());
                 }
                 break;
         }
