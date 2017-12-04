@@ -81,6 +81,22 @@ public class UserService {
         double weeklyGoal;
         ActivityLevel activityLevel;
 
+        SqLiteConnection sqLite = new SqLiteConnection();
+        Connection connection = sqLite.getConnectionObj();
+        Statement statement = connection.createStatement();
+
+        String sqlQuery = "SELECT * FROM user WHERE id = '1'";
+        ResultSet rs = statement.executeQuery(sqlQuery);
+
+        while(rs.next()) {
+            // read the result set
+
+        }
+
+        if (connection != null) {
+            connection.close();
+        }
+
         return user;
     }
 
@@ -106,6 +122,10 @@ public class UserService {
             if (rs.getInt("user_count") > 0) {
                 return true;
             }
+        }
+
+        if (connection != null) {
+            connection.close();
         }
 
         return false;
