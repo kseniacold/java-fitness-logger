@@ -36,4 +36,44 @@ public enum Goal {
     public String getDbValue() {
         return dbValue;
     }
+
+    public static Goal fromString(String string) {
+        Goal obj;
+
+        switch (string) {
+            case "Lose weight":
+                obj = Goal.LOSE;
+                break;
+            case "Maintain weight":
+                obj = Goal.MAINTAIN;
+                break;
+            case "Gain weight":
+                obj = Goal.GAIN;
+                break;
+            default:
+                obj = Goal.LOSE;
+        }
+
+        return obj;
+    }
+
+    public static Goal fromDbValue(String dbValue) {
+        Goal obj;
+
+        switch (dbValue) {
+            case "lose":
+                obj = Goal.LOSE;
+                break;
+            case "maintain":
+                obj = Goal.MAINTAIN;
+                break;
+            case "gain":
+                obj = Goal.GAIN;
+                break;
+            default:
+                obj = Goal.LOSE;
+        }
+
+        return obj;
+    }
 }
