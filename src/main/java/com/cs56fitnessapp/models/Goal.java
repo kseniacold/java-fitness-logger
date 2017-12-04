@@ -37,6 +37,10 @@ public enum Goal {
         return dbValue;
     }
 
+    /**
+     * @param string representation of enum
+     * @return corresponding enum value, null if there is no match
+     */
     public static Goal fromString(String string) {
         Goal obj;
 
@@ -51,12 +55,16 @@ public enum Goal {
                 obj = Goal.GAIN;
                 break;
             default:
-                obj = Goal.LOSE;
+                obj = null;
         }
 
         return obj;
     }
 
+    /**
+     * @param dbValue representation of enum
+     * @return corresponding enum value, null if there is no match
+     */
     public static Goal fromDbValue(String dbValue) {
         Goal obj;
 
@@ -71,7 +79,7 @@ public enum Goal {
                 obj = Goal.GAIN;
                 break;
             default:
-                obj = Goal.LOSE;
+                obj = null;
         }
 
         return obj;
