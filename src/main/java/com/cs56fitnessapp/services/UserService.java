@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.util.Locale;
-
 /**
  * @author Ksenia Koldaeva
  * Created: 12/2/17
@@ -68,18 +66,18 @@ public class UserService {
     }
 
     public static User getUserFromDb() throws SQLException, ClassNotFoundException {
-        User user = null;
-        String name;
-        String username;
-        String email;
-        String password;
-        LocalDate dateOfBirth;
-        Gender gender;
-        double bodyMassKg;
-        double heightCm;
-        Goal gaol;
-        double weeklyGoal;
-        ActivityLevel activityLevel;
+        // TODO potential edge case: if value will be not init from DB, blank user will be created.
+        String name = "";
+        String username = "";
+        String email = "";
+        String password = "";
+        LocalDate dateOfBirth = null;
+        Gender gender = null;
+        double bodyMassKg = 0.0;
+        double heightCm = 0.0;
+        Goal goal = null;
+        double weeklyGoalKg = 0.0;
+        ActivityLevel activityLevel = null;
 
         SqLiteConnection sqLite = new SqLiteConnection();
         Connection connection = sqLite.getConnectionObj();
@@ -90,14 +88,24 @@ public class UserService {
 
         while(rs.next()) {
             // read the result set
-
+            name = rs.getString("name");
+            username = rs.getString("username");
+            email = rs.getString("email");
+            password = rs.getString("password");
+            gender = Gender.fromDbValue(rs.getString("gender"));
+            dateOfBirth = LocalDate.parse(rs.getString("date_of_birth"));
+            bodyMassKg = rs.getDouble("body_mass_kg");
+            heightCm = rs.getDouble("height_cm");
+            goal = Goal.fromDbValue(rs.getString("goal"));
+            weeklyGoalKg = rs.getDouble("weekly_goal_kg");
+            activityLevel = ActivityLevel.fromDbValue("activity_level");
         }
 
         if (connection != null) {
             connection.close();
         }
 
-        return user;
+        return new User(name, username, email, password, dateOfBirth, gender, bodyMassKg, heightCm, goal, weeklyGoalKg, activityLevel);
     }
 
     /**
