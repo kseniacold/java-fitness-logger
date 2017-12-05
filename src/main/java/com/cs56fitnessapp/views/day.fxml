@@ -19,18 +19,20 @@
         <VBox alignment="CENTER" styleClass="day__container container">
             <children>
                 <GridPane alignment="CENTER" styleClass="stats__wrapper">
-                    <Label styleClass="stats__label" text="Calories Left" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
-                    <Label styleClass="stats__label" text="Net" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                    <Label styleClass="stats__label" text="Active" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                    <Label styleClass="stats__label" text="From Food" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-                    <!-- Interactive fields start -->
+                    <Label fx:id="caloriesLeftLbl" alignment="BOTTOM_LEFT" styleClass="stats__label" text="Calories Left" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
+                    <Label fx:id="netLbl" styleClass="stats__label" text="Net" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                    <Label fx:id="activeLbl" styleClass="stats__label" text="Active" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                    </Label>
+                    <Label fx:id="consumedLbl" styleClass="stats__label" text="From Food" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                    </Label>
 
                     <Label fx:id="caloriesLeft" styleClass="stats__data" text="730" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
                     <Label fx:id="net" styleClass="stats__data" text="930" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                    <Label fx:id="activeCalories" styleClass="stats__data" text="148" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                    <Label fx:id="activeCalories"  styleClass="stats__data" text="148" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                     <Label fx:id="consumedCalories" styleClass="stats__data" text="1078" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+
                    <columnConstraints>
-                      <ColumnConstraints />
+                      <ColumnConstraints prefWidth="167.0" />
                       <ColumnConstraints />
                    </columnConstraints>
                    <rowConstraints>

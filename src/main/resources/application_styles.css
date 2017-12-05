@@ -119,18 +119,18 @@
 /* Day Page
 -------------------------------------------------*/
 .stats__wrapper {
-    -fx-vgap: 8px;
+    -fx-vgap: 0;
 }
 .stats__label {
+    -fx-fill: #E6E6E6;
     -fx-text-fill: #E6E6E6;
+
     -fx-text-alignment: left;
     -fx-alignment: bottom-left;
     -fx-font-size: 16px;
-    -fx-border-width: 1px;
     -fx-graphic-text-gap: 0;
-    -fx-border-color: red;
-
     -fx-line-spacing: 1em;
+    -fx-padding: 0 0 8px 0;
 }
 
 .stats__data {
@@ -139,25 +139,37 @@
     -fx-font-size: 48px;
     -fx-alignment: bottom-right;
     -fx-graphic-text-gap: 0;
-
-    -fx-border-width: 1px;
-    -fx-border-color: #50E3C2;
     -fx-line-spacing: 1em;
+
+    -fx-pref-width: 174px;
+}
+
+#caloriesLeftLbl {
+    -fx-padding: 0 0 17px 0;
 }
 
 #caloriesLeft {
+    -fx-fill: #50E3C2;
     -fx-text-fill: #50E3C2;
+
     -fx-font-size: 84px;
+    -fx-max-height: 84px;
 }
 
 #net {
+    -fx-fill: #E6E6E6;
     -fx-text-fill: #E6E6E6;
+    -fx-padding: 0 4px 0 0;
 }
 
 #activeCalories {
+    -fx-fill: #7ED321;
     -fx-text-fill: #7ED321;
+    -fx-padding: 0 4px 0 0;
 }
 
 #consumedCalories {
-    -fx-text-fill: #FF2366
+    -fx-fill: #FF2366;
+    -fx-text-fill: #FF2366;
+    -fx-padding: 0 4px 0 0;
 }
