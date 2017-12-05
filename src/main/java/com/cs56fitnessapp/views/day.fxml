@@ -9,9 +9,21 @@
         </HBox>
     </top>
     <center>
-        <HBox alignment="TOP_CENTER" styleClass="register__container">
+        <HBox alignment="CENTER" styleClass="day__container container">
             <children>
+                <GridPane styleClass="stats__wrapper">
+                    <Label styleClass="stats__label" text="Calories Left" GridPane.columnIndex="0" GridPane.rowIndex="0"></Label>
+                    <Label styleClass="stats__label" text="Net" GridPane.columnIndex="0" GridPane.rowIndex="1"></Label>
+                    <Label styleClass="stats__label" text="Active" GridPane.columnIndex="0" GridPane.rowIndex="2"></Label>
+                    <Label styleClass="stats__label" text="From Food" GridPane.columnIndex="0" GridPane.rowIndex="3"></Label>
+                    <!-- Interactive fields start -->
 
+                    <Label fx:id="caloriesLeft" styleClass="stats__data" text="730" GridPane.columnIndex="1" GridPane.rowIndex="0"></Label>
+                    <Label fx:id="net" styleClass="stats__data" text="930" GridPane.columnIndex="1" GridPane.rowIndex="1"></Label>
+                    <Label fx:id="activeCalories" styleClass="stats__data" text="148" GridPane.columnIndex="1" GridPane.rowIndex="2"></Label>
+                    <Label fx:id="consumedCalories" styleClass="stats__data" text="1078" GridPane.columnIndex="1" GridPane.rowIndex="3"></Label>
+
+                </GridPane>
             </children>
         </HBox>
     </center>

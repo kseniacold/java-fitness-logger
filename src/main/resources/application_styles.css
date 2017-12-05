@@ -1,3 +1,9 @@
+/* Overall styles
+-------------------------------------------------*/
+.container {
+    -fx-padding: 50px 0 0 0;
+}
+
 /* Welcome Page
 -------------------------------------------------*/
 
@@ -108,4 +114,33 @@
 
 .register__submit {
     -fx-pref-width: 323px;
+}
+
+/* Day Page
+-------------------------------------------------*/
+
+.stats__label {
+    -fx-text-fill: #E6E6E6;
+    fx-text-alignment: left;
+}
+
+.stats__data {
+    -fx-font-weight: bold;
+    fx-text-alignment: right;
+}
+
+#caloriesLeft {
+    -fx-text-fill: #50E3C2;
+}
+
+#net {
+    -fx-text-fill: #E6E6E6;
+}
+
+#activeCalories {
+    -fx-text-fill: #7ED321;
+}
+
+#consumedCalories {
+    -fx-text-fill: #FF2366
 }
