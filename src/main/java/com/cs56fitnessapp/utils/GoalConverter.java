@@ -21,22 +21,6 @@ public class GoalConverter extends StringConverter<Goal> {
 
     @Override
     public Goal fromString(String string) {
-        Goal obj;
-
-        switch (string) {
-            case "Lose weight":
-                obj = Goal.LOSE;
-                break;
-            case "Maintain weight":
-                obj = Goal.MAINTAIN;
-                break;
-            case "Gain weight":
-                obj = Goal.GAIN;
-                break;
-            default:
-                obj = Goal.LOSE;
-        }
-
-        return obj;
+        return Goal.fromString(string);
     }
 }

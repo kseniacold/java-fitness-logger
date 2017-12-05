@@ -36,4 +36,34 @@ public enum Gender {
     public String getDbValue() {
         return dbValue;
     }
+
+    /**
+     * @param string representation of enum
+     * @return corresponding enum value, null if there is no match
+     */
+    public static Gender fromString(String string) {
+        Gender obj = null;
+
+        if (string.equals("Male")) {
+            obj = Gender.MALE;
+        } else if (string.equals("Female")) {
+            obj = Gender.FEMALE;
+        }
+        return obj;
+    }
+
+    /**
+     * @param dbValue representation of enum
+     * @return corresponding enum value, null if there is no match
+     */
+    public static Gender fromDbValue(String dbValue) {
+        Gender obj = null;
+
+        if (dbValue.equals("male")) {
+            obj = Gender.MALE;
+        } else if (dbValue.equals("female")) {
+            obj = Gender.FEMALE;
+        }
+        return obj;
+    }
 }

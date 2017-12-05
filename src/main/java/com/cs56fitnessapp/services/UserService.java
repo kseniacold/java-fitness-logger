@@ -1,11 +1,15 @@
 package com.cs56fitnessapp.services;
 
+import com.cs56fitnessapp.models.ActivityLevel;
+import com.cs56fitnessapp.models.Gender;
+import com.cs56fitnessapp.models.Goal;
 import com.cs56fitnessapp.models.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.time.LocalDate;
 /**
  * @author Ksenia Koldaeva
  * Created: 12/2/17
@@ -18,16 +22,13 @@ import java.sql.Statement;
  * that is related to the User
  */
 public class UserService {
-    private User user;
-
-    public UserService(User user) {
-        this.user = user;
-    }
 
     /**
      * Adds user to db
+     * @param user
      */
-    public void addUserToDb() {
+    public static void addUserToDb(User user) {
+        // TODO refactor try - catch to be handled by the caller
         try {
             SqLiteConnection sqLite = new SqLiteConnection();
             Connection connection = sqLite.getConnectionObj();
@@ -56,12 +57,78 @@ public class UserService {
                 System.out.println("email = " + rs.getString("email"));
             }
 
-            if (connection != null) {
-                connection.close();
-            }
+            connection.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static User getUserFromDb() throws SQLException, ClassNotFoundException {
+        // TODO potential edge case: if value will be not init from DB, blank user will be created.
+        String name = "";
+        String username = "";
+        String email = "";
+        String password = "";
+        LocalDate dateOfBirth = null;
+        Gender gender = null;
+        double bodyMassKg = 0.0;
+        double heightCm = 0.0;
+        Goal goal = null;
+        double weeklyGoalKg = 0.0;
+        ActivityLevel activityLevel = null;
+
+        SqLiteConnection sqLite = new SqLiteConnection();
+        Connection connection = sqLite.getConnectionObj();
+        Statement statement = connection.createStatement();
+
+        String sqlQuery = "SELECT * FROM user WHERE id = '1'";
+        ResultSet rs = statement.executeQuery(sqlQuery);
+
+        while(rs.next()) {
+            // read the result set
+            name = rs.getString("name");
+            username = rs.getString("username");
+            email = rs.getString("email");
+            password = rs.getString("password");
+            gender = rs.getString("gender") == null ? null : Gender.fromDbValue(rs.getString("gender"));
+            dateOfBirth = rs.getString("date_of_birth") == null ? null : LocalDate.parse(rs.getString("date_of_birth"));
+            bodyMassKg = rs.getDouble("body_mass_kg");
+            heightCm = rs.getDouble("height_cm");
+            goal = rs.getString("goal") == null ? null : Goal.fromDbValue(rs.getString("goal"));
+            weeklyGoalKg = rs.getDouble("weekly_goal_kg");
+            activityLevel = rs.getString("activity_level") == null ? null : ActivityLevel.fromDbValue(rs.getString("activity_level"));
+        }
+
+        connection.close();
+        return new User(name, username, email, password, dateOfBirth, gender, bodyMassKg, heightCm, goal, weeklyGoalKg, activityLevel);
+    }
+
+    /**
+     * @return true if database has at least one user registered
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public static boolean dbHasUser() throws SQLException, ClassNotFoundException {
+        SqLiteConnection sqLite = new SqLiteConnection();
+        Connection connection = sqLite.getConnectionObj();
+
+        Statement statement = connection.createStatement();
+
+        // Check if table has data in it
+        String sqlQuery = "SELECT count(*) as user_count FROM user";
+        ResultSet rs = statement.executeQuery(sqlQuery);
+
+
+        while(rs.next()) {
+            // read the result set
+            // If it has user - pick the first user and use it in the application
+            if (rs.getInt("user_count") > 0) {
+                return true;
+            }
+        }
+
+        connection.close();
+        return false;
     }
 }
 

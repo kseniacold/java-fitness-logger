@@ -36,4 +36,58 @@ public enum ActivityLevel {
     public String getDbValue() {
         return dbValue;
     }
+
+    /**
+     * @param string representation of enum
+     * @return corresponding enum value, null if there is no match
+     */
+    public static ActivityLevel fromString(String string) {
+        ActivityLevel obj;
+
+        switch (string) {
+            case "Sedentary":
+                obj = ActivityLevel.SEDENTARY;
+                break;
+            case "Somewhat active":
+                obj = ActivityLevel.SOMEWHAT_ACTIVE;
+                break;
+            case "Active":
+                obj = ActivityLevel.ACTIVE;
+                break;
+            case "Very Active":
+                obj = ActivityLevel.VERY_ACTIVE;
+                break;
+            default:
+                obj = null;
+        }
+
+        return obj;
+    }
+
+    /**
+     * @param dbValue representation of enum
+     * @return corresponding enum value, null if there is no match
+     */
+    public static ActivityLevel fromDbValue(String dbValue) {
+        ActivityLevel obj;
+
+        switch (dbValue) {
+            case "sedentary":
+                obj = ActivityLevel.SEDENTARY;
+                break;
+            case "somewhat_active":
+                obj = ActivityLevel.SOMEWHAT_ACTIVE;
+                break;
+            case "active":
+                obj = ActivityLevel.ACTIVE;
+                break;
+            case "very_active":
+                obj = ActivityLevel.VERY_ACTIVE;
+                break;
+            default:
+                obj = null;
+        }
+
+        return obj;
+    }
 }
