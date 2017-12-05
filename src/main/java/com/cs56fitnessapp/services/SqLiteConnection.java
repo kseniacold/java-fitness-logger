@@ -6,6 +6,7 @@ import java.sql.*;
 
 /**
  * @author Ksenia Koldaeva
+ * @author Omurbek Nazarov
  * Created: 11/8/17
  * Last Updated: 11/8/17
  */
@@ -66,6 +67,110 @@ public class SqLiteConnection {
                                          "goal VARCHAR(8) REFERENCES goal(goal)," +
                                          "weekly_goal_kg DECIMAL UNSIGNED," +
                                          "activity_level VARCHAR(20) REFERENCES activity_level(activity_level))");
+
+            // food table
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS food (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
+                    "name VARCHAR(255) NOT NULL, " +
+                    "serving_size VARCHAR(255) NOT NULL, " +
+                    "calories INTEGER UNSIGNED NOT NULL," +
+                    "cholesterol DECIMAL UNSIGNED, " +
+                    "sodium DECIMAL UNSIGNED, " +
+                    "total_fat DECIMAL UNSIGNED, " +
+                    "saturated_fat DECIMAL UNSIGNED, " +
+                    "trans_fat DECIMAL UNSIGNED, " +
+                    "total_carb DECIMAL UNSIGNED, " +
+                    "sugars DECIMAL UNSIGNED, " +
+                    "dietery_fiber DECIMAL UNSIGNED, " +
+                    "protein DECIMAL UNSIGNED, " +
+                    "vitamin_a DECIMAL UNSIGNED, " +
+                    "vitamin_c DECIMAL UNSIGNED, " +
+                    "calcium DECIMAL UNSIGNED, " +
+                    "iron DECIMAL UNSIGNED )" );
+
+            // table food_entry
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS food_entry (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
+                    "date DATE, " +
+                    "amount_of_servings SMALLINT," +
+                    "food_id INTEGER REFERENCES food(id))");
+
+            // meal_title table to hold enum variants
+            if (!tableExists("meal_title")) {
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS meal_title (title VARCHAR(10) PRIMARY KEY NOT NULL UNIQUE)");
+                statement.executeUpdate("INSERT INTO meal_title(title) VALUES ('breakfast')");
+                statement.executeUpdate("INSERT INTO meal_title(title) VALUES ('lunch')");
+                statement.executeUpdate("INSERT INTO meal_title(title) VALUES ('dinner')");
+                statement.executeUpdate("INSERT INTO meal_title(title) VALUES ('dessert')");
+                statement.executeUpdate("INSERT INTO meal_title(title) VALUES ('snack')");
+            }
+
+            // meal table
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS meal (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
+                    "date DATE, " +
+                    "title VARCHAR(10) REFERENCES meal_title(title), " +
+                    "user_id INTEGER REFERENCES user(id), " +
+                    "food_entry_id INTEGER REFERENCES food_entry(id))");
+
+            // workout table
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS workout (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
+                    "data DATE, " +
+                    "warm_up_hrs INTEGER, " +
+                    "cool_down_hrs INTEGER, " +
+                    "time_performing_hrs INTEGER, " +
+                    "user_id INTEGER REFERENCES user(id))");
+
+            // strength_training_level table to hold enum variants
+            if (!tableExists("strength_training_level")) {
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS strength_training_level (level VARCHAR(6) PRIMARY KEY NOT NULL UNIQUE)");
+                statement.executeUpdate("INSERT INTO strength_training_level(level) VALUES ('heavy')");
+                statement.executeUpdate("INSERT INTO strength_training_level(level) VALUES ('medium')");
+                statement.executeUpdate("INSERT INTO strength_training_level(level) VALUES ('light')");
+            }
+
+            // strength_training table
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS strength_training (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
+                    "strength_training_level VARCHAR(6) REFERENCES strength_training_level(level), " +
+                    "workout_id INTEGER REFERENCES workout(id))" );
+
+            // endurance_type table to hold enum variants
+            if (!tableExists("endurance_type")) {
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS endurance_type (type VARCHAR(8) PRIMARY KEY NOT NULL UNIQUE)");
+                statement.executeUpdate("INSERT INTO endurance_type(type) VALUES ('running')");
+                statement.executeUpdate("INSERT INTO endurance_type(type) VALUES ('swimming')");
+                statement.executeUpdate("INSERT INTO endurance_type(type) VALUES ('cycling')");
+            }
+
+            // swimming_stroke table to hold enum variants
+            if (!tableExists("swimming_stroke")) {
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS swimming_stroke (stroke VARCHAR(10) PRIMARY KEY NOT NULL UNIQUE)");
+                statement.executeUpdate("INSERT INTO swimming_stroke(stroke) VALUES ('breast')");
+                statement.executeUpdate("INSERT INTO swimming_stroke(stroke) VALUES ('butterfly')");
+                statement.executeUpdate("INSERT INTO swimming_stroke(stroke) VALUES ('back')");
+                statement.executeUpdate("INSERT INTO swimming_stroke(stroke) VALUES ('freestyle')");
+                statement.executeUpdate("INSERT INTO swimming_stroke(stroke) VALUES ('mixed')");
+            }
+
+            // cycling_type_type table to hold enum variants
+            if (!tableExists("cycling_type")) {
+                statement.executeUpdate("CREATE TABLE IF NOT EXISTS cycling_type (type VARCHAR(8) PRIMARY KEY NOT NULL UNIQUE)");
+                statement.executeUpdate("INSERT INTO cycling_type(type) VALUES ('mountain')");
+                statement.executeUpdate("INSERT INTO cycling_type(type) VALUES ('racing')");
+                statement.executeUpdate("INSERT INTO cycling_type(type) VALUES ('leisure')");
+            }
+
+            // endurance_workout
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS endurance_workout (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
+                    "endurance_type VARCHAR(8) REFERENCES endurance_type(type), " +
+                    "distance_km INTEGER," +
+                    "swimming_training TINYINT(1), " +
+                    "swimming_stroke VARCHAR(10) REFERENCES swimming_stroke(stroke), " +
+                    "cycling_type VARCHAR(8) REFERENCES cycling_type(type)," +
+                    "workout_id INTEGER REFERENCES workout(id))");
         }
     }
 
@@ -106,10 +211,26 @@ public class SqLiteConnection {
         Statement statement = connection.createStatement();
 
         // drop tables if exist
+        statement.executeUpdate("DROP TABLE IF EXISTS user");
         statement.executeUpdate("DROP TABLE IF EXISTS gender");
         statement.executeUpdate("DROP TABLE IF EXISTS activity_level");
         statement.executeUpdate("DROP TABLE IF EXISTS goal");
-        statement.executeUpdate("DROP TABLE IF EXISTS user");
+
+        statement.executeUpdate("DROP TABLE IF EXISTS meal");
+        statement.executeUpdate("DROP TABLE IF EXISTS meal_title");
+
+        statement.executeUpdate("DROP TABLE IF EXISTS food_entry");
+        statement.executeUpdate("DROP TABLE IF EXISTS food");
+
+        statement.executeUpdate("DROP TABLE IF EXISTS endurance_workout");
+        statement.executeUpdate("DROP TABLE IF EXISTS cycling_type");
+        statement.executeUpdate("DROP TABLE IF EXISTS endurance_type");
+        statement.executeUpdate("DROP TABLE IF EXISTS swimming_stroke");
+
+        statement.executeUpdate("DROP TABLE IF EXISTS strength_training");
+        statement.executeUpdate("DROP TABLE IF EXISTS strength_training_level");
+
+        statement.executeUpdate("DROP TABLE IF EXISTS workout");
 
         if(connection != null) {
             connection.close();

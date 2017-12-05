@@ -97,9 +97,6 @@ public class RegisterUserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /** Initialize window obj */
-        window = (Stage) goal.getScene().getWindow();
-
         /** Set converter from String to enum and back */
         goal.setConverter(new GoalConverter());
 
@@ -131,6 +128,9 @@ public class RegisterUserController implements Initializable {
 
     @FXML
     private void registerUser() throws IOException {
+        /** Initialize window obj */
+        window = (Stage)goal.getScene().getWindow();
+
         String nameValue = name.getText();
         String usernameValue = username.getText();
         String emailValue = email.getText();
@@ -159,7 +159,7 @@ public class RegisterUserController implements Initializable {
         System.out.println(user.getWeeklyGoalKg());
 
         /** Redirect to the day scene */
-        root = FXMLLoader.load(getClass().getResource("day.fxml"));
+        root = FXMLLoader.load(getClass().getResource("../views/day.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../../../resources/application_styles.css").toExternalForm());
 

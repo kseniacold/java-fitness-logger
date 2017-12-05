@@ -18,6 +18,7 @@ public class FitnessApplication extends Application {
         try {
             SqLiteConnection sqLite = new SqLiteConnection();
             sqLite.getConnection();
+
             // Initialize tables
             sqLite.initialize();
             if (UserService.dbHasUser()) {
