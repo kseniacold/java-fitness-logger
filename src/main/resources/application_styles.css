@@ -118,19 +118,36 @@
 
 /* Day Page
 -------------------------------------------------*/
-
+.stats__wrapper {
+    -fx-vgap: 8px;
+}
 .stats__label {
     -fx-text-fill: #E6E6E6;
-    fx-text-alignment: left;
+    -fx-text-alignment: left;
+    -fx-alignment: bottom-left;
+    -fx-font-size: 16px;
+    -fx-border-width: 1px;
+    -fx-graphic-text-gap: 0;
+    -fx-border-color: red;
+
+    -fx-line-spacing: 1em;
 }
 
 .stats__data {
     -fx-font-weight: bold;
-    fx-text-alignment: right;
+    -fx-text-alignment: right;
+    -fx-font-size: 48px;
+    -fx-alignment: bottom-right;
+    -fx-graphic-text-gap: 0;
+
+    -fx-border-width: 1px;
+    -fx-border-color: #50E3C2;
+    -fx-line-spacing: 1em;
 }
 
 #caloriesLeft {
     -fx-text-fill: #50E3C2;
+    -fx-font-size: 84px;
 }
 
 #net {
