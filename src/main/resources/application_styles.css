@@ -138,6 +138,7 @@
 .stats__wrapper {
     -fx-vgap: 0;
 }
+
 .stats__label {
     -fx-fill: #E6E6E6;
     -fx-text-fill: #E6E6E6;
@@ -147,6 +148,16 @@
     -fx-graphic-text-gap: 0;
     -fx-line-spacing: 1em;
     -fx-padding: 0 0 8px 0;
+}
+
+.stats__additional {
+    -fx-text-fill: #E6E6E6;
+    -fx-text-alignment: right;
+    -fx-alignment: bottom-right;
+    -fx-font-size: 20px;
+    -fx-graphic-text-gap: 0;
+    -fx-line-spacing: 1em;
+    -fx-padding: 0 0 17px 15px;
 }
 
 .stats__data {
