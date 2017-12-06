@@ -18,36 +18,46 @@
     <center>
         <VBox alignment="CENTER" styleClass="day__container container">
             <children>
-                <GridPane alignment="CENTER" styleClass="stats__wrapper">
-                    <Label fx:id="caloriesLeftLbl" alignment="BOTTOM_LEFT" styleClass="stats__label" text="Calories Left" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
-                    <Label fx:id="netLbl" styleClass="stats__label" text="Net" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                    <Label fx:id="activeLbl" styleClass="stats__label" text="Active" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
-                    </Label>
-                    <Label fx:id="consumedLbl" styleClass="stats__label" text="From Food" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
-                    </Label>
+                <VBox styleClass="stats__wrapper">
+                    <GridPane alignment="CENTER" styleClass="stats__grid">
+                        <Label fx:id="caloriesLeftLbl" alignment="BOTTOM_LEFT" styleClass="stats__label" text="Calories Left" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
+                        <Label fx:id="netLbl" styleClass="stats__label" text="Net" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                        <Label fx:id="activeLbl" styleClass="stats__label" text="Active" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                        </Label>
+                        <Label fx:id="consumedLbl" styleClass="stats__label" text="From Food" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                        </Label>
 
-                    <Label fx:id="caloriesLeft" styleClass="stats__data" text="730" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
-                    <Label fx:id="net" styleClass="stats__data" text="930" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-                    <Label fx:id="activeCalories"  styleClass="stats__data" text="148" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-                    <Label fx:id="consumedCalories" styleClass="stats__data" text="1078" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+                        <Label fx:id="caloriesLeft" styleClass="stats__data" text="730" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
+                        <Label fx:id="net" styleClass="stats__data" text="930" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                        <Label fx:id="activeCalories" styleClass="stats__data" text="148" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                        <Label fx:id="consumedCalories" styleClass="stats__data" text="1078" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
 
-                   <columnConstraints>
-                      <ColumnConstraints prefWidth="167.0" />
-                      <ColumnConstraints />
-                   </columnConstraints>
-                   <rowConstraints>
-                      <RowConstraints />
-                      <RowConstraints />
-                      <RowConstraints />
-                      <RowConstraints />
-                   </rowConstraints>
-                </GridPane>
-                <HBox alignment="CENTER" styleClass="day__button">
-                    <Button fx:id="addButton" text="Add" />
-                </HBox>
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="167.0" />
+                            <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                        </rowConstraints>
+                    </GridPane>
+                    <HBox alignment="CENTER" styleClass="button__wrapper">
+                        <Button styleClass="day__button" fx:id="addButton" ></Button>
+                    </HBox>
+                </VBox>
+                <VBox fx:id="prompt" alignment="CENTER" layoutY="-400.0" styleClass="prompt__container container">
+                    <children>
+                        <Label prefHeight="64.0" styleClass="prompt__label" text="Add new: " />
+                        <HBox styleClass="options-horizontal">
+                            <Button fx:id="foodButton" styleClass="prompt__button" />
+                            <Button fx:id="workoutButton" styleClass="prompt__button" />
+                        </HBox>
+                    </children>
+                </VBox>
             </children>
         </VBox>
-
     </center>
     <bottom>
     </bottom>

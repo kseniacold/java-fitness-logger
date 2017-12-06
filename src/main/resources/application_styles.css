@@ -47,18 +47,18 @@
 -----------------------*/
 
 .pane__wrapper {
-    -fx-background-color: #0E0F1A;
-    /*-fx-background-color: #362E58;*/
+    /*-fx-background-color: #0E0F1A;*/
+    -fx-background-color: #362E58;
 }
 
 .nav {
-    -fx-background-color: #161823;
-    /*-fx-background-color: #3F395F;*/
+    /*-fx-background-color: #161823;*/
+    -fx-background-color: #3F395F;
 }
 
 .nav__title {
-    -fx-text-fill: #FFFFFF;
-    /*-fx-text-fill: #FAFF6B;*/
+    /*-fx-text-fill: #FFFFFF;*/
+    -fx-text-fill: #FAFF6B;
     -fx-font-size: 1.3em;
     -fx-text-alignment: center;
 }
@@ -124,7 +124,6 @@
 .stats__label {
     -fx-fill: #E6E6E6;
     -fx-text-fill: #E6E6E6;
-
     -fx-text-alignment: left;
     -fx-alignment: bottom-left;
     -fx-font-size: 16px;
@@ -140,7 +139,6 @@
     -fx-alignment: bottom-right;
     -fx-graphic-text-gap: 0;
     -fx-line-spacing: 1em;
-
     -fx-pref-width: 174px;
 }
 
@@ -172,4 +170,29 @@
     -fx-fill: #FF2366;
     -fx-text-fill: #FF2366;
     -fx-padding: 0 4px 0 0;
+}
+
+.day__button {
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-pref-width: 52px;
+    -fx-pref-height: 52px;
+    -fx-background-image: url("../images/day-button-52.png");
+}
+
+.prompt__button {
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-pref-width: 64px;
+    -fx-pref-height: 64px;
+}
+
+#foodButton {
+    -fx-background-image: url("../images/food-button-64.png");
+}
+
+#workoutButton {
+    -fx-background-image: url("../images/workout-button-64.png");
 }
