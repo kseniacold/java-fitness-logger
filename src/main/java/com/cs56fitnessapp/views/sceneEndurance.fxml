@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #59517D;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label prefHeight="154.0" prefWidth="177.0" text="Endurance" textFill="#fbff96" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <AnchorPane prefHeight="218.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="202.0" layoutY="3.0" text="Type" textFill="#fbff96">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="endType" layoutX="268.0" layoutY="1.0" opacity="0.5" prefHeight="26.0" prefWidth="130.0" />
+            <Label layoutX="173.0" layoutY="57.0" text="Duration" textFill="#fbff96">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="172.0" layoutY="112.0" text="Distance" textFill="#fbff96">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="endDuration" layoutX="268.0" layoutY="56.0" opacity="0.5" prefHeight="26.0" prefWidth="130.0" />
+            <TextField fx:id="endDistance" layoutX="268.0" layoutY="111.0" opacity="0.5" prefHeight="26.0" prefWidth="130.0" />
+             <Button fx:id="submit" layoutX="490.0" layoutY="179.0" mnemonicParsing="false" opacity="0.5" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #ffffff;" text="Submit" textFill="#59517d">
+                 <font>
+                     <Font size="16.0" />
+                 </font></Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
