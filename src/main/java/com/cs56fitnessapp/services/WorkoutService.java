@@ -7,5 +7,5 @@ package com.cs56fitnessapp.services;
  * Last Updated: 12/6/17
  */
 
-public class EnduranceService {
+public class WorkoutService {
 }
