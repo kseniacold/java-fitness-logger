@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -31,6 +30,5 @@ public class DayController implements Initializable {
         String formattedString = localDate.format(formatter);
 
         title.setText(formattedString);
-
     }
 }

@@ -23,7 +23,7 @@ public class FitnessApplication extends Application {
             sqLite.initialize();
             if (UserService.dbHasUser()) {
                 // Initialize application user
-               this.user = UserService.getUserFromDb();
+                this.user = UserService.getUserFromDb();
             }
             sqLite.closeConnection();
 
@@ -49,7 +49,7 @@ public class FitnessApplication extends Application {
         stage.show();
 
         // Uncomment to quickly reset db
-        // resetApplication();
+        /// resetApplication();
     }
 
     public static void main(String[] args) {
