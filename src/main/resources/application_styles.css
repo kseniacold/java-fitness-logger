@@ -183,7 +183,8 @@
     -fx-background-repeat: no-repeat;
     -fx-pref-width: 52px;
     -fx-pref-height: 52px;
-    -fx-background-image: url("../images/day-button-52.png");
+    -fx-background-size: cover, auto;
+    -fx-background-image: url("../images/plus-button-104.png");
 }
 
 .prompt__label {
@@ -196,12 +197,13 @@
     -fx-background-repeat: no-repeat;
     -fx-pref-width: 64px;
     -fx-pref-height: 64px;
+    -fx-background-size: cover, auto;
 }
 
 #foodButton {
-    -fx-background-image: url("../images/food-button-64.png");
+    -fx-background-image: url("../images/food-button-128.png");
 }
 
 #workoutButton {
-    -fx-background-image: url("../images/workout-button-64.png");
+    -fx-background-image: url("../images/workout-button-128.png");
 }
