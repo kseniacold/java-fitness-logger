@@ -33,6 +33,18 @@ public class DayController implements Initializable {
     private Label title;
 
     @FXML
+    private Label caloriesLeft;
+
+    @FXML
+    private Label net;
+
+    @FXML
+    private Label activeCalories;
+
+    @FXML
+    private Label consumedCalories;
+
+    @FXML
     private Label caloriesGoal;
 
     @Override
@@ -44,16 +56,24 @@ public class DayController implements Initializable {
         title.setText(formattedString);
 
         try {
+
             User user = FitnessApplication.getUser();
-            long dailyCalorieGoal = Math.round(user.getDailyCalorieGoal());
             Day day = new Day(localDate, user);
+            long dailyCalorieGoal = Math.round(user.getDailyCalorieGoal());
+            long caloriesLeftVaule = Math.round(day.getCaloriesLeft());
+            int netValue = day.getCaloriesIn() - day.getCaloriesOut();
+
             caloriesGoal.setText("/ " + Long.toString(dailyCalorieGoal));
+            caloriesLeft.setText(Long.toString(caloriesLeftVaule));
+            net.setText(Integer.toString(netValue));
+            activeCalories.setText(Integer.toString(day.getCaloriesOut()));
+            consumedCalories.setText(Integer.toString(day.getCaloriesIn()));
+
         } catch(Exception ex) {
             // This is a final message to the client
             // TODO create this as a pop up
             System.out.println(ex.getMessage());
         }
-
     }
 
     @FXML
