@@ -1,3 +1,8 @@
+/* Fitness application stylesheet
+   authors: Ksenia Koldaeva & Nerissa Hsieh
+-------------------------------------------------*/
+
+
 /* Overall styles
 -------------------------------------------------*/
 .container {
@@ -179,6 +184,10 @@
     -fx-pref-width: 52px;
     -fx-pref-height: 52px;
     -fx-background-image: url("../images/day-button-52.png");
+}
+
+.prompt__label {
+    -fx-text-fill: #E6E6E6;
 }
 
 .prompt__button {

@@ -8,6 +8,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.ImageView?>
+
 
 <BorderPane id="registerWrapper" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs56fitnessapp.controllers.DayController">
     <top>
@@ -44,14 +46,14 @@
                         </rowConstraints>
                     </GridPane>
                     <HBox alignment="CENTER" styleClass="button__wrapper">
-                        <Button styleClass="day__button" fx:id="addButton" ></Button>
+                        <Button styleClass="day__button" fx:id="addButton" />
                     </HBox>
                 </VBox>
                 <VBox fx:id="prompt" alignment="CENTER" layoutY="-400.0" styleClass="prompt__container container">
                     <children>
                         <Label prefHeight="64.0" styleClass="prompt__label" text="Add new: " />
                         <HBox styleClass="options-horizontal">
-                            <Button fx:id="foodButton" styleClass="prompt__button" />
+                            <Button fx:id="foodButton" styleClass="prompt__button"/>
                             <Button fx:id="workoutButton" styleClass="prompt__button" />
                         </HBox>
                     </children>
