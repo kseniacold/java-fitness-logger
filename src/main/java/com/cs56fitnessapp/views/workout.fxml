@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.layout.VBox?>
-<BorderPane prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs56fitnessapp.controllers.WorkoutController">
    <top>
       <HBox alignment="CENTER" styleClass="nav">
          <Label fx:id="title" prefHeight="64.0" styleClass="nav__title" text="Choose A Workout" />
@@ -17,12 +17,12 @@
       <VBox alignment="CENTER" styleClass="workout-prompt container">
          <children>
              <HBox styleClass="options-horizontal">
-                 <Button fx:id="enduranceBtn" layoutX="90.0" layoutY="6.0" mnemonicParsing="false" opacity="0.5" text="Endurance Training" textFill="#59517d">
+                 <Button fx:id="enduranceBtn" layoutX="90.0" layoutY="6.0" mnemonicParsing="false" opacity="0.5" text="Endurance Training" textFill="#59517d" onAction="#addEndurance">
                      <font>
                          <Font size="18.0" />
                      </font>
                  </Button>
-                 <Button fx:id="strengthBtn" layoutX="331.0" layoutY="6.0" mnemonicParsing="false" opacity="0.5" style="-fx-background-color: #ffffff;" text="Strength Training" textFill="#59517d">
+                 <Button fx:id="strengthBtn" layoutX="331.0" layoutY="6.0" mnemonicParsing="false" opacity="0.5" style="-fx-background-color: #ffffff;" text="Strength Training" textFill="#59517d" onAction="#addStrength">
                      <font>
                          <Font size="18.0" />
                      </font>
