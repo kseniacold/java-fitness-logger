@@ -1,3 +1,14 @@
+/* Fitness application stylesheet
+   authors: Ksenia Koldaeva & Nerissa Hsieh
+-------------------------------------------------*/
+
+
+/* Overall styles
+-------------------------------------------------*/
+.container {
+    -fx-padding: 50px 0 0 0;
+}
+
 /* Welcome Page
 -------------------------------------------------*/
 
@@ -41,18 +52,18 @@
 -----------------------*/
 
 .pane__wrapper {
-    -fx-background-color: #0E0F1A;
-    /*-fx-background-color: #362E58;*/
+    /*-fx-background-color: #0E0F1A;*/
+    -fx-background-color: #362E58;
 }
 
 .nav {
-    -fx-background-color: #161823;
-    /*-fx-background-color: #3F395F;*/
+    /*-fx-background-color: #161823;*/
+    -fx-background-color: #3F395F;
 }
 
 .nav__title {
-    -fx-text-fill: #FFFFFF;
-    /*-fx-text-fill: #FAFF6B;*/
+    /*-fx-text-fill: #FFFFFF;*/
+    -fx-text-fill: #FAFF6B;
     -fx-font-size: 1.3em;
     -fx-text-alignment: center;
 }
@@ -108,4 +119,91 @@
 
 .register__submit {
     -fx-pref-width: 323px;
+}
+
+/* Day Page
+-------------------------------------------------*/
+.stats__wrapper {
+    -fx-vgap: 0;
+}
+.stats__label {
+    -fx-fill: #E6E6E6;
+    -fx-text-fill: #E6E6E6;
+    -fx-text-alignment: left;
+    -fx-alignment: bottom-left;
+    -fx-font-size: 16px;
+    -fx-graphic-text-gap: 0;
+    -fx-line-spacing: 1em;
+    -fx-padding: 0 0 8px 0;
+}
+
+.stats__data {
+    -fx-font-weight: bold;
+    -fx-text-alignment: right;
+    -fx-font-size: 48px;
+    -fx-alignment: bottom-right;
+    -fx-graphic-text-gap: 0;
+    -fx-line-spacing: 1em;
+    -fx-pref-width: 174px;
+}
+
+#caloriesLeftLbl {
+    -fx-padding: 0 0 17px 0;
+}
+
+#caloriesLeft {
+    -fx-fill: #50E3C2;
+    -fx-text-fill: #50E3C2;
+
+    -fx-font-size: 84px;
+    -fx-max-height: 84px;
+}
+
+#net {
+    -fx-fill: #E6E6E6;
+    -fx-text-fill: #E6E6E6;
+    -fx-padding: 0 4px 0 0;
+}
+
+#activeCalories {
+    -fx-fill: #7ED321;
+    -fx-text-fill: #7ED321;
+    -fx-padding: 0 4px 0 0;
+}
+
+#consumedCalories {
+    -fx-fill: #FF2366;
+    -fx-text-fill: #FF2366;
+    -fx-padding: 0 4px 0 0;
+}
+
+.day__button {
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-pref-width: 52px;
+    -fx-pref-height: 52px;
+    -fx-background-size: cover, auto;
+    -fx-background-image: url("../images/plus-button-104.png");
+}
+
+.prompt__label {
+    -fx-text-fill: #E6E6E6;
+}
+
+.prompt__button {
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-pref-width: 64px;
+    -fx-pref-height: 64px;
+    -fx-background-size: cover, auto;
+}
+
+#foodButton {
+    -fx-background-image: url("../images/food-button-128.png");
+}
+
+#workoutButton {
+    -fx-background-image: url("../images/workout-button-128.png");
 }

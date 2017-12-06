@@ -1,5 +1,9 @@
 package com.cs56fitnessapp.models;
 
+/**
+ * @author Nerissa Hsieh
+ */
+
 public class Food {
     private String servingSize;
     private String name;

@@ -16,7 +16,7 @@
 
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.text.Text?>
-<BorderPane fx:controller="com.cs56fitnessapp.views.RegisterUserController" id="registerWrapper" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="com.cs56fitnessapp.controllers.RegisterUserController" id="registerWrapper" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <HBox alignment="CENTER" styleClass="nav">
             <Label prefHeight="64.0" styleClass="nav__title" text="My Info" />

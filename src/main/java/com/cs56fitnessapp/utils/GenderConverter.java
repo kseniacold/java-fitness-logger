@@ -12,7 +12,6 @@ import javafx.util.StringConverter;
 /**
  *  Creates converter from String to Gender enum and back
  */
-
 public class GenderConverter extends StringConverter<Gender> {
     @Override
     public String toString(Gender object) {
@@ -21,13 +20,6 @@ public class GenderConverter extends StringConverter<Gender> {
 
     @Override
     public Gender fromString(String string) {
-        Gender obj;
-
-        if (string.equals("Male")) {
-            obj = Gender.MALE;
-        } else {
-            obj = Gender.FEMALE;
-        }
-        return obj;
+        return Gender.fromString(string);
     }
 }

@@ -21,25 +21,6 @@ public class ActivityLevelConverter extends StringConverter<ActivityLevel> {
 
     @Override
     public ActivityLevel fromString(String string) {
-        ActivityLevel obj;
-
-        switch (string) {
-            case "Sedentary":
-                obj = ActivityLevel.SEDENTARY;
-                break;
-            case "Somewhat active":
-                obj = ActivityLevel.SOMEWHAT_ACTIVE;
-                break;
-            case "Active":
-                obj = ActivityLevel.ACTIVE;
-                break;
-            case "Very Active":
-                obj = ActivityLevel.VERY_ACTIVE;
-                break;
-            default:
-                obj = ActivityLevel.SEDENTARY;
-        }
-
-        return obj;
+        return ActivityLevel.fromString(string);
     }
 }
