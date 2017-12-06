@@ -9,6 +9,15 @@
     -fx-padding: 50px 0 0 0;
 }
 
+.default-btn {
+    -fx-opacity: 0.5;
+    -fx-pref-height: 35px;
+    -fx-pref-width: 80px;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #59517d;
+    -fx-font-size: 16px;
+}
+
 /* Welcome Page
 -------------------------------------------------*/
 
@@ -53,17 +62,20 @@
 
 .pane__wrapper {
     /*-fx-background-color: #0E0F1A;*/
-    -fx-background-color: #362E58;
+    /*-fx-background-color: #362E58;*/
+    -fx-background-color: #3F395F;
 }
 
 .nav {
     /*-fx-background-color: #161823;*/
-    -fx-background-color: #3F395F;
+    -fx-background-color: #59517D;
+
 }
 
 .nav__title {
     /*-fx-text-fill: #FFFFFF;*/
-    -fx-text-fill: #FAFF6B;
+    /*-fx-text-fill: #FAFF6B;*/
+    -fx-text-fill: #fbff96;
     -fx-font-size: 1.3em;
     -fx-text-alignment: center;
 }

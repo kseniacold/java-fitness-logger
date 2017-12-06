@@ -156,8 +156,6 @@ public class RegisterUserController implements Initializable {
         UserService userService = new UserService();
         userService.addUserToDb(user);
 
-        System.out.println(user.getWeeklyGoalKg());
-
         /** Redirect to the day scene */
         root = FXMLLoader.load(getClass().getResource("../views/day.fxml"));
         Scene scene = new Scene(root);
