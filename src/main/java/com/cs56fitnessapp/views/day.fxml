@@ -53,8 +53,8 @@
                     <children>
                         <Label prefHeight="64.0" styleClass="prompt__label" text="Add new: " />
                         <HBox styleClass="options-horizontal">
-                            <Button fx:id="foodButton" styleClass="prompt__button"/>
-                            <Button fx:id="workoutButton" styleClass="prompt__button" />
+                            <Button fx:id="foodButton" styleClass="prompt__button" onAction="#addFood"/>
+                            <Button fx:id="workoutButton" styleClass="prompt__button" onAction="#addWorkout" />
                         </HBox>
                     </children>
                 </VBox>
