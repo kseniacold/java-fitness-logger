@@ -1,4 +1,6 @@
 package com.cs56fitnessapp;
+import com.cs56fitnessapp.models.Day;
+import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
 import com.cs56fitnessapp.services.SqLiteConnection;
 import com.cs56fitnessapp.services.UserService;
@@ -8,10 +10,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class FitnessApplication extends Application {
-    User user = null;
-    Parent root;
-    Scene scene;
+    private static User user = null;
+    private Parent root;
+    private Scene scene;
 
     @Override
     public void start(Stage stage) {
@@ -64,5 +68,20 @@ public class FitnessApplication extends Application {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static User getUser() throws SQLException, ClassNotFoundException {
+        if (user == null) {
+            SqLiteConnection sqLite = new SqLiteConnection();
+            sqLite.getConnection();
+
+            if (UserService.dbHasUser()) {
+                // Initialize application user
+                user = UserService.getUserFromDb();
+            }
+            sqLite.closeConnection();
+        }
+
+        return user;
     }
 }
