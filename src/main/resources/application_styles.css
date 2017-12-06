@@ -18,6 +18,12 @@
     -fx-font-size: 16px;
 }
 
+.options__checkbox {
+    -fx-opacity: 0.5;
+    -fx-border-color: red;
+    -fx-border-width: 1px;
+}
+
 /* Welcome Page
 -------------------------------------------------*/
 
