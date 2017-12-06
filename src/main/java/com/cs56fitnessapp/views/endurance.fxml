@@ -11,6 +11,8 @@
 <?import javafx.collections.FXCollections?>
 <?import com.cs56fitnessapp.models.workout.EnduranceType?>
 <?import javafx.scene.layout.HBox?>
+<?import com.cs56fitnessapp.models.workout.SwimmingStroke?>
+<?import com.cs56fitnessapp.models.workout.CyclingType?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #59517D;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs56fitnessapp.controllers.EnduranceController">
    <top>
       <Label prefHeight="154.0" prefWidth="177.0" text="Endurance" textFill="#fbff96" BorderPane.alignment="CENTER">
@@ -50,11 +52,39 @@
             <TextField fx:id="endDistance" layoutX="268.0" layoutY="111.0" opacity="0.5" prefHeight="26.0" prefWidth="130.0" />
 
              <HBox fx:id="swimmingOptions">
-
+                 <Label layoutX="202.0" layoutY="3.0" text="Swimming Stroke" textFill="#fbff96">
+                     <font>
+                         <Font size="18.0" />
+                     </font>
+                 </Label>
+                 <ChoiceBox fx:id="stroke" styleClass="options__checkbox" layoutX="268.0" layoutY="1.0" prefHeight="26.0" prefWidth="130.0" >
+                     <items>
+                         <FXCollections fx:factory="observableArrayList">
+                             <SwimmingStroke fx:value="FREESTYLE" />
+                             <SwimmingStroke fx:value="BREASTSTROKE" />
+                             <SwimmingStroke fx:value="BACKSTROKE" />
+                             <SwimmingStroke fx:value="BUTTERFLY" />
+                             <SwimmingStroke fx:value="MIXED" />
+                         </FXCollections>
+                     </items>
+                 </ChoiceBox>
              </HBox>
 
              <HBox fx:id="cyclingOptions">
-
+                 <Label layoutX="202.0" layoutY="3.0" text="Cycling Type" textFill="#fbff96">
+                     <font>
+                         <Font size="18.0" />
+                     </font>
+                 </Label>
+                 <ChoiceBox fx:id="cyclingType" styleClass="options__checkbox" layoutX="268.0" layoutY="1.0" prefHeight="26.0" prefWidth="130.0" >
+                     <items>
+                         <FXCollections fx:factory="observableArrayList">
+                             <CyclingType fx:value="MOUNTAIN" />
+                             <CyclingType fx:value="RACING" />
+                             <CyclingType fx:value="LEISURE" />
+                         </FXCollections>
+                     </items>
+                 </ChoiceBox>
              </HBox>
              <Button fx:id="submit" styleClass="default-btn" layoutX="490.0" layoutY="179.0" mnemonicParsing="false" text="Submit"/>
          </children>

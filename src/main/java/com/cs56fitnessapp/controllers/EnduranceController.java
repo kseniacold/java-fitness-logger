@@ -1,13 +1,18 @@
 package com.cs56fitnessapp.controllers;
 
+import com.cs56fitnessapp.models.workout.CyclingType;
 import com.cs56fitnessapp.models.workout.EnduranceType;
+import com.cs56fitnessapp.models.workout.SwimmingStroke;
+import com.cs56fitnessapp.utils.CyclingTypeConverter;
 import com.cs56fitnessapp.utils.EnduranceTypeConverter;
+import com.cs56fitnessapp.utils.SwimmingStrokeConverter;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -28,15 +33,32 @@ public class EnduranceController implements Initializable {
     private ChoiceBox<EnduranceType> endType;
 
     @FXML
+    private TextField endDuration;
+
+    @FXML
+    private TextField endDistance;
+
+    @FXML
     private HBox swimmingOptions;
 
     @FXML
     private HBox cyclingOptions;
 
+    @FXML
+    private ChoiceBox<CyclingType> cyclingType;
+
+    @FXML
+    private ChoiceBox<SwimmingStroke> stroke;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /** Set converter from String to enum and back */
+        /** Set converters from String to enum and back */
         endType.setConverter(new EnduranceTypeConverter());
+        cyclingType.setConverter(new CyclingTypeConverter());
+        stroke.setConverter(new SwimmingStrokeConverter());
+
+        endDuration.setPromptText("minutes");
+        endDistance.setPromptText("miles");
         
         handleEnduranceSelection();
     }
@@ -50,7 +72,23 @@ public class EnduranceController implements Initializable {
             public void changed(ObservableValue<? extends EnduranceType> observable, EnduranceType oldValue, EnduranceType newValue) {
                 switch (newValue) {
                     case SWIMMING:
+                        cyclingOptions.setVisible(false);
+                        cyclingType.setValue(null);
 
+                        swimmingOptions.setVisible(true);
+                        break;
+                    case CYCLING:
+                        swimmingOptions.setVisible(false);
+                        stroke.setValue(null);
+
+                        cyclingOptions.setVisible(true);
+                        break;
+                    case RUNNING:
+                        swimmingOptions.setVisible(false);
+                        cyclingOptions.setVisible(false);
+
+                        stroke.setValue(null);
+                        cyclingType.setValue(null);
                         break;
                 }
             }
