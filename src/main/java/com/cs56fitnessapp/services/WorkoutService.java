@@ -15,9 +15,8 @@ import java.time.format.DateTimeFormatter;
  */
 
 public class WorkoutService {
-
     /**
-     * Adds workout to db
+     * Adds endurance workout to db
      * @param endurance
      * @throws SQLException
      * @throws ClassNotFoundException
@@ -25,80 +24,97 @@ public class WorkoutService {
     public static void addEnduranceToDb(Endurance endurance) throws SQLException, ClassNotFoundException {
         // TODO add warm up time and cool down time functionality
         User user = FitnessApplication.getUser();
-        long workoutId;
+
+        // prepared values to insert to db
+        boolean isTraining = endurance instanceof Swimming && ((Swimming)endurance).isTraining();
+        int swimmingTraining = (isTraining) ? 1 : 0;
+        SwimmingStroke stroke = endurance instanceof Swimming ? ((Swimming)endurance).getSwimmingStroke() : null;
+        EnduranceType enduranceType = getEnduranceType(endurance);
+        CyclingType cyclingType = endurance instanceof Cycling ? ((Cycling)endurance).getCyclingType() : null;
+
+        /************************************************************************/
 
         // open sqlite connection
         SqLiteConnection sqLite = new SqLiteConnection();
         Connection connection = sqLite.getConnectionObj();
+        Statement statement = connection.createStatement();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateTime = endurance.getDate();
         String formattedDateTime = dateTime.format(formatter);
 
-        String sqlQueryWrk = "INSERT INTO workout(date, time_performing_hrs, user_id) VALUES(" +
+        String sqlQuery = "INSERT INTO endurance_workout(date, time_performing_hrs, endurance_type, distance_km, swimming_training, swimming_stroke, cycling_type, user_id) VALUES(" +
                 "'" + formattedDateTime + "'," +
                 "'" + endurance.getTimePerformingHours() + "'," +
+                "'" + enduranceType.getDbValue() + "'," +
+                "'" + endurance.getDistanceKm() + "'," +
+                "'" + swimmingTraining + "'," +
+                "'" + (stroke != null ? stroke.getDbValue() : null) + "'," +
+                "'" + (cyclingType != null ? cyclingType.getDbValue() : null) + "'," +
                 "'" + user.getId() + "')";
 
-        // Add general workout to workout table
-        PreparedStatement workoutSt = connection.prepareStatement(sqlQueryWrk,
-                Statement.RETURN_GENERATED_KEYS);
-
-        try (ResultSet generatedKeysWrk = workoutSt.getGeneratedKeys()) {
-            if (generatedKeysWrk.next()) {
-                workoutId = generatedKeysWrk.getLong(1);
-            }
-            else {
-                throw new SQLException("Creating user failed, no ID obtained.");
-            }
-        }
-
-        // Add Endurance workout to endurance_workout table
-        addEndurance(endurance, connection, workoutId);
+        statement.executeUpdate(sqlQuery);
         connection.close();
     }
 
-    public static Workout getEnduranceById(long id) throws SQLException, ClassNotFoundException {
+    public static Endurance getEnduranceById(long id) throws SQLException, ClassNotFoundException {
         ResultSet rs;
-
         User user = FitnessApplication.getUser();
-        long workId;
-        Workout workout = null;
-        EnduranceType enduranceType;
+        Endurance endurance = null;
+
+        EnduranceType enduranceType = null;
         double distanceKm = 0.0;
         boolean swimmingTraining = false;
-        SwimmingStroke stroke;
-        CyclingType type;
+        SwimmingStroke stroke = null;
+        CyclingType cyclingType = null;
 
         LocalDateTime date = null;
         double timePerformingHrs = 0.0;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
+        /************************************************************************/
+
         SqLiteConnection sqLite = new SqLiteConnection();
         Connection connection = sqLite.getConnectionObj();
         Statement statement = connection.createStatement();
 
-        // Fetch data from Endurance endurance_workout table first
+        // Fetch data from endurance_workout table first
         String sqlQueryEnd = "SELECT * FROM endurance_workout WHERE id = '" + id + "'";
         rs = statement.executeQuery(sqlQueryEnd);
 
         while(rs.next()) {
             // read the result set
-            timePerformingHrs = rs.getDouble("time_performing_hrs");
             date = LocalDateTime.parse(rs.getString("date"), formatter);
-        }
-
-        String sqlQueryWorkout = "SELECT * FROM workout WHERE id = '" + id + "'";
-        rs = statement.executeQuery(sqlQueryWorkout);
-
-        while(rs.next()) {
-            // read the result set
             timePerformingHrs = rs.getDouble("time_performing_hrs");
-            date = LocalDateTime.parse(rs.getString("date"), formatter);
+            enduranceType = rs.getString("endurance_type") == null ? null : EnduranceType.fromDbValue(rs.getString("endurance_type"));
+            distanceKm = rs.getDouble("distance_km");
+            swimmingTraining = rs.getBoolean("swimming_training");
+            stroke = rs.getString("swimming_stroke") == null ? null : SwimmingStroke.fromDbValue(rs.getString("swimming_type"));
+            cyclingType = rs.getString("swimming_stroke") == null ? null : CyclingType.fromDbValue(rs.getString("cycling_type"));
+
         }
 
         connection.close();
-        return workout;
+
+        /************************************************************************/
+
+        // Create endurance instance from data fetched
+        if (enduranceType != null) {
+            if (enduranceType == EnduranceType.RUNNING) {
+                endurance = new Running(user, date, distanceKm, timePerformingHrs);
+            }
+
+            if (enduranceType == EnduranceType.SWIMMING) {
+                endurance = new Swimming(user, date, distanceKm, timePerformingHrs, stroke);
+                ((Swimming)endurance).setTraining(swimmingTraining);
+            }
+
+            if (enduranceType == EnduranceType.CYCLING) {
+                endurance = new Cycling(user, date, distanceKm, timePerformingHrs, cyclingType);
+            }
+        }
+
+        return endurance;
     }
 
     /**
@@ -124,7 +140,7 @@ public class WorkoutService {
     }
 
     private static void addEndurance (Endurance endurance, Connection connection, long workoutId) {
-        // prepared value to insert to db
+        // prepared values to insert to db
         boolean isTraining = endurance instanceof Swimming && ((Swimming)endurance).isTraining();
         int swimmingTraining = (isTraining) ? 1 : 0;
         SwimmingStroke stroke = endurance instanceof Swimming ? ((Swimming)endurance).getSwimmingStroke() : null;

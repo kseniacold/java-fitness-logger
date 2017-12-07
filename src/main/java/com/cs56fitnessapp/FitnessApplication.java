@@ -54,7 +54,7 @@ public class FitnessApplication extends Application {
         stage.show();
 
         // Uncomment to quickly reset db
-        /// resetApplication();
+        // resetApplication();
     }
 
     public static void main(String[] args) {
