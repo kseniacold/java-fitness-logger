@@ -31,7 +31,7 @@ public abstract class Workout implements ActivityFacts {
         this.date = date;
     }
 
-    public Workout(User user, LocalDateTime date, long id, double timePerformingHours) {
+    public Workout(long id, User user, LocalDateTime date, double timePerformingHours) {
         this.user = user;
         this.date = date;
         this.id = id;

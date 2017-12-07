@@ -1,6 +1,4 @@
 package com.cs56fitnessapp;
-import com.cs56fitnessapp.models.Day;
-import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
 import com.cs56fitnessapp.services.SqLiteConnection;
 import com.cs56fitnessapp.services.UserService;
@@ -14,6 +12,9 @@ import java.sql.SQLException;
 
 public class FitnessApplication extends Application {
     private static User user = null;
+    // For now constant variable for User id
+    private final static long USER_ID = 1;
+
     private Parent root;
     private Scene scene;
 
@@ -27,7 +28,7 @@ public class FitnessApplication extends Application {
             sqLite.initialize();
             if (UserService.dbHasUser()) {
                 // Initialize application user
-                this.user = UserService.getUserFromDb();
+                this.user = UserService.getUserById(USER_ID);
             }
             sqLite.closeConnection();
 
@@ -77,7 +78,7 @@ public class FitnessApplication extends Application {
 
             if (UserService.dbHasUser()) {
                 // Initialize application user
-                user = UserService.getUserFromDb();
+                user = UserService.getUserById(USER_ID);
             }
             sqLite.closeConnection();
         }

@@ -55,9 +55,8 @@ public class UserService {
         }
     }
 
-    public static User getUserFromDb() throws SQLException, ClassNotFoundException {
+    public static User getUserById(long id) throws SQLException, ClassNotFoundException {
         // TODO potential edge case: if value will be not init from DB, blank user will be created.
-        long id = 0;
         String name = "";
         String username = "";
         String email = "";
@@ -74,12 +73,11 @@ public class UserService {
         Connection connection = sqLite.getConnectionObj();
         Statement statement = connection.createStatement();
 
-        String sqlQuery = "SELECT * FROM user WHERE id = '1'";
+        String sqlQuery = "SELECT * FROM user WHERE id = '" + id + "'";
         ResultSet rs = statement.executeQuery(sqlQuery);
 
         while(rs.next()) {
             // read the result set
-            id = rs.getLong("id");
             name = rs.getString("name");
             username = rs.getString("username");
             email = rs.getString("email");

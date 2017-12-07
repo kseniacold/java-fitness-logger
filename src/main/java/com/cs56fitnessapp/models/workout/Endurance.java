@@ -2,7 +2,7 @@ package com.cs56fitnessapp.models.workout;
 
 import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author Ksenia Koldaeva
@@ -22,7 +22,7 @@ public abstract class Endurance extends Workout {
      * @param distanceKm distance of the endurance workout
      * @param timePerformingHours time of the endurance workout
      */
-    public Endurance(User user, LocalDate date, double distanceKm, double timePerformingHours) {
+    public Endurance(User user, LocalDateTime date, double distanceKm, double timePerformingHours) {
         super(user, date);
         this.distanceKm = distanceKm;
         super.setTimePerformingHours(timePerformingHours);
