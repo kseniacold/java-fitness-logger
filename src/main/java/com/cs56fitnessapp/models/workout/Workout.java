@@ -9,13 +9,13 @@ package com.cs56fitnessapp.models.workout;
 
 import com.cs56fitnessapp.models.ActivityFacts;
 import com.cs56fitnessapp.models.User;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public abstract class Workout implements ActivityFacts {
 
     private User user;
-    private LocalDate date;
+    private LocalDateTime date;
+    private long id;
     private double warmUpTimeHrs = 0;
     private double coolDownTimeHrs = 0;
     private double timePerformingHours = 0;
@@ -26,10 +26,16 @@ public abstract class Workout implements ActivityFacts {
      * @param date date of the workout
      */
 
-    public Workout(User user, LocalDate date) {
-
+    public Workout(User user, LocalDateTime date) {
         this.user = user;
         this.date = date;
+    }
+
+    public Workout(long id, User user, LocalDateTime date, double timePerformingHours) {
+        this.user = user;
+        this.date = date;
+        this.id = id;
+        this.timePerformingHours = timePerformingHours;
     }
 
     // Default constructor
@@ -41,11 +47,19 @@ public abstract class Workout implements ActivityFacts {
         return user;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

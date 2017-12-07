@@ -12,6 +12,7 @@ import java.time.temporal.ChronoUnit;
  */
 
 public class User {
+    private long id;
 
     private String name;
 
@@ -67,7 +68,43 @@ public class User {
         this.activityLevel = activityLevel;
     }
 
+    /**
+     * Constructs new user with provided parameters
+     * @param id user's id (from database)
+     * @param name user's name
+     * @param username username
+     * @param dateOfBirth user's date of birth
+     * @param gender gender
+     * @param bodyMassKg body mass in kilograms
+     * @param heightCm height in centimeters
+     * @param goal goal - to lose, maintain or gain weight
+     * @param weeklyGoalKg how many kilograms per week to lose or gain
+     * @param activityLevel user's activity level
+     */
+    public User(long id, String name, String username, String email, String password, LocalDate dateOfBirth, Gender gender, double bodyMassKg, double heightCm, Goal goal, double weeklyGoalKg, ActivityLevel activityLevel) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.bodyMassKg = bodyMassKg;
+        this.heightCm = heightCm;
+        this.goal = goal;
+        this.weeklyGoalKg = weeklyGoalKg;
+        this.activityLevel = activityLevel;
+    }
+
+
     // Start getters and setters
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

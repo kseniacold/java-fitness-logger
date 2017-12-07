@@ -12,7 +12,6 @@ import javafx.util.StringConverter;
 /**
  *  Creates converter from String to ActivityLevel enum and back
  */
-
 public class ActivityLevelConverter extends StringConverter<ActivityLevel> {
     @Override
     public String toString(ActivityLevel object) {

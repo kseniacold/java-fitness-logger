@@ -2,7 +2,7 @@ package com.cs56fitnessapp.models.workout;
 
 import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author Daniel Cervantes
@@ -23,7 +23,7 @@ public class StrengthTraining extends Workout {
      * @param strengthTrainingLevel one of three different kinds of strength training levels
      */
 
-    public StrengthTraining(User user, LocalDate date, double timePerformingHours, StrengthTrainingLevel strengthTrainingLevel) {
+    public StrengthTraining(User user, LocalDateTime date, double timePerformingHours, StrengthTrainingLevel strengthTrainingLevel) {
         super(user, date);
         this.setTimePerformingHours(timePerformingHours);
         this.strengthTrainingLevel = strengthTrainingLevel;

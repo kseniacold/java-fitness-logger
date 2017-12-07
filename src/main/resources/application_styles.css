@@ -18,6 +18,12 @@
     -fx-font-size: 16px;
 }
 
+.options__checkbox {
+    -fx-opacity: 0.5;
+    -fx-border-color: red;
+    -fx-border-width: 1px;
+}
+
 /* Welcome Page
 -------------------------------------------------*/
 
@@ -138,6 +144,7 @@
 .stats__wrapper {
     -fx-vgap: 0;
 }
+
 .stats__label {
     -fx-fill: #E6E6E6;
     -fx-text-fill: #E6E6E6;
@@ -147,6 +154,16 @@
     -fx-graphic-text-gap: 0;
     -fx-line-spacing: 1em;
     -fx-padding: 0 0 8px 0;
+}
+
+.stats__additional {
+    -fx-text-fill: #E6E6E6;
+    -fx-text-alignment: right;
+    -fx-alignment: bottom-right;
+    -fx-font-size: 20px;
+    -fx-graphic-text-gap: 0;
+    -fx-line-spacing: 1em;
+    -fx-padding: 0 0 15px 15px;
 }
 
 .stats__data {
@@ -160,15 +177,14 @@
 }
 
 #caloriesLeftLbl {
-    -fx-padding: 0 0 17px 0;
+    -fx-padding: 0 0 15px 0;
 }
 
 #caloriesLeft {
     -fx-fill: #50E3C2;
     -fx-text-fill: #50E3C2;
 
-    -fx-font-size: 84px;
-    -fx-max-height: 84px;
+    -fx-font-size: 72px;
 }
 
 #net {

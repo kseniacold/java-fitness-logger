@@ -2,8 +2,7 @@ package com.cs56fitnessapp.models.workout;
 
 import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author Ksenia Koldaeva
@@ -24,7 +23,7 @@ public class Swimming extends Endurance {
      * @param timePerformingHours duration of swimming workout
      * @param swimmingStroke one of 4 swimming strokes or mixed
      */
-    public Swimming(User user, LocalDate date, double distanceKm, double timePerformingHours, SwimmingStroke swimmingStroke) {
+    public Swimming(User user, LocalDateTime date, double distanceKm, double timePerformingHours, SwimmingStroke swimmingStroke) {
         super(user, date, distanceKm, timePerformingHours);
         this.swimmingStroke = swimmingStroke;
 

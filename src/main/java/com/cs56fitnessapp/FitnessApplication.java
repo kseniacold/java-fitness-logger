@@ -8,10 +8,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class FitnessApplication extends Application {
-    User user = null;
-    Parent root;
-    Scene scene;
+    private static User user = null;
+    // For now constant variable for User id
+    private final static long USER_ID = 1;
+
+    private Parent root;
+    private Scene scene;
 
     @Override
     public void start(Stage stage) {
@@ -23,7 +28,7 @@ public class FitnessApplication extends Application {
             sqLite.initialize();
             if (UserService.dbHasUser()) {
                 // Initialize application user
-                this.user = UserService.getUserFromDb();
+                this.user = UserService.getUserById(USER_ID);
             }
             sqLite.closeConnection();
 
@@ -49,7 +54,7 @@ public class FitnessApplication extends Application {
         stage.show();
 
         // Uncomment to quickly reset db
-        /// resetApplication();
+        // resetApplication();
     }
 
     public static void main(String[] args) {
@@ -64,5 +69,20 @@ public class FitnessApplication extends Application {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static User getUser() throws SQLException, ClassNotFoundException {
+        if (user == null) {
+            SqLiteConnection sqLite = new SqLiteConnection();
+            sqLite.getConnection();
+
+            if (UserService.dbHasUser()) {
+                // Initialize application user
+                user = UserService.getUserById(USER_ID);
+            }
+            sqLite.closeConnection();
+        }
+
+        return user;
     }
 }

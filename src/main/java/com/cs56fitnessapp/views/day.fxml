@@ -29,6 +29,7 @@
                         </Label>
 
                         <Label fx:id="caloriesLeft" styleClass="stats__data" text="730" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
+                        <Label fx:id="caloriesGoal" styleClass="stats__additional" text="/ 1600" GridPane.columnIndex="3" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
                         <Label fx:id="net" styleClass="stats__data" text="930" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
                         <Label fx:id="activeCalories" styleClass="stats__data" text="148" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                         <Label fx:id="consumedCalories" styleClass="stats__data" text="1078" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />

@@ -2,8 +2,7 @@ package com.cs56fitnessapp.models.workout;
 
 import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author Ksenia Koldaeva
@@ -22,10 +21,20 @@ public class Cycling extends Endurance {
      * @param timePerformingHours duration of the cycling workout
      * @param cyclingType cycling workout type
      */
-    public Cycling(User user, LocalDate date, double distanceKm, double timePerformingHours, CyclingType cyclingType) {
+    public Cycling(User user, LocalDateTime date, double distanceKm, double timePerformingHours, CyclingType cyclingType) {
         super(user, date, distanceKm, timePerformingHours);
         this.cyclingType = cyclingType;
     }
+
+    // Getters and setters start
+    public CyclingType getCyclingType() {
+        return cyclingType;
+    }
+
+    public void setCyclingType(CyclingType cyclingType) {
+        this.cyclingType = cyclingType;
+    }
+    // Getters and setters end
 
     /**
      *

@@ -35,7 +35,7 @@ public class Day implements ActivityFacts, DietFacts {
         return this.workoutList.add(workout);
     }
 
-    public ArrayList < Workout > getWorkoutList(){
+    public ArrayList <Workout> getWorkoutList(){
         return this.workoutList;
     }
 
@@ -43,7 +43,7 @@ public class Day implements ActivityFacts, DietFacts {
         return this.mealList.add(meal);
     }
 
-    public ArrayList < Meal > getMealList(){
+    public ArrayList <Meal> getMealList(){
         return this.mealList;
     }
 
@@ -118,9 +118,5 @@ public class Day implements ActivityFacts, DietFacts {
             sum += meal.getProteinIn();
         }
         return sum;
-    }
-
-    public static void main(String [] args) {
-        System.out.println("Hello");
     }
 }

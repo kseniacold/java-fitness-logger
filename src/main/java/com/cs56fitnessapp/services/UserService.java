@@ -48,22 +48,14 @@ public class UserService {
                     "'" + user.getActivityLevel().getDbValue() + "')";
 
             statement.executeUpdate(sqlQuery);
-
-            ResultSet rs = statement.executeQuery("SELECT * FROM user");
-            while(rs.next()) {
-                // read the result set
-                System.out.println("name = " + rs.getString("name"));
-                System.out.println("id = " + rs.getInt("id"));
-                System.out.println("email = " + rs.getString("email"));
-            }
-
             connection.close();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public static User getUserFromDb() throws SQLException, ClassNotFoundException {
+    public static User getUserById(long id) throws SQLException, ClassNotFoundException {
         // TODO potential edge case: if value will be not init from DB, blank user will be created.
         String name = "";
         String username = "";
@@ -81,7 +73,7 @@ public class UserService {
         Connection connection = sqLite.getConnectionObj();
         Statement statement = connection.createStatement();
 
-        String sqlQuery = "SELECT * FROM user WHERE id = '1'";
+        String sqlQuery = "SELECT * FROM user WHERE id = '" + id + "'";
         ResultSet rs = statement.executeQuery(sqlQuery);
 
         while(rs.next()) {
@@ -100,7 +92,7 @@ public class UserService {
         }
 
         connection.close();
-        return new User(name, username, email, password, dateOfBirth, gender, bodyMassKg, heightCm, goal, weeklyGoalKg, activityLevel);
+        return new User(id, name, username, email, password, dateOfBirth, gender, bodyMassKg, heightCm, goal, weeklyGoalKg, activityLevel);
     }
 
     /**

@@ -113,15 +113,6 @@ public class SqLiteConnection {
                     "user_id INTEGER REFERENCES user(id), " +
                     "food_entry_id INTEGER REFERENCES food_entry(id))");
 
-            // workout table
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS workout (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
-                    "data DATE, " +
-                    "warm_up_hrs INTEGER, " +
-                    "cool_down_hrs INTEGER, " +
-                    "time_performing_hrs INTEGER, " +
-                    "user_id INTEGER REFERENCES user(id))");
-
             // strength_training_level table to hold enum variants
             if (!tableExists("strength_training_level")) {
                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS strength_training_level (level VARCHAR(6) PRIMARY KEY NOT NULL UNIQUE)");
@@ -133,8 +124,12 @@ public class SqLiteConnection {
             // strength_training table
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS strength_training (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
+                    "date DATE NOT NULL, " +
+                    "warm_up_hrs DECIMAL, " +
+                    "cool_down_hrs DECIMAL, " +
+                    "time_performing_hrs DECIMAL, " +
                     "strength_training_level VARCHAR(6) REFERENCES strength_training_level(level), " +
-                    "workout_id INTEGER REFERENCES workout(id))" );
+                    "user_id INTEGER REFERENCES user(id))" );
 
             // endurance_type table to hold enum variants
             if (!tableExists("endurance_type")) {
@@ -165,12 +160,16 @@ public class SqLiteConnection {
             // endurance_workout
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS endurance_workout (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
+                    "date DATE NOT NULL, " +
+                    "warm_up_hrs DECIMAL, " +
+                    "cool_down_hrs DECIMAL, " +
+                    "time_performing_hrs DECIMAL, " +
                     "endurance_type VARCHAR(8) REFERENCES endurance_type(type), " +
                     "distance_km INTEGER," +
                     "swimming_training TINYINT(1), " +
                     "swimming_stroke VARCHAR(10) REFERENCES swimming_stroke(stroke), " +
                     "cycling_type VARCHAR(8) REFERENCES cycling_type(type)," +
-                    "workout_id INTEGER REFERENCES workout(id))");
+                    "user_id INTEGER REFERENCES user(id))");
         }
     }
 
@@ -229,8 +228,6 @@ public class SqLiteConnection {
 
         statement.executeUpdate("DROP TABLE IF EXISTS strength_training");
         statement.executeUpdate("DROP TABLE IF EXISTS strength_training_level");
-
-        statement.executeUpdate("DROP TABLE IF EXISTS workout");
 
         if(connection != null) {
             connection.close();
