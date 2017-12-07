@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <HBox alignment="CENTER" styleClass="nav">
+            <Label fx:id="title" prefHeight="64.0" styleClass="nav__title" text="Food" />
+        </HBox>
+    </top>
+    <center>
+        <GridPane alignment="CENTER" prefHeight="180.0" prefWidth="1200.0" styleClass="stats__grid">
+            <Label fx:id="namelbl" alignment="BOTTOM_LEFT" styleClass="stats__label" text="Name" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
+            <Label fx:id="calorieslbl" styleClass="stats__label" text="Calories" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <Label fx:id="totalFatlbl" styleClass="stats__label" text="Total Fat" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+            </Label>
+            <Label fx:id="cholesterollbl" styleClass="stats__label" text="Cholesterol" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+            </Label>
+
+            <Label fx:id="name" styleClass="stats__data" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
+            <Label fx:id="calories" styleClass="stats__data" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <Label fx:id="totalfat" styleClass="stats__data" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+            <Label fx:id="cholesterol" styleClass="stats__data" text="" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+            <Label fx:id="saturatedFatlbl" styleClass="stats__label"  text="Saturated Fat" GridPane.rowIndex="4" />
+            <Label fx:id="transfatlbl" styleClass="stats__label"  text="Trans Fat" GridPane.rowIndex="5" />
+            <Label fx:id="sugarslbl" styleClass="stats__label"  text="Sugars" GridPane.rowIndex="6" />
+            <Label fx:id="saturatedfat" styleClass="stats__data" text="" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="transfat" styleClass="stats__data" text="" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="sugars" styleClass="stats__data" text="" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+            <columnConstraints>
+                <ColumnConstraints prefWidth="167.0" />
+                <ColumnConstraints />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+                <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+    </center>
+</BorderPane>
