@@ -116,10 +116,10 @@ public class SqLiteConnection {
             // workout table
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS workout (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
-                    "data DATE, " +
-                    "warm_up_hrs INTEGER, " +
-                    "cool_down_hrs INTEGER, " +
-                    "time_performing_hrs INTEGER, " +
+                    "date DATE NOT NULL, " +
+                    "warm_up_hrs DECIMAL, " +
+                    "cool_down_hrs DECIMAL, " +
+                    "time_performing_hrs DECIMAL, " +
                     "user_id INTEGER REFERENCES user(id))");
 
             // strength_training_level table to hold enum variants

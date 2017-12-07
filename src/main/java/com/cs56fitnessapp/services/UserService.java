@@ -48,16 +48,8 @@ public class UserService {
                     "'" + user.getActivityLevel().getDbValue() + "')";
 
             statement.executeUpdate(sqlQuery);
-
-            ResultSet rs = statement.executeQuery("SELECT * FROM user");
-            while(rs.next()) {
-                // read the result set
-                System.out.println("name = " + rs.getString("name"));
-                System.out.println("id = " + rs.getInt("id"));
-                System.out.println("email = " + rs.getString("email"));
-            }
-
             connection.close();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -65,6 +57,7 @@ public class UserService {
 
     public static User getUserFromDb() throws SQLException, ClassNotFoundException {
         // TODO potential edge case: if value will be not init from DB, blank user will be created.
+        long id = 0;
         String name = "";
         String username = "";
         String email = "";
@@ -86,6 +79,7 @@ public class UserService {
 
         while(rs.next()) {
             // read the result set
+            id = rs.getLong("id");
             name = rs.getString("name");
             username = rs.getString("username");
             email = rs.getString("email");
@@ -100,7 +94,7 @@ public class UserService {
         }
 
         connection.close();
-        return new User(name, username, email, password, dateOfBirth, gender, bodyMassKg, heightCm, goal, weeklyGoalKg, activityLevel);
+        return new User(id, name, username, email, password, dateOfBirth, gender, bodyMassKg, heightCm, goal, weeklyGoalKg, activityLevel);
     }
 
     /**

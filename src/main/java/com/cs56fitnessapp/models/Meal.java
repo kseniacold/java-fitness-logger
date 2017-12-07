@@ -1,7 +1,6 @@
 package com.cs56fitnessapp.models;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.time.LocalDate;
-
 
 /**
  * @author Nerissa Hsieh & Jimwell Castillo
@@ -10,7 +9,7 @@ import java.time.LocalDate;
  */
 
 public class Meal implements DietFacts{
-    private LocalDate date;
+    private LocalDateTime date;
     private MealTitle title;
     private ArrayList <FoodEntry> foodEntriesList;
 
@@ -19,7 +18,7 @@ public class Meal implements DietFacts{
      * @param date - date of meal consumption
      * @param title - meal title, e.g. "Breakfast", "Lunch", "Dinner" or "Snack"
      */
-    public Meal (LocalDate date, MealTitle title) {
+    public Meal (LocalDateTime date, MealTitle title) {
         this.date = date; 
         this.title = title;
         this.foodEntriesList = new ArrayList<>();
@@ -31,11 +30,11 @@ public class Meal implements DietFacts{
 
     // Start getters and setters
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public LocalDate getDate(){
+    public LocalDateTime getDate(){
         return date;
     }
 

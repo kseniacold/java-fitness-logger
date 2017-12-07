@@ -63,6 +63,11 @@ public class EnduranceController implements Initializable {
         handleEnduranceSelection();
     }
 
+    @FXML
+    private void addEndurance() {
+
+    }
+
     private void handleEnduranceSelection() {
         swimmingOptions.setVisible(false);
         cyclingOptions.setVisible(false);
