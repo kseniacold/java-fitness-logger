@@ -1,22 +1,30 @@
 package com.cs56fitnessapp.controllers;
 
-import com.cs56fitnessapp.models.workout.CyclingType;
-import com.cs56fitnessapp.models.workout.EnduranceType;
-import com.cs56fitnessapp.models.workout.SwimmingStroke;
+import com.cs56fitnessapp.FitnessApplication;
+import com.cs56fitnessapp.models.User;
+import com.cs56fitnessapp.models.workout.*;
+import com.cs56fitnessapp.services.UserService;
+import com.cs56fitnessapp.services.WorkoutService;
 import com.cs56fitnessapp.utils.CyclingTypeConverter;
 import com.cs56fitnessapp.utils.EnduranceTypeConverter;
 import com.cs56fitnessapp.utils.SwimmingStrokeConverter;
+import com.cs56fitnessapp.utils.UnitsConverter;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 /**
@@ -30,6 +38,9 @@ public class EnduranceController implements Initializable {
     private Parent root;
 
     @FXML
+    private Label title;
+
+    @FXML
     private ChoiceBox<EnduranceType> endType;
 
     @FXML
@@ -39,7 +50,7 @@ public class EnduranceController implements Initializable {
     private TextField endDistance;
 
     @FXML
-    private HBox swimmingOptions;
+    private VBox swimmingOptions;
 
     @FXML
     private HBox cyclingOptions;
@@ -49,6 +60,9 @@ public class EnduranceController implements Initializable {
 
     @FXML
     private ChoiceBox<SwimmingStroke> stroke;
+
+    @FXML
+    private CheckBox swimmingTraining;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -64,8 +78,39 @@ public class EnduranceController implements Initializable {
     }
 
     @FXML
-    private void addEndurance() {
+    private void addEndurance() throws SQLException, ClassNotFoundException {
+        /** Initialize window obj */
+        window = (Stage)title.getScene().getWindow();
+        User user = FitnessApplication.getUser();
+        Endurance endurance = null;
 
+        LocalDateTime date = LocalDateTime.now();
+        double timePerformingHrs = UnitsConverter.minsToHrs(Double.parseDouble(endDuration.getText()));
+        EnduranceType enduranceTypeValue = endType.getValue();
+        double distanceKm = UnitsConverter.milesToKm(Double.parseDouble(endDistance.getText()));
+        boolean swimmingTrainingValue = swimmingTraining.isSelected();
+        SwimmingStroke swimmingStroke = stroke.getValue();
+        CyclingType cyclingTypeValue = cyclingType.getValue();
+
+        /************************************************************************/
+
+        // Create endurance instance from data fetched
+        if (enduranceTypeValue == EnduranceType.RUNNING) {
+            endurance = new Running(user, date, distanceKm, timePerformingHrs);
+        }
+
+        if (enduranceTypeValue == EnduranceType.SWIMMING) {
+            endurance = new Swimming(user, date, distanceKm, timePerformingHrs, swimmingStroke);
+            ((Swimming)endurance).setTraining(swimmingTrainingValue);
+        }
+
+        if (enduranceTypeValue == EnduranceType.CYCLING) {
+            endurance = new Cycling(user, date, distanceKm, timePerformingHrs, cyclingTypeValue);
+        }
+
+        /************************************************************************/
+        WorkoutService workoutService = new WorkoutService();
+        workoutService.addEnduranceToDb(endurance);
     }
 
     private void handleEnduranceSelection() {

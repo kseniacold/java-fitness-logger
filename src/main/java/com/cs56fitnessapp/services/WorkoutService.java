@@ -78,7 +78,7 @@ public class WorkoutService {
         Connection connection = sqLite.getConnectionObj();
         Statement statement = connection.createStatement();
 
-        // Fetch data from endurance_workout table first
+        // Fetch data from endurance_workout table
         String sqlQueryEnd = "SELECT * FROM endurance_workout WHERE id = '" + id + "'";
         rs = statement.executeQuery(sqlQueryEnd);
 
