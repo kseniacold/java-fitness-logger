@@ -41,8 +41,7 @@ public class WorkoutService {
         /************************************************************************/
 
         // open sqlite connection
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
         LocalDateTime dateTime = endurance.getDate();
         String formattedDateTime = DateFormatter.dateTimeToString(dateTime);
@@ -65,8 +64,7 @@ public class WorkoutService {
         User user = FitnessApplication.getUser();
 
         // open sqlite connection
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
         LocalDateTime dateTime = strengthTraining.getDate();
@@ -99,8 +97,7 @@ public class WorkoutService {
 
         /************************************************************************/
 
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
         // Fetch data from endurance_workout table
@@ -148,8 +145,7 @@ public class WorkoutService {
 
         /************************************************************************/
         // open sqlite connection
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
         String formattedDate = DateFormatter.dateToString(date);
@@ -197,8 +193,7 @@ public class WorkoutService {
 
         /************************************************************************/
         // open sqlite connection
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
         String formattedDate = DateFormatter.dateToString(date);
