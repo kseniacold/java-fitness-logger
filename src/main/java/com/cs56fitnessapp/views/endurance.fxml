@@ -81,40 +81,6 @@
                          <RowConstraints />
                      </rowConstraints>
                  </GridPane>
-
-                 <!-- <VBox fx:id="swimmingOptions">
-                     <HBox styleClass="options-horizontal">
-                         <Label styleClass="endurance__label" text="Swimming Stroke" />
-                         <ChoiceBox fx:id="stroke" prefHeight="26.0" prefWidth="130.0" styleClass="options__checkbox">
-                             <items>
-                                 <FXCollections fx:factory="observableArrayList">
-                                     <SwimmingStroke fx:value="FREESTYLE" />
-                                     <SwimmingStroke fx:value="BREASTSTROKE" />
-                                     <SwimmingStroke fx:value="BACKSTROKE" />
-                                     <SwimmingStroke fx:value="BUTTERFLY" />
-                                     <SwimmingStroke fx:value="MIXED" />
-                                 </FXCollections>
-                             </items>
-                         </ChoiceBox>
-                     </HBox>
-                     <HBox styleClass="options-horizontal">
-                         <Label styleClass="endurance__label" text="Are you a training athlete?" />
-                         <CheckBox fx:id="swimmingTraining"/>
-                     </HBox>
-                 </VBox> -->
-                 <!-- <HBox fx:id="cyclingOptions">
-                     <Label styleClass="endurance__label" text="Cycling Type" />
-                     <ChoiceBox fx:id="cyclingType" styleClass="options__checkbox" opacity="0.5" prefHeight="26.0" prefWidth="160">
-                         <items>
-                             <FXCollections fx:factory="observableArrayList">
-                                 <CyclingType fx:value="MOUNTAIN" />
-                                 <CyclingType fx:value="RACING" />
-                                 <CyclingType fx:value="LEISURE" />
-                             </FXCollections>
-                         </items>
-                     </ChoiceBox>
-                 </HBox> -->
-
                  <HBox alignment="BOTTOM_CENTER" styleClass="button__wrapper">
                      <Button fx:id="addButton" onAction="#addEndurance" styleClass="endurance__button">
                          <HBox.margin>
@@ -127,40 +93,5 @@
              </VBox>
          </children>
      </VBox>
-
-
-
-             <!-- <VBox fx:id="swimmingOptions">
-                 <HBox styleClass="options-horizontal">
-                     <Label layoutX="202.0" layoutY="3.0" text="Swimming Stroke" textFill="#fbff96">
-                         <font>
-                             <Font size="18.0" />
-                         </font>
-                     </Label>
-                     <ChoiceBox fx:id="stroke" layoutX="268.0" layoutY="1.0" prefHeight="26.0" prefWidth="130.0" styleClass="options__checkbox">
-                         <items>
-                             <FXCollections fx:factory="observableArrayList">
-                                 <SwimmingStroke fx:value="FREESTYLE" />
-                                 <SwimmingStroke fx:value="BREASTSTROKE" />
-                                 <SwimmingStroke fx:value="BACKSTROKE" />
-                                 <SwimmingStroke fx:value="BUTTERFLY" />
-                                 <SwimmingStroke fx:value="MIXED" />
-                             </FXCollections>
-                         </items>
-                     </ChoiceBox>
-                 </HBox>
-                 <HBox styleClass="options-horizontal">
-                     <Label styleClass="options__label" text="Are you a training athlete?" />
-                     <CheckBox fx:id="swimmingTraining"/>
-                 </HBox>
-             </VBox> -->
-             <!-- <HBox fx:id="cyclingOptions">
-                 <Label layoutX="202.0" layoutY="3.0" text="Cycling Type" textFill="#fbff96">
-                     <font>
-                         <Font size="18.0" />
-                     </font>
-                 </Label>
-
-             </HBox> -->
    </center>
 </BorderPane>
