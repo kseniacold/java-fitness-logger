@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #59517D;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <Label prefHeight="142.0" prefWidth="282.0" text="Strength Training" textFill="#fbff96" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Label>
+    </top>
+    <bottom>
+        <Button alignment="BOTTOM_LEFT" contentDisplay="CENTER" mnemonicParsing="false" opacity="0.5" prefHeight="35.0" prefWidth="70.0" text="Done" textAlignment="JUSTIFY" textFill="#59517d" BorderPane.alignment="BASELINE_RIGHT">
+            <BorderPane.margin>
+                <Insets bottom="20.0" right="50.0" />
+            </BorderPane.margin>
+            <font>
+                <Font size="18.0" />
+            </font></Button>
+    </bottom>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Weight Amount" textFill="#fbff96">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <padding>
+                        <Insets left="150.0" top="40.0" />
+                    </padding></Label>
+                <Label prefHeight="43.0" prefWidth="281.0" text="Duration" textFill="#fbff96">
+                    <padding>
+                        <Insets left="205.0" top="20.0" />
+                    </padding>
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            </children></VBox>
+    </center>
+    <right>
+        <VBox prefHeight="206.0" prefWidth="309.0" BorderPane.alignment="CENTER">
+            <children>
+                <ChoiceBox opacity="0.5" prefHeight="26.0" prefWidth="110.0">
+                    <VBox.margin>
+                        <Insets top="40.0" />
+                    </VBox.margin></ChoiceBox>
+                <TextField opacity="0.5" prefHeight="30.0" prefWidth="125.0">
+                    <VBox.margin>
+                        <Insets right="200.0" top="15.0" />
+                    </VBox.margin>
+                </TextField>
+            </children>
+        </VBox>
+    </right>
+</BorderPane>

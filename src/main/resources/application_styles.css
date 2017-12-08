@@ -31,8 +31,10 @@
 }
 .options__checkbox {
     -fx-opacity: 0.5;
-    -fx-border-color: red;
-    -fx-border-width: 1px;
+}
+
+.options__checkbox:selected {
+    -fx-background-color: #63527d;
 }
 
 /* Welcome Page
@@ -271,4 +273,55 @@
     -fx-pref-height: 52px;
     -fx-background-size: cover, auto;
     -fx-background-image: url("../images/plus-button-104.png");
+    -fx-cursor: hand;
+}
+
+
+/* Strength Page
+-------------------------------------------------*/
+.strength__label {
+    -fx-fill: #E6E6E6;
+    -fx-text-fill: #E6E6E6;
+    -fx-text-alignment: left;
+    -fx-alignment: bottom-left;
+    -fx-font-size: 16px;
+    -fx-graphic-text-gap: 0;
+    -fx-line-spacing: 1em;
+    -fx-padding: 8px 0 8px 0;
+}
+
+.strength__button {
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-pref-width: 52px;
+    -fx-pref-height: 52px;
+    -fx-background-size: cover, auto;
+    -fx-background-image: url("../images/plus-button-104.png");
+    -fx-cursor: hand;
+}
+
+/* Endurance Page
+-------------------------------------------------*/
+
+.endurance__label {
+    -fx-fill: #E6E6E6;
+    -fx-text-fill: #E6E6E6;
+    -fx-text-alignment: left;
+    -fx-alignment: bottom-left;
+    -fx-font-size: 16px;
+    -fx-graphic-text-gap: 0;
+    -fx-line-spacing: 1em;
+    -fx-padding: 8px 0 8px 0;
+}
+
+.endurance__button {
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-pref-width: 52px;
+    -fx-pref-height: 52px;
+    -fx-background-size: cover, auto;
+    -fx-background-image: url("../images/plus-button-104.png");
+    -fx-cursor: hand;
 }
