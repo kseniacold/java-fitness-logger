@@ -39,8 +39,7 @@ public class WorkoutService {
         /************************************************************************/
 
         // open sqlite connection
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
         LocalDateTime dateTime = endurance.getDate();
         String formattedDateTime = DateFormatter.dateTimeToString(dateTime);
@@ -56,15 +55,14 @@ public class WorkoutService {
                 "'" + user.getId() + "')";
 
         statement.executeUpdate(sqlQuery);
-        connection.close();
+        SqLiteConnection.closeConnection();
     }
 
     public static void addStrengthToDb(StrengthTraining strengthTraining) throws SQLException, ClassNotFoundException {
         User user = FitnessApplication.getUser();
 
         // open sqlite connection
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
         LocalDateTime dateTime = strengthTraining.getDate();
@@ -77,7 +75,7 @@ public class WorkoutService {
                 "'" + user.getId() + "')";
 
         statement.executeUpdate(sqlQuery);
-        connection.close();
+        SqLiteConnection.closeConnection();
     }
 
     public static Endurance getEnduranceById(long id) throws SQLException, ClassNotFoundException {
@@ -97,8 +95,7 @@ public class WorkoutService {
 
         /************************************************************************/
 
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
         // Fetch data from endurance_workout table
@@ -117,7 +114,7 @@ public class WorkoutService {
 
         }
 
-        connection.close();
+        SqLiteConnection.closeConnection();
 
         /************************************************************************/
 
@@ -146,13 +143,10 @@ public class WorkoutService {
 
         /************************************************************************/
         // open sqlite connection
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
         String formattedDate = DateFormatter.dateToString(date);
-        // TODO remove below
-        System.out.println(formattedDate);
 
         String sqlQuery = "SELECT * FROM endurance_workout WHERE date LIKE '%" + formattedDate + "%'";
         ResultSet rs = statement.executeQuery(sqlQuery);
@@ -185,7 +179,7 @@ public class WorkoutService {
             enduranceList.add(endurance);
         }
 
-        connection.close();
+        SqLiteConnection.closeConnection();
         return enduranceList;
     }
 
@@ -195,8 +189,7 @@ public class WorkoutService {
 
         /************************************************************************/
         // open sqlite connection
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
         String formattedDate = DateFormatter.dateToString(date);
@@ -216,7 +209,7 @@ public class WorkoutService {
             strengthTrainings.add(strengthTraining);
         }
 
-        connection.close();
+        SqLiteConnection.closeConnection();
         return strengthTrainings;
     }
 
