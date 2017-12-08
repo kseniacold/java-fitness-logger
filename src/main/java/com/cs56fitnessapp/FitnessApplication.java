@@ -45,12 +45,10 @@ public class FitnessApplication extends Application {
             System.out.println("Something went wrong");
         }
 
-        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Heebo:300,400,500,700,800,900|Righteous");
         scene.getStylesheets().add(getClass().getResource("../../resources/application_styles.css").toExternalForm());
 
         // show scene
         stage.setScene(scene);
-        stage.show();
 
         // Uncomment to quickly reset db
         // resetApplication();

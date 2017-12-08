@@ -77,5 +77,4 @@ public class StrengthController implements Initializable {
         // show Day scene
         window.setScene(scene);
     }
-
 }
