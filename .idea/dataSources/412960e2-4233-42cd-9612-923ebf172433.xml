@@ -107,14 +107,17 @@
     <column id="38" parent="9" name="time_performing_hrs">
       <Position>4</Position>
       <DataType>DECIMAL|0</DataType>
+      <NotNull>1</NotNull>
     </column>
     <column id="39" parent="9" name="endurance_type">
       <Position>5</Position>
       <DataType>VARCHAR(8)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
     <column id="40" parent="9" name="distance_km">
       <Position>6</Position>
       <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
     </column>
     <column id="41" parent="9" name="swimming_training">
       <Position>7</Position>
@@ -443,10 +446,12 @@
     <column id="114" parent="18" name="time_performing_hrs">
       <Position>4</Position>
       <DataType>DECIMAL|0</DataType>
+      <NotNull>1</NotNull>
     </column>
     <column id="115" parent="18" name="strength_training_level">
       <Position>5</Position>
       <DataType>VARCHAR(6)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
     <column id="116" parent="18" name="user_id">
       <Position>6</Position>

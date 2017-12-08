@@ -6,6 +6,7 @@ import com.cs56fitnessapp.models.User;
 import com.cs56fitnessapp.models.workout.*;
 import com.cs56fitnessapp.utils.DateFormatter;
 
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -43,10 +44,8 @@ public class WorkoutService {
         SqLiteConnection sqLite = new SqLiteConnection();
         Connection connection = sqLite.getConnectionObj();
         Statement statement = connection.createStatement();
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateTime = endurance.getDate();
-        String formattedDateTime = dateTime.format(formatter);
+        String formattedDateTime = DateFormatter.dateTimeToString(dateTime);
 
         String sqlQuery = "INSERT INTO endurance_workout(date, time_performing_hrs, endurance_type, distance_km, swimming_training, swimming_stroke, cycling_type, user_id) VALUES(" +
                 "'" + formattedDateTime + "'," +
@@ -56,6 +55,27 @@ public class WorkoutService {
                 "'" + swimmingTraining + "'," +
                 "'" + (stroke != null ? stroke.getDbValue() : null) + "'," +
                 "'" + (cyclingType != null ? cyclingType.getDbValue() : null) + "'," +
+                "'" + user.getId() + "')";
+
+        statement.executeUpdate(sqlQuery);
+        connection.close();
+    }
+
+    public static void addStrengthToDb(StrengthTraining strengthTraining) throws SQLException, ClassNotFoundException {
+        User user = FitnessApplication.getUser();
+
+        // open sqlite connection
+        SqLiteConnection sqLite = new SqLiteConnection();
+        Connection connection = sqLite.getConnectionObj();
+        Statement statement = connection.createStatement();
+
+        LocalDateTime dateTime = strengthTraining.getDate();
+        String formattedDateTime = DateFormatter.dateTimeToString(dateTime);
+
+        String sqlQuery = "INSERT INTO strength_training(date, time_performing_hrs, strength_training_level, user_id) VALUES(" +
+                "'" + formattedDateTime + "'," +
+                "'" + strengthTraining.getTimePerformingHours() + "'," +
+                "'" + strengthTraining.getStrengthTrainingLevel().getDbValue() + "'," +
                 "'" + user.getId() + "')";
 
         statement.executeUpdate(sqlQuery);
@@ -171,9 +191,34 @@ public class WorkoutService {
         return enduranceList;
     }
 
-    public static List<StrengthTraining> getStrengthTrainingsByDate(LocalDate date) {
+    public static List<StrengthTraining> getStrengthListByDate(LocalDate date) throws SQLException, ClassNotFoundException {
         List<StrengthTraining> strengthTrainings = new ArrayList<>();
+        User user = FitnessApplication.getUser();
 
+        /************************************************************************/
+        // open sqlite connection
+        SqLiteConnection sqLite = new SqLiteConnection();
+        Connection connection = sqLite.getConnectionObj();
+        Statement statement = connection.createStatement();
+
+        String formattedDate = DateFormatter.dateToString(date);
+
+        String sqlQuery = "SELECT * FROM strength_training WHERE date LIKE '%" + formattedDate + "%'";
+        ResultSet rs = statement.executeQuery(sqlQuery);
+
+        while(rs.next()) {
+            StrengthTraining strengthTraining = null;
+            // read the result set
+            Long id = rs.getLong("id");
+            LocalDateTime dateTime = DateFormatter.stingToDateTime(rs.getString("date"));
+            StrengthTrainingLevel strengthLevel = StrengthTrainingLevel.fromDbValue(rs.getString("strength_training_level"));
+            double timePerformingHrs = rs.getDouble("time_performing_hrs");
+
+            strengthTraining = new StrengthTraining(id, user, dateTime, timePerformingHrs, strengthLevel);
+            strengthTrainings.add(strengthTraining);
+        }
+
+        connection.close();
         return strengthTrainings;
     }
 
