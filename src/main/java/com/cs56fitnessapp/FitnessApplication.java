@@ -21,16 +21,15 @@ public class FitnessApplication extends Application {
     @Override
     public void start(Stage stage) {
         try {
-            SqLiteConnection sqLite = new SqLiteConnection();
-            sqLite.getConnection();
+            SqLiteConnection.getConnection();
 
             // Initialize tables
-            sqLite.initialize();
+            SqLiteConnection.initialize();
             if (UserService.dbHasUser()) {
                 // Initialize application user
                 this.user = UserService.getUserById(USER_ID);
             }
-            sqLite.closeConnection();
+            SqLiteConnection.closeConnection();
 
             if (user != null) {
                 root = FXMLLoader.load(getClass().getResource("views/day.fxml"));
@@ -52,7 +51,6 @@ public class FitnessApplication extends Application {
         // show scene
         stage.setScene(scene);
         stage.show();
-
         // Uncomment to quickly reset db
         // resetApplication();
     }
@@ -64,8 +62,8 @@ public class FitnessApplication extends Application {
 
     private void resetApplication () {
         try {
-            SqLiteConnection sqLite = new SqLiteConnection();
-            sqLite.resetDb();
+            SqLiteConnection.getConnection();
+            SqLiteConnection.resetDb();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -73,14 +71,13 @@ public class FitnessApplication extends Application {
 
     public static User getUser() throws SQLException, ClassNotFoundException {
         if (user == null) {
-            SqLiteConnection sqLite = new SqLiteConnection();
-            sqLite.getConnection();
+            SqLiteConnection.getConnection();
 
             if (UserService.dbHasUser()) {
                 // Initialize application user
                 user = UserService.getUserById(USER_ID);
             }
-            sqLite.closeConnection();
+            SqLiteConnection.closeConnection();
         }
 
         return user;

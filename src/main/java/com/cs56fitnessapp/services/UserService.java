@@ -30,8 +30,7 @@ public class UserService {
     public static void addUserToDb(User user) {
         // TODO refactor try - catch to be handled by the caller
         try {
-            SqLiteConnection sqLite = new SqLiteConnection();
-            Connection connection = sqLite.getConnectionObj();
+            Connection connection = SqLiteConnection.getConnectionObj();
 
             Statement statement = connection.createStatement();
             String sqlQuery = "INSERT INTO user(name, username, email, password, date_of_birth, gender, body_mass_kg, height_cm, goal, weekly_goal_kg, activity_level) VALUES(" +
@@ -69,8 +68,7 @@ public class UserService {
         double weeklyGoalKg = 0.0;
         ActivityLevel activityLevel = null;
 
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
         String sqlQuery = "SELECT * FROM user WHERE id = '" + id + "'";
@@ -101,8 +99,7 @@ public class UserService {
      * @throws ClassNotFoundException
      */
     public static boolean dbHasUser() throws SQLException, ClassNotFoundException {
-        SqLiteConnection sqLite = new SqLiteConnection();
-        Connection connection = sqLite.getConnectionObj();
+        Connection connection = SqLiteConnection.getConnectionObj();
 
         Statement statement = connection.createStatement();
 

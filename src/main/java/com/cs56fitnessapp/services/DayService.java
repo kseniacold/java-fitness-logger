@@ -8,7 +8,6 @@ import com.cs56fitnessapp.models.workout.Workout;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Ksenia Koldaeva

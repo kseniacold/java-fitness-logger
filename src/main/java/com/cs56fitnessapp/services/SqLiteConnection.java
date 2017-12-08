@@ -23,7 +23,7 @@ public class SqLiteConnection {
      * Initializes application tables when first time executed
      * @throws SQLException if a problem with table creation occurs
      */
-    public void initialize() throws SQLException, ClassNotFoundException {
+    public static void initialize() throws SQLException, ClassNotFoundException {
         if (!SqLiteConnection.hasData) {
             SqLiteConnection.hasData = true;
             Statement statement = connection.createStatement();
@@ -180,7 +180,7 @@ public class SqLiteConnection {
      * @throws ClassNotFoundException if sqlite-JDBC driver is not found
      * @throws SQLException when sqlite queries do not execute correctly
      */
-    public void getConnection() throws ClassNotFoundException, SQLException {
+    public static void getConnection() throws ClassNotFoundException, SQLException {
         // load the sqlite-JDBC driver using the current class loader
         Class.forName("org.sqlite.JDBC");
         // create a database connection
@@ -193,18 +193,16 @@ public class SqLiteConnection {
      * @throws ClassNotFoundException if sqlite-JDBC driver is not found
      * @throws SQLException when sqlite queries do not execute correctly
      */
-    public Connection getConnectionObj() throws ClassNotFoundException, SQLException {
-        // load the sqlite-JDBC driver using the current class loader
-        Class.forName("org.sqlite.JDBC");
-
-        // create a database connection
-        connection = DriverManager.getConnection("jdbc:sqlite:fitness-app.db");
+    public static Connection getConnectionObj() throws ClassNotFoundException, SQLException {
+        if (connection == null) {
+          getConnection();
+        }
         return connection;
     }
 
-    public void resetDb() throws ClassNotFoundException, SQLException {
+    public static void resetDb() throws ClassNotFoundException, SQLException {
         if(connection == null) {
-            this.getConnection();
+            getConnection();
         }
         SqLiteConnection.hasData = false;
         Statement statement = connection.createStatement();
@@ -236,9 +234,9 @@ public class SqLiteConnection {
         System.out.println("Database is reset.");
     }
 
-    public void testDb() throws SQLException, ClassNotFoundException {
+    public static void testDb() throws SQLException, ClassNotFoundException {
         if(connection == null) {
-            this.getConnection();
+            getConnection();
         }
 
         Statement statement = connection.createStatement();
@@ -260,16 +258,16 @@ public class SqLiteConnection {
      * Closes previously opened connection
      * @throws SQLException when connection close fails
      */
-    public void closeConnection() throws SQLException {
+    public static void closeConnection() throws SQLException {
         if(connection != null) {
             connection.close();
         }
     }
 
-    public boolean tableExists(String tableName) throws SQLException, ClassNotFoundException {
+    public static boolean tableExists(String tableName) throws SQLException, ClassNotFoundException {
         boolean exists = false;
         if(connection == null) {
-            this.getConnection();
+            getConnection();
         }
 
         DatabaseMetaData dbm = connection.getMetaData();
