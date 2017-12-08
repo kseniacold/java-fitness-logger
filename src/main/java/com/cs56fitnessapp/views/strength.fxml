@@ -50,11 +50,6 @@
                      <RowConstraints />
                      <RowConstraints />
                      <RowConstraints />
-                     <RowConstraints />
-                     <RowConstraints />
-                     <RowConstraints />
-                     <RowConstraints />
-                     <RowConstraints />
                   </rowConstraints>
                </GridPane>
                <HBox alignment="BOTTOM_CENTER" styleClass="button__wrapper">

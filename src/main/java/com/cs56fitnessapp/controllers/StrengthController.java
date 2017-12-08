@@ -47,6 +47,8 @@ public class StrengthController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         /** Set converters from String to enum and back */
         weightAmt.setConverter(new StrengthLevelConverter());
+
+        trainingDuration.setPromptText("minutes");
     }
 
     @FXML
