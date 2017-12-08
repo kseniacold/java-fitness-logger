@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 /**
  * @author Ksenia Koldaeva
  * Created: 10/11/17
- * Last Updated:
+ * Last Updated: 12/07/17
  */
 public class Cycling extends Endurance {
 
@@ -21,8 +21,8 @@ public class Cycling extends Endurance {
      * @param timePerformingHours duration of the cycling workout
      * @param cyclingType cycling workout type
      */
-    public Cycling(User user, LocalDateTime date, double distanceKm, double timePerformingHours, CyclingType cyclingType) {
-        super(user, date, distanceKm, timePerformingHours);
+    public Cycling(Long id, User user, LocalDateTime date, double distanceKm, double timePerformingHours, CyclingType cyclingType) {
+        super(id, user, date, distanceKm, timePerformingHours);
         this.cyclingType = cyclingType;
     }
 

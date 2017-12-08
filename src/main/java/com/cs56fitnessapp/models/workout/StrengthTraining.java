@@ -23,8 +23,8 @@ public class StrengthTraining extends Workout {
      * @param strengthTrainingLevel one of three different kinds of strength training levels
      */
 
-    public StrengthTraining(User user, LocalDateTime date, double timePerformingHours, StrengthTrainingLevel strengthTrainingLevel) {
-        super(user, date);
+    public StrengthTraining(Long id, User user, LocalDateTime date, double timePerformingHours, StrengthTrainingLevel strengthTrainingLevel) {
+        super(id, user, date);
         this.setTimePerformingHours(timePerformingHours);
         this.strengthTrainingLevel = strengthTrainingLevel;
 

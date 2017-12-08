@@ -127,8 +127,8 @@ public class SqLiteConnection {
                     "date DATE NOT NULL, " +
                     "warm_up_hrs DECIMAL, " +
                     "cool_down_hrs DECIMAL, " +
-                    "time_performing_hrs DECIMAL, " +
-                    "strength_training_level VARCHAR(6) REFERENCES strength_training_level(level), " +
+                    "time_performing_hrs DECIMAL NOT NULL, " +
+                    "strength_training_level VARCHAR(6) REFERENCES strength_training_level(level) NOT NULL, " +
                     "user_id INTEGER REFERENCES user(id))" );
 
             // endurance_type table to hold enum variants
@@ -163,9 +163,9 @@ public class SqLiteConnection {
                     "date DATE NOT NULL, " +
                     "warm_up_hrs DECIMAL, " +
                     "cool_down_hrs DECIMAL, " +
-                    "time_performing_hrs DECIMAL, " +
-                    "endurance_type VARCHAR(8) REFERENCES endurance_type(type), " +
-                    "distance_km INTEGER," +
+                    "time_performing_hrs DECIMAL NOT NULL, " +
+                    "endurance_type VARCHAR(8) REFERENCES endurance_type(type) NOT NULL, " +
+                    "distance_km INTEGER NOT NULL," +
                     "swimming_training TINYINT(1), " +
                     "swimming_stroke VARCHAR(10) REFERENCES swimming_stroke(stroke), " +
                     "cycling_type VARCHAR(8) REFERENCES cycling_type(type)," +

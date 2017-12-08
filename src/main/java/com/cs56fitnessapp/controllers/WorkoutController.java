@@ -33,7 +33,7 @@ public class WorkoutController implements Initializable {
     }
 
     @FXML
-    private void addEndurance() throws IOException{
+    private void addEndurance() throws IOException {
         /** Initialize window obj */
         window = (Stage)title.getScene().getWindow();
 
