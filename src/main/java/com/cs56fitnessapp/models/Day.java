@@ -61,7 +61,6 @@ public class Day implements ActivityFacts, DietFacts {
     public void setMealList(ArrayList<Meal> mealList) {
         this.mealList = mealList;
     }
-
     /** Getters and setters end */
 
     public double getCaloriesLeft() {

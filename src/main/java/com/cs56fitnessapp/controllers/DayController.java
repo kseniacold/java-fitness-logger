@@ -4,11 +4,13 @@ import com.cs56fitnessapp.FitnessApplication;
 import com.cs56fitnessapp.models.Day;
 import com.cs56fitnessapp.models.FitnessFormulas;
 import com.cs56fitnessapp.models.User;
+import com.cs56fitnessapp.services.DayService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -56,9 +58,9 @@ public class DayController implements Initializable {
         title.setText(formattedString);
 
         try {
-
             User user = FitnessApplication.getUser();
-            Day day = new Day(localDate, user);
+            Day day = DayService.getDay(LocalDate.now());
+
             long dailyCalorieGoal = Math.round(user.getDailyCalorieGoal());
             long caloriesLeftVaule = Math.round(day.getCaloriesLeft());
             int netValue = day.getCaloriesIn() - day.getCaloriesOut();
@@ -86,7 +88,7 @@ public class DayController implements Initializable {
         window = (Stage)title.getScene().getWindow();
 
 
-        /** Redirect to the day scene */
+        /** Redirect to the workout scene */
         root = FXMLLoader.load(getClass().getResource("../views/workout.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../../../resources/application_styles.css").toExternalForm());

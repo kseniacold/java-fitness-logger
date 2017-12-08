@@ -8,13 +8,16 @@ import com.cs56fitnessapp.services.WorkoutService;
 import com.cs56fitnessapp.utils.StrengthLevelConverter;
 import com.cs56fitnessapp.utils.UnitsConverter;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -47,7 +50,10 @@ public class StrengthController implements Initializable {
     }
 
     @FXML
-    private void addStrength() throws SQLException, ClassNotFoundException {
+    private void addStrength() throws SQLException, ClassNotFoundException, IOException {
+        /** Initialize window obj */
+        window = (Stage)title.getScene().getWindow();
+
         User user = FitnessApplication.getUser();
         StrengthTraining strength = null;
         long centinelId = 0;
@@ -60,6 +66,14 @@ public class StrengthController implements Initializable {
 
         strength = new StrengthTraining(centinelId, user, date, timePerformingHrs, strengthLevel);
         WorkoutService.addStrengthToDb(strength);
+
+        /** Redirect to the day scene */
+        root = FXMLLoader.load(getClass().getResource("../views/day.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("../../../resources/application_styles.css").toExternalForm());
+
+        // show Day scene
+        window.setScene(scene);
     }
 
 }

@@ -45,9 +45,9 @@
                             <RowConstraints />
                         </rowConstraints>
                     </GridPane>
-                    <HBox alignment="CENTER" styleClass="button__wrapper">
+                    <!-- <HBox alignment="CENTER" styleClass="button__wrapper">
                         <Button styleClass="day__button" fx:id="addButton" />
-                    </HBox>
+                    </HBox> -->
                 </VBox>
                 <VBox fx:id="prompt" alignment="CENTER" layoutY="-400.0" styleClass="prompt__container container">
                     <children>

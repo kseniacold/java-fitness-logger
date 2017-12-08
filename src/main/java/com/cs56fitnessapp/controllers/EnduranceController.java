@@ -12,8 +12,10 @@ import com.cs56fitnessapp.utils.UnitsConverter;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -22,6 +24,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -79,9 +82,10 @@ public class EnduranceController implements Initializable {
     }
 
     @FXML
-    private void addEndurance() throws SQLException, ClassNotFoundException {
+    private void addEndurance() throws SQLException, ClassNotFoundException, IOException {
         /** Initialize window obj */
         window = (Stage)title.getScene().getWindow();
+
         User user = FitnessApplication.getUser();
         Endurance endurance = null;
         long centinelId = 0;
@@ -114,8 +118,13 @@ public class EnduranceController implements Initializable {
         WorkoutService workoutService = new WorkoutService();
         workoutService.addEnduranceToDb(endurance);
 
-        LocalDate today = LocalDate.now();
-        workoutService.getEnduranceListByDate(today);
+        /** Redirect to the day scene */
+        root = FXMLLoader.load(getClass().getResource("../views/day.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("../../../resources/application_styles.css").toExternalForm());
+
+        // show Day scene
+        window.setScene(scene);
     }
 
     private void handleEnduranceSelection() {
