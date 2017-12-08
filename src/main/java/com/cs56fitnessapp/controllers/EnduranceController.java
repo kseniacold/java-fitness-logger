@@ -54,10 +54,19 @@ public class EnduranceController implements Initializable {
     private TextField endDistance;
 
     @FXML
-    private VBox swimmingOptions;
+    private Label strokeLbl;
 
     @FXML
-    private HBox cyclingOptions;
+    private Label trainingLbl;
+
+    @FXML
+    private Label cyclingLbl;
+
+    // @FXML
+    // private VBox swimmingOptions;
+
+    // @FXML
+    // private HBox cyclingOptions;
 
     @FXML
     private ChoiceBox<CyclingType> cyclingType;
@@ -128,28 +137,51 @@ public class EnduranceController implements Initializable {
     }
 
     private void handleEnduranceSelection() {
-        swimmingOptions.setVisible(false);
-        cyclingOptions.setVisible(false);
+        strokeLbl.setVisible(false);
+        stroke.setVisible(false);
+
+        trainingLbl.setVisible(false);
+        swimmingTraining.setVisible(false);
+
+        cyclingLbl.setVisible(false);
+        cyclingType.setVisible(false);
 
         endType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EnduranceType>() {
             @Override
             public void changed(ObservableValue<? extends EnduranceType> observable, EnduranceType oldValue, EnduranceType newValue) {
                 switch (newValue) {
                     case SWIMMING:
-                        cyclingOptions.setVisible(false);
                         cyclingType.setValue(null);
+                        cyclingLbl.setVisible(false);
+                        cyclingType.setVisible(false);
 
-                        swimmingOptions.setVisible(true);
+                        strokeLbl.setVisible(true);
+                        stroke.setVisible(true);
+
+                        trainingLbl.setVisible(true);
+                        swimmingTraining.setVisible(true);
+
                         break;
                     case CYCLING:
-                        swimmingOptions.setVisible(false);
                         stroke.setValue(null);
+                        strokeLbl.setVisible(false);
+                        stroke.setVisible(false);
+                        trainingLbl.setVisible(false);
+                        swimmingTraining.setVisible(false);
 
-                        cyclingOptions.setVisible(true);
+                        cyclingLbl.setVisible(true);
+                        cyclingType.setVisible(true);
+
                         break;
                     case RUNNING:
-                        swimmingOptions.setVisible(false);
-                        cyclingOptions.setVisible(false);
+                        strokeLbl.setVisible(false);
+                        stroke.setVisible(false);
+
+                        trainingLbl.setVisible(false);
+                        swimmingTraining.setVisible(false);
+
+                        cyclingLbl.setVisible(false);
+                        cyclingType.setVisible(false);
 
                         stroke.setValue(null);
                         cyclingType.setValue(null);

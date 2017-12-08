@@ -5,13 +5,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
 
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.collections.FXCollections?>
 <?import com.cs56fitnessapp.models.workout.StrengthTrainingLevel?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
 <BorderPane fx:controller="com.cs56fitnessapp.controllers.StrengthController" prefHeight="800.0" prefWidth="1200.0" styleClass="pane__wrapper" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <HBox alignment="CENTER" styleClass="nav">
@@ -19,32 +22,45 @@
       </HBox>
    </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" styleClass="strength__container container">
          <children>
-            <Label layoutX="144.0" layoutY="45.0" text="Weight Amount" textFill="#fbff96">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="201.0" layoutY="97.0" text="Duration" textFill="#fbff96">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <TextField fx:id="trainingDuration" layoutX="294.0" layoutY="96.0" opacity="0.5" prefHeight="26.0" prefWidth="130.0" />
-            <ChoiceBox fx:id="weightAmt" layoutX="294.0" layoutY="44.0" opacity="0.5" prefHeight="26.0" prefWidth="130.0">
-               <items>
-                  <FXCollections fx:factory="observableArrayList">
-                     <StrengthTrainingLevel fx:value="HEAVY" />
-                     <StrengthTrainingLevel fx:value="MEDIUM" />
-                     <StrengthTrainingLevel fx:value="LIGHT" />
-                  </FXCollections>
-               </items>
-            </ChoiceBox>
-             <Button onAction="#addStrength" fx:id="submit" layoutX="489.0" layoutY="186.0" mnemonicParsing="false" opacity="0.5" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #ffffff;" text="Submit" textFill="#59517d">
-                 <font>
-                     <Font size="16.0" />
-                 </font></Button>
+            <VBox styleClass="stats__wrapper">
+               <GridPane alignment="CENTER" styleClass="stats__grid">
+                  <!--Label-->
+                   <Label fx:id="namelbl" alignment="BOTTOM_LEFT" styleClass="strength__label" text="Duration" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.valignment="BOTTOM" />
+                   <TextField fx:id="trainingDuration" styleClass="strength__input" GridPane.columnIndex="2" />
+
+                  <Label fx:id="servingsizelbl" styleClass="strength__label" text="Weight Amount" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                   <ChoiceBox fx:id="weightAmt" styleClass="options__checkbox" opacity="0.5" prefHeight="26.0" prefWidth="160" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                       <items>
+                           <FXCollections fx:factory="observableArrayList">
+                               <StrengthTrainingLevel fx:value="HEAVY" />
+                               <StrengthTrainingLevel fx:value="MEDIUM" />
+                               <StrengthTrainingLevel fx:value="LIGHT" />
+                           </FXCollections>
+                       </items>
+                   </ChoiceBox>
+
+                  <columnConstraints>
+                     <ColumnConstraints prefWidth="167.0" />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+               </GridPane>
+               <HBox alignment="BOTTOM_CENTER" styleClass="button__wrapper">
+                  <Button fx:id="addButton" onAction="#addStrength" styleClass="strength__button">
+                     <HBox.margin>
+                        <Insets top="35.0" />
+                     </HBox.margin></Button>
+               </HBox>
+               <VBox.margin>
+                  <Insets top="85.0" />
+               </VBox.margin>
+            </VBox>
          </children>
       </VBox>
    </center>
