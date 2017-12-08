@@ -5,8 +5,6 @@ import com.cs56fitnessapp.FitnessApplication;
 import com.cs56fitnessapp.models.User;
 import com.cs56fitnessapp.models.workout.*;
 import com.cs56fitnessapp.utils.DateFormatter;
-
-import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

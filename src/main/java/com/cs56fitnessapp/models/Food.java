@@ -5,6 +5,7 @@ package com.cs56fitnessapp.models;
  */
 
 public class Food {
+    private long id;
     private String servingSize;
     private String name;
     private int calories;
@@ -28,10 +29,21 @@ public class Food {
      * @param servingSize
      * @param calories
      */
-    public Food(String name, String servingSize, int calories) {
+    public Food(long id, String name, String servingSize, int calories) {
+        this.id = id;
         this.servingSize = servingSize;
         this.name = name;
         this.calories = calories;
+    }
+
+    public Food(long id, String servingSize, String name, int calories, double totalFat, double totalCarb, double protein) {
+        this.id = id;
+        this.servingSize = servingSize;
+        this.name = name;
+        this.calories = calories;
+        this.totalFat = totalFat;
+        this.totalCarb = totalCarb;
+        this.protein = protein;
     }
 
     // Getters and Setters begin

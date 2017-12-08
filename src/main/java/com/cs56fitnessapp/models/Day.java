@@ -19,16 +19,21 @@ public class Day implements ActivityFacts, DietFacts {
     private User user;
 
     /** WorkoutList */
-    private ArrayList <Workout> workoutList;
+    private ArrayList<Workout> workoutList;
 
     /** MealList */
-    private ArrayList <Meal> mealList;
+    // TODO further additional functionality to sort FoodEntries into Meals
+    private ArrayList<Meal> mealList;
+
+    /** FoodEntryList */
+    private ArrayList<FoodEntry> foodEntries;
 
     public Day (LocalDate date, User user){
         this.date = date;
         this.user = user;
-        this.workoutList = new ArrayList <Workout>();
-        this.mealList = new ArrayList <Meal>();
+        this.workoutList = new ArrayList<Workout>();
+        this.mealList = new ArrayList<Meal>();
+        this.foodEntries = new ArrayList<FoodEntry>();
     }
 
     /** Getters and setters start */
@@ -61,6 +66,15 @@ public class Day implements ActivityFacts, DietFacts {
     public void setMealList(ArrayList<Meal> mealList) {
         this.mealList = mealList;
     }
+
+    public ArrayList<FoodEntry> getFoodEntries() {
+        return foodEntries;
+    }
+
+    public void setFoodEntries(ArrayList<FoodEntry> foodEntries) {
+        this.foodEntries = foodEntries;
+    }
+
     /** Getters and setters end */
 
     public double getCaloriesLeft() {

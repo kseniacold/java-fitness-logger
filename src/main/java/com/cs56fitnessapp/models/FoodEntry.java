@@ -1,6 +1,5 @@
 package com.cs56fitnessapp.models;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author Ksenia Koldaeva
@@ -9,7 +8,7 @@ import java.time.LocalDate;
  */
 
 public class FoodEntry implements DietFacts {
-    private LocalDate date;
+    private LocalDateTime date;
     private Food food;
     private double amountOfServings;
 
@@ -19,7 +18,7 @@ public class FoodEntry implements DietFacts {
      * @param food - food consumed
      * @param amountOfServings - amount of servings consumed
      */
-    public FoodEntry(LocalDate date, Food food, double amountOfServings) {
+    public FoodEntry(LocalDateTime date, Food food, double amountOfServings) {
         this.date = date;
         this.food = food;
         this.amountOfServings = amountOfServings;
@@ -27,11 +26,11 @@ public class FoodEntry implements DietFacts {
 
     // Start getters and setters
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
