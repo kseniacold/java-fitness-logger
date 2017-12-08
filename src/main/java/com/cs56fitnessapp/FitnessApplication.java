@@ -51,6 +51,7 @@ public class FitnessApplication extends Application {
         // show scene
         stage.setScene(scene);
         stage.show();
+
         // Uncomment to quickly reset db
         // resetApplication();
     }

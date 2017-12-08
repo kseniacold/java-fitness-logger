@@ -47,7 +47,7 @@ public class UserService {
                     "'" + user.getActivityLevel().getDbValue() + "')";
 
             statement.executeUpdate(sqlQuery);
-            connection.close();
+            SqLiteConnection.closeConnection();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -89,7 +89,7 @@ public class UserService {
             activityLevel = rs.getString("activity_level") == null ? null : ActivityLevel.fromDbValue(rs.getString("activity_level"));
         }
 
-        connection.close();
+        SqLiteConnection.closeConnection();
         return new User(id, name, username, email, password, dateOfBirth, gender, bodyMassKg, heightCm, goal, weeklyGoalKg, activityLevel);
     }
 
@@ -116,7 +116,7 @@ public class UserService {
             }
         }
 
-        connection.close();
+        SqLiteConnection.closeConnection();
         return false;
     }
 }
