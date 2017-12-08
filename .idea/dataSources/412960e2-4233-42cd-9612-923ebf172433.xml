@@ -273,6 +273,7 @@
     <column id="75" parent="11" name="food_id">
       <Position>3</Position>
       <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
     </column>
     <index id="76" parent="11" name="sqlite_autoindex_food_entry_1">
       <NameSurrogate>1</NameSurrogate>
