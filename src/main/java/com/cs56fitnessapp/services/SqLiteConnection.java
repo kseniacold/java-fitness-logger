@@ -232,6 +232,8 @@ public class SqLiteConnection {
         if(connection != null) {
             connection.close();
         }
+
+        System.out.println("Database is reset.");
     }
 
     public void testDb() throws SQLException, ClassNotFoundException {
