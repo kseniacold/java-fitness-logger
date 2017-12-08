@@ -24,20 +24,22 @@
             <TextField fx:id="name" GridPane.columnIndex="2" />
 
             <Label fx:id="servingsizelbl" styleClass="stats__label" text="Serving Size" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-            <TextField fx:id="servingsize" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="servingSize" GridPane.columnIndex="2" GridPane.rowIndex="2" />
 
             <Label fx:id="calorieslbl" styleClass="stats__label" text="Calories" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
             <TextField fx:id="calories" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 
             <Label fx:id="totalfatlbl" styleClass="stats__label" text="Total Fat" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
-            <TextField fx:id="totalfat" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="totalFat" GridPane.columnIndex="2" GridPane.rowIndex="4" />
 
             <Label fx:id="totalCarbslbl" styleClass="stats__label" text="Total Carbs" GridPane.rowIndex="5" />
-            <TextField fx:id="totalcarbs" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <TextField fx:id="totalCarbs" GridPane.columnIndex="2" GridPane.rowIndex="5" />
 
             <Label fx:id="proteinlbl" styleClass="stats__label" text="Protein" GridPane.rowIndex="6" />
             <TextField fx:id="protein" GridPane.columnIndex="2" GridPane.rowIndex="6" />
 
+            <Label styleClass="stats__label" text="How many servings did you have?" GridPane.rowIndex="7" />
+            <TextField fx:id="amtOfServings" GridPane.columnIndex="2" GridPane.rowIndex="7" />
 
             <!--Text Field-->
             <columnConstraints>
@@ -57,8 +59,8 @@
             </rowConstraints>
         </GridPane>
             <HBox alignment="BOTTOM_CENTER" styleClass="button__wrapper">
+                <Label styleClass="stats__label" text="Add Food" />
                 <Button fx:id="addButton" onAction="#addFood" styleClass="day__button" />
-                <Label styleClass="stats__label" text="Add  Food" />
             </HBox>
         </VBox>
     </center>

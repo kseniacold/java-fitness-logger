@@ -39,7 +39,7 @@ public class FoodService {
         PreparedStatement statement = connection.prepareStatement(sqlQuery ,
                 Statement.RETURN_GENERATED_KEYS);
 
-        statement.executeUpdate(sqlQuery);
+        statement.executeUpdate();
         try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
             if (generatedKeys.next()) {
                 foodId = generatedKeys.getLong(1);
@@ -66,8 +66,10 @@ public class FoodService {
         Connection connection = SqLiteConnection.getConnectionObj();
         Statement statement = connection.createStatement();
 
+        String formattedDateTime = DateFormatter.dateTimeToString(dateTime);
+
         String sqlQuery = "INSERT INTO food_entry(date, amount_of_servings, food_id) VALUES(" +
-                "'" + dateTime + "'," +
+                "'" + formattedDateTime + "'," +
                 "'" + amountOfServings + "'," +
                 "'" + foodId + "')";
 
@@ -88,12 +90,13 @@ public class FoodService {
         /************************************************************************/
         // open sqlite connection
         Connection connection = SqLiteConnection.getConnectionObj();
-        Statement statement = connection.createStatement();
+        Statement statement1 = connection.createStatement();
+        Statement statement2 = connection.createStatement();
 
         String formattedDate = DateFormatter.dateToString(date);
 
         String sqlQueryFoodEntry = "SELECT * FROM food_entry WHERE date LIKE '%" + formattedDate + "%'";
-        ResultSet rsFoodEntry = statement.executeQuery(sqlQueryFoodEntry);
+        ResultSet rsFoodEntry = statement1.executeQuery(sqlQueryFoodEntry);
 
         while(rsFoodEntry.next()) {
             FoodEntry foodEntry;
@@ -103,7 +106,7 @@ public class FoodService {
             LocalDateTime dateTime = DateFormatter.stingToDateTime(rsFoodEntry.getString("date"));
 
             String sqlQueryFood =  "SELECT * FROM food WHERE id = '" + foodId + "'";
-            ResultSet rsFood = statement.executeQuery(sqlQueryFood);
+            ResultSet rsFood = statement2.executeQuery(sqlQueryFood);
 
             while (rsFood.next()) {
                 String name = rsFood.getString("name");

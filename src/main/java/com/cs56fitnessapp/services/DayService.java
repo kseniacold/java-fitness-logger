@@ -2,6 +2,7 @@ package com.cs56fitnessapp.services;
 
 import com.cs56fitnessapp.FitnessApplication;
 import com.cs56fitnessapp.models.Day;
+import com.cs56fitnessapp.models.FoodEntry;
 import com.cs56fitnessapp.models.User;
 import com.cs56fitnessapp.models.workout.Workout;
 
@@ -21,13 +22,20 @@ public class DayService {
         User user = FitnessApplication.getUser();
 
         ArrayList<Workout> workoutList = new ArrayList<>();
+        ArrayList<FoodEntry> foodEntries = new ArrayList<>();
+
         // fetch endurance workouts from the db
         workoutList.addAll(WorkoutService.getEnduranceListByDate(date));
 
         //fetch strength workout from the db
         workoutList.addAll(WorkoutService.getStrengthListByDate(date));
+
+        // fetch food entries from the db
+        foodEntries.addAll(FoodService.getFoodEntryListByDate(date));
+
         day = new Day(date, user);
         day.setWorkoutList(workoutList);
+        day.setFoodEntries(foodEntries);
         return day;
     }
 }
