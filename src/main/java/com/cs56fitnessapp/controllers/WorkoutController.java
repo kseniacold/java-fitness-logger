@@ -37,7 +37,6 @@ public class WorkoutController implements Initializable {
         /** Initialize window obj */
         window = (Stage)title.getScene().getWindow();
 
-
         /** Redirect to the Endurance scene */
         root = FXMLLoader.load(getClass().getResource("../views/endurance.fxml"));
         Scene scene = new Scene(root);
@@ -50,7 +49,6 @@ public class WorkoutController implements Initializable {
     @FXML void addStrength() throws IOException {
         /** Initialize window obj */
         window = (Stage)title.getScene().getWindow();
-
 
         /** Redirect to the Strength scene */
         root = FXMLLoader.load(getClass().getResource("../views/strength.fxml"));

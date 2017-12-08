@@ -19,16 +19,21 @@ public class Day implements ActivityFacts, DietFacts {
     private User user;
 
     /** WorkoutList */
-    private ArrayList <Workout> workoutList;
+    private ArrayList<Workout> workoutList;
 
     /** MealList */
-    private ArrayList <Meal> mealList;
+    // TODO further additional functionality to sort FoodEntries into Meals
+    private ArrayList<Meal> mealList;
+
+    /** FoodEntryList */
+    private ArrayList<FoodEntry> foodEntries;
 
     public Day (LocalDate date, User user){
         this.date = date;
         this.user = user;
-        this.workoutList = new ArrayList <Workout>();
-        this.mealList = new ArrayList <Meal>();
+        this.workoutList = new ArrayList<Workout>();
+        this.mealList = new ArrayList<Meal>();
+        this.foodEntries = new ArrayList<FoodEntry>();
     }
 
     /** Getters and setters start */
@@ -61,6 +66,15 @@ public class Day implements ActivityFacts, DietFacts {
     public void setMealList(ArrayList<Meal> mealList) {
         this.mealList = mealList;
     }
+
+    public ArrayList<FoodEntry> getFoodEntries() {
+        return foodEntries;
+    }
+
+    public void setFoodEntries(ArrayList<FoodEntry> foodEntries) {
+        this.foodEntries = foodEntries;
+    }
+
     /** Getters and setters end */
 
     public double getCaloriesLeft() {
@@ -92,9 +106,9 @@ public class Day implements ActivityFacts, DietFacts {
     @Override
     public int getCaloriesIn() {
         int sum = 0;
-        for (int i = 0; i < mealList.size(); ++i) {
-            Meal meal = mealList.get(i);
-            sum += meal.getCaloriesIn();
+        for (int i = 0; i < foodEntries.size(); ++i) {
+            FoodEntry foodEntry = foodEntries.get(i);
+            sum += foodEntry.getCaloriesIn();
         }
         return sum;
     }
@@ -102,9 +116,9 @@ public class Day implements ActivityFacts, DietFacts {
     @Override
     public double getTotalFatIn() {
         double sum = 0.0;
-        for (int i = 0; i < mealList.size(); ++i) {
-            Meal meal = mealList.get(i);
-            sum += meal.getTotalFatIn();
+        for (int i = 0; i < foodEntries.size(); ++i) {
+            FoodEntry foodEntry = foodEntries.get(i);
+            sum += foodEntry.getTotalFatIn();
         }
         return sum;
     }
@@ -112,9 +126,9 @@ public class Day implements ActivityFacts, DietFacts {
     @Override
     public double getTotalCarbIn() {
         double sum = 0.0;
-        for (int i = 0; i < mealList.size(); ++i) {
-            Meal meal = mealList.get(i);
-            sum += meal.getTotalCarbIn();
+        for (int i = 0; i < foodEntries.size(); ++i) {
+            FoodEntry foodEntry = foodEntries.get(i);
+            sum += foodEntry.getTotalCarbIn();
         }
         return sum;
     }
@@ -122,9 +136,9 @@ public class Day implements ActivityFacts, DietFacts {
     @Override
     public double getProteinIn() {
         double sum = 0.0;
-        for (int i = 0; i < mealList.size(); ++i) {
-            Meal meal = mealList.get(i);
-            sum += meal.getProteinIn();
+        for (int i = 0; i < foodEntries.size(); ++i) {
+            FoodEntry foodEntry = foodEntries.get(i);
+            sum += foodEntry.getProteinIn();
         }
         return sum;
     }

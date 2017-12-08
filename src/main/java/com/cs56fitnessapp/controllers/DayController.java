@@ -79,21 +79,29 @@ public class DayController implements Initializable {
     }
 
     @FXML
-    private void addFood() {
+    private void addFood() throws IOException {
+        /** Initialize window obj */
+        window = (Stage)title.getScene().getWindow();
 
+        /** Redirect to the workout scene */
+        root = FXMLLoader.load(getClass().getResource("../views/food.fxml"));
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("../../../resources/application_styles.css").toExternalForm());
+
+        // show Food scene
+        window.setScene(scene);
     }
 
     @FXML void addWorkout() throws IOException {
         /** Initialize window obj */
         window = (Stage)title.getScene().getWindow();
 
-
         /** Redirect to the workout scene */
         root = FXMLLoader.load(getClass().getResource("../views/workout.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("../../../resources/application_styles.css").toExternalForm());
 
-        // show Day scene
+        // show Workout scene
         window.setScene(scene);
     }
 }

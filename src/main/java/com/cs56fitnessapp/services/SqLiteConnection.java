@@ -93,7 +93,7 @@ public class SqLiteConnection {
                     "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, " +
                     "date DATE, " +
                     "amount_of_servings SMALLINT," +
-                    "food_id INTEGER REFERENCES food(id))");
+                    "food_id INTEGER NOT NULL REFERENCES food(id))");
 
             // meal_title table to hold enum variants
             if (!tableExists("meal_title")) {
