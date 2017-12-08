@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
@@ -83,6 +84,7 @@ public class EnduranceController implements Initializable {
         window = (Stage)title.getScene().getWindow();
         User user = FitnessApplication.getUser();
         Endurance endurance = null;
+        long centinelId = 0;
 
         LocalDateTime date = LocalDateTime.now();
         double timePerformingHrs = UnitsConverter.minsToHrs(Double.parseDouble(endDuration.getText()));
@@ -96,21 +98,24 @@ public class EnduranceController implements Initializable {
 
         // Create endurance instance from data fetched
         if (enduranceTypeValue == EnduranceType.RUNNING) {
-            endurance = new Running(user, date, distanceKm, timePerformingHrs);
+            endurance = new Running(centinelId, user, date, distanceKm, timePerformingHrs);
         }
 
         if (enduranceTypeValue == EnduranceType.SWIMMING) {
-            endurance = new Swimming(user, date, distanceKm, timePerformingHrs, swimmingStroke);
+            endurance = new Swimming(centinelId, user, date, distanceKm, timePerformingHrs, swimmingStroke);
             ((Swimming)endurance).setTraining(swimmingTrainingValue);
         }
 
         if (enduranceTypeValue == EnduranceType.CYCLING) {
-            endurance = new Cycling(user, date, distanceKm, timePerformingHrs, cyclingTypeValue);
+            endurance = new Cycling(centinelId, user, date, distanceKm, timePerformingHrs, cyclingTypeValue);
         }
 
         /************************************************************************/
         WorkoutService workoutService = new WorkoutService();
         workoutService.addEnduranceToDb(endurance);
+
+        LocalDate today = LocalDate.now();
+        workoutService.getEnduranceListByDate(today);
     }
 
     private void handleEnduranceSelection() {

@@ -3,7 +3,7 @@ package com.cs56fitnessapp.models;
 /**
  * @author Saori Shigehisa
  * Created: 10/6/17
- * Last Updated: 11/03/17
+ * Last Updated: 12/07/17
  */
 import com.cs56fitnessapp.models.workout.Workout;
 
@@ -19,10 +19,10 @@ public class Day implements ActivityFacts, DietFacts {
     private User user;
 
     /** WorkoutList */
-    private ArrayList < Workout > workoutList;
+    private ArrayList <Workout> workoutList;
 
     /** MealList */
-    private ArrayList < Meal > mealList;
+    private ArrayList <Meal> mealList;
 
     public Day (LocalDate date, User user){
         this.date = date;
@@ -31,6 +31,7 @@ public class Day implements ActivityFacts, DietFacts {
         this.mealList = new ArrayList <Meal>();
     }
 
+    /** Getters and setters start */
     public boolean addWorkout(Workout workout) {
         return this.workoutList.add(workout);
     }
@@ -53,6 +54,15 @@ public class Day implements ActivityFacts, DietFacts {
         return now.getYear() == date.getYear() && now.getMonth() == date.getMonth() && now.getDayOfMonth() == date.getDayOfMonth();
     }
 
+    public void setWorkoutList(ArrayList<Workout> workoutList) {
+        this.workoutList = workoutList;
+    }
+
+    public void setMealList(ArrayList<Meal> mealList) {
+        this.mealList = mealList;
+    }
+
+    /** Getters and setters end */
 
     public double getCaloriesLeft() {
         return this.user.getDailyCalorieGoal() - this.getCaloriesIn() + this.getCaloriesOut();

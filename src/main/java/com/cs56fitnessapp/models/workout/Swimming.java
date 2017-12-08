@@ -23,8 +23,8 @@ public class Swimming extends Endurance {
      * @param timePerformingHours duration of swimming workout
      * @param swimmingStroke one of 4 swimming strokes or mixed
      */
-    public Swimming(User user, LocalDateTime date, double distanceKm, double timePerformingHours, SwimmingStroke swimmingStroke) {
-        super(user, date, distanceKm, timePerformingHours);
+    public Swimming(Long id, User user, LocalDateTime date, double distanceKm, double timePerformingHours, SwimmingStroke swimmingStroke) {
+        super(id, user, date, distanceKm, timePerformingHours);
         this.swimmingStroke = swimmingStroke;
 
         this.training = swimmingStroke.equals(SwimmingStroke.BUTTERFLY);

@@ -22,8 +22,8 @@ public abstract class Endurance extends Workout {
      * @param distanceKm distance of the endurance workout
      * @param timePerformingHours time of the endurance workout
      */
-    public Endurance(User user, LocalDateTime date, double distanceKm, double timePerformingHours) {
-        super(user, date);
+    public Endurance(Long id, User user, LocalDateTime date, double distanceKm, double timePerformingHours) {
+        super(id, user, date);
         this.distanceKm = distanceKm;
         super.setTimePerformingHours(timePerformingHours);
     }

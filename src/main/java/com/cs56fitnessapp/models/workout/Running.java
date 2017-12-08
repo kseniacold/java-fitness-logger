@@ -18,8 +18,8 @@ public class Running extends Endurance {
      * @param distanceKm distance of the running workout
      * @param timePerformingHours time of the running workout in hours
      */
-    public Running(User user, LocalDateTime date, double distanceKm, double timePerformingHours) {
-        super(user, date, distanceKm, timePerformingHours);
+    public Running(Long id, User user, LocalDateTime date, double distanceKm, double timePerformingHours) {
+        super(id, user, date, distanceKm, timePerformingHours);
     }
 
     /**

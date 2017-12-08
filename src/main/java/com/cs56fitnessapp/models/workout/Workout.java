@@ -26,7 +26,8 @@ public abstract class Workout implements ActivityFacts {
      * @param date date of the workout
      */
 
-    public Workout(User user, LocalDateTime date) {
+    public Workout(long id, User user, LocalDateTime date) {
+        this.id = id;
         this.user = user;
         this.date = date;
     }
