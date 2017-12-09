@@ -28,19 +28,17 @@ using MVC architecture.
 ### Screen shots
 
 * Main screen:
-![alt_text][main_screen]
+![Main screen][main_screen]
 
 [main_screen]: https://github.com/kseniacold/java-fitness-logger/tree/master/docs/images/main_screen.png "Main Application Screen"
 
 * Food entry screen:
-![alt_text][food_screen]
+![Food entry screen][food_screen]
 
 [food_screen]: https://github.com/kseniacold/java-fitness-logger/tree/master/docs/images/food_entry_screen600x400.png "Food Entry Screen"
 
 * Endurance screen:
-![alt_text][endurance_screen]
-
-[endurance_screen]: https://github.com/kseniacold/java-fitness-logger/tree/master/docs/images/endurance_screen_600x400.png "Endurance Screen"
+![Endurance screen](https://github.com/kseniacold/java-fitness-logger/tree/master/docs/images/endurance_screen_600x400.png "Endurance Screen")
 
 ---
 
