@@ -5,6 +5,7 @@ import com.cs56fitnessapp.models.User;
 import com.cs56fitnessapp.models.workout.StrengthTraining;
 import com.cs56fitnessapp.models.workout.StrengthTrainingLevel;
 import com.cs56fitnessapp.services.WorkoutService;
+import com.cs56fitnessapp.utils.FormatterUtils;
 import com.cs56fitnessapp.utils.StrengthLevelConverter;
 import com.cs56fitnessapp.utils.UnitsConverter;
 import javafx.fxml.FXML;
@@ -49,6 +50,9 @@ public class StrengthController implements Initializable {
         weightAmt.setConverter(new StrengthLevelConverter());
 
         trainingDuration.setPromptText("minutes");
+
+        // Set formatter for data entry fields
+        trainingDuration.setTextFormatter(FormatterUtils.getIntFormatter());
     }
 
     @FXML

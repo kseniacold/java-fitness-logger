@@ -1,10 +1,8 @@
 package com.cs56fitnessapp.controllers;
 
-import com.cs56fitnessapp.FitnessApplication;
 import com.cs56fitnessapp.models.Food;
-import com.cs56fitnessapp.models.User;
 import com.cs56fitnessapp.services.FoodService;
-import com.sun.org.apache.xml.internal.security.Init;
+import com.cs56fitnessapp.utils.FormatterUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,8 +21,9 @@ import java.util.ResourceBundle;
 /**
  * @Author jimweezy & Ksenia
  * Created: 12/6/17
- * Last changes: 12/6/17 at 9:11 PM
+ * Last changes: 12/9/17 at 9:11 PM
  **/
+
 public class FoodController implements Initializable {
 
 
@@ -57,7 +56,17 @@ public class FoodController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        servingSize.setPromptText("1 slice, 1 cup etc");
+        totalFat.setPromptText("g");
+        totalCarbs.setPromptText("g");
+        protein.setPromptText("g");
 
+        // Set formatter for data entry fields
+        totalFat.setTextFormatter(FormatterUtils.getDoubleFormatter());
+        totalCarbs.setTextFormatter(FormatterUtils.getDoubleFormatter());
+        protein.setTextFormatter(FormatterUtils.getDoubleFormatter());
+
+        amtOfServings.setTextFormatter(FormatterUtils.getIntFormatter());
     }
 
     @FXML

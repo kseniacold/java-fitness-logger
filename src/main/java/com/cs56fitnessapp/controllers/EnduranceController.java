@@ -5,10 +5,7 @@ import com.cs56fitnessapp.models.User;
 import com.cs56fitnessapp.models.workout.*;
 import com.cs56fitnessapp.services.UserService;
 import com.cs56fitnessapp.services.WorkoutService;
-import com.cs56fitnessapp.utils.CyclingTypeConverter;
-import com.cs56fitnessapp.utils.EnduranceTypeConverter;
-import com.cs56fitnessapp.utils.SwimmingStrokeConverter;
-import com.cs56fitnessapp.utils.UnitsConverter;
+import com.cs56fitnessapp.utils.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -86,6 +83,10 @@ public class EnduranceController implements Initializable {
 
         endDuration.setPromptText("minutes");
         endDistance.setPromptText("miles");
+
+        // Set formatter for data entry fields
+        endDuration.setTextFormatter(FormatterUtils.getIntFormatter());
+        endDistance.setTextFormatter(FormatterUtils.getDoubleFormatter());
         
         handleEnduranceSelection();
     }
