@@ -10,10 +10,10 @@ using MVC architecture.
 
 ### Project structure
 
-* /models - classes handling application logic
+* /models - classes that handle application logic
 * /views - .fxml GUI screens
 * /controllers - classes that handle interactions with the GUI
-* /services - heavy lifting from the database
+* /services - heavy lifting from/to the database
 * /utils - helper classes
 
 
