@@ -1,9 +1,6 @@
-# cs56-fitness-app
-Java desktop fitness logger application
+### Java desktop fitness logger application
 
-## Java desktop fitness logger application
-
-Educational prototype for JavaFx Desktop application,
+Educational prototype for JavaFx desktop application,
 using MVC architecture.
 
 ---
@@ -18,6 +15,16 @@ using MVC architecture.
 
 
 ---
+
+### Technology & development stack
+
+* IDE: IntelliJ IDEA with JVM 1.8
+* SQLite embedded database
+* JUnit5 testing framework
+* JavaFx GUI Application
+
+--- 
+
 ### Development limitations
 ###### There is a number of restrictions in development environment:
 
