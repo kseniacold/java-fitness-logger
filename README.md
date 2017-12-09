@@ -7,7 +7,7 @@ using MVC architecture.
 
 ### Project structure
 
-* /models - classes that handle application logic
+* /models - classes that model data and handle application logic
 * /views - .fxml GUI screens
 * /controllers - classes that handle interactions with the GUI
 * /services - heavy lifting from/to the database
@@ -25,9 +25,30 @@ using MVC architecture.
 
 --- 
 
+### Screen shots
+
+* Main screen:
+![alt_text][main_screen]
+
+[logo]: https://github.com/kseniacold/java-fitness-logger/tree/master/docs/images/main_screen.png "Main Application Screen"
+
+* Food entry screen:
+![alt_text][main_screen]
+
+[logo]: https://github.com/kseniacold/java-fitness-logger/tree/master/docs/images/food_entry_screen600x400.png "Food Entry Screen"
+
+* Main screen:
+![alt_text][main_screen]
+
+[logo]: https://github.com/kseniacold/java-fitness-logger/tree/master/docs/images/endurance_screen_600x400.png "Endurance Screen"
+
+---
+
 ### Development limitations
 ###### There is a number of restrictions in development environment:
 
 * Multiple users can be registered in the database, however once a user is registered in the database, user with *id#1* will be picked as the application user.
+* User entry verification is weak in this release - e.g. all fields are required and empty entries might result is null pointer exception.
 * Passwords are stored as not encrypted `text` value, which is not possible in production. 
 
+Please note that is a prototypical release, not production ready.
