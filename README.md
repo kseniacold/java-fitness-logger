@@ -1,6 +1,6 @@
 ### Java desktop fitness logger application
 
-Educational prototype for JavaFx desktop application,
+Structural prototype for JavaFx desktop application,
 using MVC architecture.
 
 ---
@@ -18,10 +18,13 @@ using MVC architecture.
 
 ### Technology & development stack
 
+* Java
+* JavaFX library
+* JavaFX CSS
+* FXML
 * IDE: IntelliJ IDEA with JVM 1.8
 * SQLite embedded database
 * JUnit5 testing framework
-* JavaFx GUI Application
 
 --- 
 
